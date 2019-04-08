@@ -28,11 +28,12 @@ public class Proxy {
         nombreUsuario.add(nombre);
         paseUsuario.add(pass);
     }
-    public boolean validarUsuatio(String nombreU, String passwordU) {
+    public boolean validarUsuario(String nombreU, String passwordU) {
         boolean ingreso = false;
         int encontrado=0;
+        String[]info=facade.Consultar_Usuario(nombreU).split(",");
         for(int i=0;i<nombreUsuario.size();i++){
-            if(nombreUsuario.get(i).equalsIgnoreCase(nombreU)&&paseUsuario.get(i).equalsIgnoreCase(passwordU)){
+            if(nombreUsuario.get(i).equalsIgnoreCase(nombreU)&&paseUsuario.get(i).equalsIgnoreCase(passwordU)&&info[0].equalsIgnoreCase(nombreU)&&info[1].equalsIgnoreCase(passwordU)){
                 encontrado+=1;
             }
         }
