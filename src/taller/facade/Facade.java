@@ -123,7 +123,6 @@ public class Facade {
                                      break;
                                      
                                  
-                                 
                                  }
                                  else if(Accion.equals("Modificar_ConceptoPago")){
                                      Modificar_ConceptoPago(para[0], para[1]);
