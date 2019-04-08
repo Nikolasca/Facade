@@ -17,17 +17,23 @@ import java.util.ArrayList;
  * @author Nikolas
  */
 public class Facade {
-
+    
     PagoGrupo G1 = new PagoGrupo();
     ReservaGrupo G2 = new ReservaGrupo();
     ArrayList<Usuario> componentes = new ArrayList();
+    private static  Facade facade;
     
     public Facade() {
         Usuario user = new Adapter("Hola","123");
         this.componentes.add(user);
     }
     
-    
+    public static Facade getFacade(){
+    if(facade==null){
+        facade = new Facade();
+    }
+    return facade;
+    }
     
     
     public void CrearReserva(String nombre, String id) {
@@ -94,50 +100,35 @@ public class Facade {
                             for (Method metodosFacade1 : metodosFacade) {
                                 if (part.contains(metodosFacade1.getName()) && metodosFacade1.getName().contains(Accion)) {
                                     if (Accion.equals("CrearReserva")) {
-                                            
+
                                         CrearReserva(para[0], para[1]);
                                         break;
                                     }
-                                } else if(Accion.equals("LeerReserva")){
+                                } else if (Accion.equals("LeerReserva")) {
                                     LeerReserva(para[0]);
                                     break;
-                                    
+
+                                } else if (Accion.equals("ModificarLugarReserva")) {
+                                    ModificarLugarReserva(para[0], para[1]);
+                                    break;
+
+                                } else if (Accion.equals("CrearPago")) {
+                                    CrearPago(para[0], para[1]);
+                                    break;
+
+                                } else if (Accion.equals("EliminarPago")) {
+                                    EliminarPago(G1.ObtenerPago(para[0]));
+                                    break;
+
+                                } else if (Accion.equals("Modificar_ConceptoPago")) {
+                                    Modificar_ConceptoPago(para[0], para[1]);
+                                    break;
+
+                                } else if (Accion.equals("LeerPago")) {
+                                    LeerPago(para[0]);
+                                    break;
 
                                 }
-                                 else if(Accion.equals("ModificarLugarReserva")){
-                                     ModificarLugarReserva(para[0], para[1]);
-                                     break;
-                                     
-                                 
-                                 
-                                 }
-                                else if(Accion.equals("CrearPago" )){
-                                     CrearPago(para[0], para[1]);
-                                     break;
-                                     
-                                 
-                                 
-                                 }
-                                 else if(Accion.equals("EliminarPago")){
-                                     EliminarPago(G1.ObtenerPago(para[0]));
-                                     break;
-                                     
-                                 
-                                 }
-                                 else if(Accion.equals("Modificar_ConceptoPago")){
-                                     Modificar_ConceptoPago(para[0], para[1]);
-                                     break;
-                                     
-                                 
-                                 
-                                 }
-                                 else if(Accion.equals("LeerPago")){
-                                     LeerPago(para[0]);
-                                     break;
-                                     
-                                 
-                                 
-                                 }
                             }
                         }
 
