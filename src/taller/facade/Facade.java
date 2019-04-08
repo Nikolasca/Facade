@@ -167,6 +167,16 @@ public class Facade {
         }
     }
     
+    public String Consultar_Usuario(String User){
+        String info="";
+        for(int i=0;i<componentes.size();i++){
+            if(componentes.get(i).getUsuario().equalsIgnoreCase(User)){
+                info=componentes.get(i).getUsuario()+","+componentes.get(i).getPassword()+","+componentes.get(i).getTipo_Usuario()+",";
+            }
+        }
+        return info;
+    }
+    
     public void crearCredito(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
         FF.CrearPagoTarjeta(id, nombrePasajero, nombreConductor, monto, otros);
     }
