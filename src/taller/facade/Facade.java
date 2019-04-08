@@ -25,7 +25,7 @@ public class Facade {
     ArrayList<Usuario> componentes = new ArrayList();
     private static Facade facade;
     FlyWeightFactory FF = new FlyWeightFactory();
-
+    
     public Facade() {
         Usuario user = new Adapter("Hola", "123");
         this.componentes.add(user);
@@ -85,7 +85,7 @@ public class Facade {
     public void Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
         for (int i = 0; i < this.componentes.size(); i++) {
             if (NombreUser.compareTo(componentes.get(i).getUsuario()) == 0 && PassUser.compareTo(componentes.get(i).getPassword()) == 0) {
-
+                
                 for (Object c : componentes) {
                     
                     Method[] metodos = componentes.get(i).getClass().getMethods();
@@ -167,14 +167,35 @@ public class Facade {
         }
     }
     
-    public String Consultar_Usuario(String User){
-        String info="";
-        for(int i=0;i<componentes.size();i++){
-            if(componentes.get(i).getUsuario().equalsIgnoreCase(User)){
-                info=componentes.get(i).getUsuario()+","+componentes.get(i).getPassword()+","+componentes.get(i).getTipo_Usuario()+",";
+    public String Consultar_Usuario(String User) {
+        String info = "";
+        for (int i = 0; i < componentes.size(); i++) {
+            if (componentes.get(i).getUsuario().equalsIgnoreCase(User)) {
+                info = componentes.get(i).getUsuario() + "," + componentes.get(i).getPassword() + "," + componentes.get(i).getTipo_Usuario() + ",";
             }
         }
         return info;
+    }
+    
+    public void eliminar__Usuario(String User, String pass) {
+        int a = 0;
+        for (int i = 0; i < componentes.size(); i++) {
+            if (componentes.get(i).getUsuario().equalsIgnoreCase(User) && componentes.get(i).getPassword().equalsIgnoreCase(pass)) {
+                a = i;
+            }
+        }
+        componentes.remove(a);
+    }
+    
+    public void mod_Usuario(String user, String newUser, String pass) {
+        int a = 0;
+        for (int i = 0; i < componentes.size(); i++) {
+            if (componentes.get(i).getUsuario().equalsIgnoreCase(user)) {
+                a = i;
+            }
+        }
+        componentes.get(a).setUsuario(newUser);
+        componentes.get(a).setPassword(pass);
     }
     
     public void crearCredito(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
