@@ -167,16 +167,16 @@ public class Facade {
         }
     }
     
-    public void crearCredito() {
-        
+    public void crearCredito(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
+        FF.CrearPagoTarjeta(id, nombrePasajero, nombreConductor, monto, otros);
     }
     
     public void crearEfectivo(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
         FF.CrearPagoEfectivo(id, nombrePasajero, nombreConductor, monto, otros);
     }
     
-    public void crearTransporteIndividial(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
-        FF.CrearPagoTarjeta(id, nombrePasajero, nombreConductor, monto, otros);
+    public void crearTransporteIndividial() {
+        
     }
     
     public void crearAgrupaciones() {
