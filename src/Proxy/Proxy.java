@@ -38,6 +38,7 @@ public class Proxy {
         }
         if(encontrado>0){
             ingreso=true;
+            facade=new Facade();
         }
         return ingreso;
     }
