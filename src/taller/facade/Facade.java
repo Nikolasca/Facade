@@ -80,9 +80,9 @@ public class Facade {
     G1.ModificarConcepto(id, Concepto);
     }
     
-    public void Acceso(String Accion, Usuario user, String Para) throws NoSuchMethodException {
+    public void Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
         for (int i = 0; i < this.componentes.size(); i++) {
-            if (user.getUsuario().compareTo(componentes.get(i).getUsuario()) == 0 && user.getPassword().compareTo(componentes.get(i).getPassword()) == 0) {
+            if (NombreUser.compareTo(componentes.get(i).getUsuario()) == 0 && PassUser.compareTo(componentes.get(i).getPassword()) == 0) {
 
                 for (Object c : componentes) {
 
