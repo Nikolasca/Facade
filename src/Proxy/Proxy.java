@@ -42,8 +42,15 @@ public class Proxy {
         }
         return ingreso;
     }
-    
-    public String mostrarMenu(){
-        return "";
+public void crearUsuario(String nombre,String pass, String tipo){
+        facade.Crear_Usuario(nombre, pass, tipo);
+    }
+    public void llamarMetodoGeneral(String informacion) throws NoSuchMethodException {
+        String[] info = informacion.split(",");
+        String accion = info[0];
+        String nombreU = info[1];
+        String passU = info[2];
+        String para = info[3];
+        facade.Acceso(accion, nombreU, passU, para);
     }
 }
