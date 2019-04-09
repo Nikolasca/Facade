@@ -20,8 +20,8 @@ public class Proxy {
     private ArrayList<String> nombreUsuario = new ArrayList<>();
     private ArrayList<String> paseUsuario = new ArrayList<>();
 
-    public Proxy(Facade x) {
-        this.facade = x;
+    public Proxy() {
+        this.facade = Facade.getFacade();
     }
 
     public void crearCopia(String nombre, String pass){
