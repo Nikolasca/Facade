@@ -128,7 +128,11 @@ public class Facade {
                                     EliminarPago(G1.ObtenerPago(para[0]));
                                     break;
 
-                                } else if (Accion.equals("Modificar_ConceptoPago")) {
+                                } else if (Accion.equals("EliminarReserva")) {
+                                    EliminarReserva(G2.ObtenerReserva(para[0]));
+                                    break;
+                                    
+                                }else if (Accion.equals("Modificar_ConceptoPago")) {
                                     Modificar_ConceptoPago(para[0], para[1]);
                                     break;
 
@@ -318,6 +322,10 @@ public class Facade {
     public String VerTransporte(String Nombre){
        return GrupoBase.getNombreGrupo();
     
+    }
+    
+    public void EliminarReserva(Reserva r) {
+        G2.EliminarAlGrupito(r);
     }
 }
 
