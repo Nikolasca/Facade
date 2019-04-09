@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package taller.facade;
+package Proxy;
 
 import AdapterPackage.Adapter;
-import AdapterPackage.Conductor;
 import AdapterPackage.Usuario;
+import taller.facade.Facade;
 
 /**
  *

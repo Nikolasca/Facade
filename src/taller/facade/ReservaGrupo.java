@@ -52,4 +52,13 @@ return this.componentes.size();
         }
         return nombre;
 }
+   public Reserva ObtenerReserva(String id){
+         Reserva p = null;
+         for (int i = 0; i < this.componentes.size(); i++) {
+            if(id.compareTo(this.componentes.get(i).getId())==0 ){
+             p= this.componentes.get(i);
+        }
+         }
+         return p;
+     }
 }
