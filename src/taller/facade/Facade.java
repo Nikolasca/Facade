@@ -131,6 +131,26 @@ public class Facade {
                                     break;
                                     
                                 }
+                                 else if (Accion.equals("Consultar_Usuario")) {
+                                    Consultar_Usuario(para[0]);
+                                    break;
+                                    
+                                }
+                                else if (Accion.equals("eliminar_Usuario")) {
+                                    eliminar__Usuario(para[0],para[1]);
+                                    break;
+                                    
+                                }
+                                  else if (Accion.equals("mod_Usuario")) {
+                                    mod_Usuario(para[0],para[1],para[2]);
+                                    break;
+                                    
+                                }
+                                 else if (Accion.equals("crearCredito")) {
+                                    //crearCredito(para[0],para[1],para[2]);
+                                    break;
+                                    
+                                }
                             }
                         }
                         
