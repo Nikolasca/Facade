@@ -167,6 +167,12 @@ public class Facade {
                                     componentes.get(i).getFactory().ModificarPago(Integer.parseInt(para[0]), para[1], para[2], para[3]);
 
                                     break;
+                                    
+
+                                }else if (Accion.equals("VerPagos")) {
+                                    componentes.get(i).getFactory().toString();
+                                    
+                                    break;
 
                                 } else if (Accion.equals("crearAgrupacion")) {
                                     crearAgrupacion(para[0]);
@@ -185,6 +191,12 @@ public class Facade {
                                 } else if (Accion.equals("EliminarElemento")) {
 
                                     EliminarElemento(Getelemento(para[0]));
+                                    break;
+
+                                }
+                                 else if (Accion.equals("VerTransporte")) {
+                                    VerTransporte(para[0]);
+                                    
                                     break;
 
                                 }
@@ -266,6 +278,7 @@ public class Facade {
 
     public composite crearAgrupacion(String NombreGrupo) {
         composite grupo = new composite(NombreGrupo);
+        GrupoBase.Añadir(grupo);
         return grupo;
 
     }
@@ -300,5 +313,10 @@ public class Facade {
 
         user.getFactory().ModificarPago(index, Varios1, Varios2, Varios3);
 
+    }
+    
+    public String VerTransporte(String Nombre){
+       return GrupoBase.getNombreGrupo();
+    
     }
 }
