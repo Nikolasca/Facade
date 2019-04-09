@@ -46,7 +46,7 @@ public class Conductor extends Usuario {
     
     @Override
     public String Permisos() {
-        return "LeerPago,Otro permiso";
+        return "LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión,AñadirTarjetaCredito,AñadirTarjetaDebito";
     }
 
     public FlyWeightFactory getFactory() {

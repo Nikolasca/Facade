@@ -46,7 +46,7 @@ return x;
 
     @Override
     public String Permisos() {
-        return "CrearReserva,CrearPago,";
+        return "CrearReserva,LeerReserva,ModificarLugarReserva,CrearPago,LeerPago,Consultar_Usuario,mod_Usuario,crearCredito,crearEfectivo,ModificarPago,VerPagos,VerTransporte,crearTarjetaCredito,crearTarjetaDebito,ModificarTarjetaCredito,ModificarTarjetaDebito,VerViajesRealizados,VerRutas,VerAyudas,GuardarUbicaciones,CerrarSesion";
     }
 
   

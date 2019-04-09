@@ -50,7 +50,7 @@ public class Adapter extends Usuario{
     
     @Override
     public String Permisos() {
-        return "Modificar_ConceptoPago,CrearReserva,LeerReserva,ModificarLugarReserva,LeerPago,CrearPago";
+        return "CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario";
     }
 
     @Override
