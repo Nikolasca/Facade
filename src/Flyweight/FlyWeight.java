@@ -30,6 +30,9 @@ public interface FlyWeight {
     public String getOtros();
 
     public void setOtros(String dato1, String dato2, String dato3);
+    
+   
+   
 
     @Override
     public String toString();

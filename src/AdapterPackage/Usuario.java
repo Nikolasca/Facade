@@ -5,6 +5,9 @@
  */
 package AdapterPackage;
 
+import Flyweight.FlyWeight;
+import Flyweight.FlyWeightFactory;
+
 
 
 /**
@@ -69,5 +72,7 @@ public abstract class Usuario {
     
     public abstract String Permisos();
 
+   public abstract FlyWeightFactory getFactory();
    
+    public abstract void AñadirPago(FlyWeight i);
 }

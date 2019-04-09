@@ -5,15 +5,19 @@
  */
 package AdapterPackage;
 
+import Flyweight.FlyWeight;
+import Flyweight.FlyWeightFactory;
+
 /**
  *
  * @author Nikolas
  */
 public class Pasajero extends Usuario {
-
+ private FlyWeightFactory factory;
 
     public Pasajero(String Usuario, String Password) {
         super(Usuario, Password);
+        this.factory = new FlyWeightFactory();
     }
      public Pasajero() {
         super();
@@ -46,8 +50,14 @@ return x;
     }
 
   
-   
+   public FlyWeightFactory getFactory(){
+            return this.factory;
+   }
 
+   public void AñadirPago(FlyWeight i){
+   this.factory.AgregarPago(i);
    
+   }
 
+    
 }

@@ -10,7 +10,7 @@ package AdapterPackage;
  * @author Nikolas
  */
 public class Administrador {
-     private String Usuario;
+    private String Usuario;
     private String Password;
     private String TipoUsuario;
     public boolean Ingresarlalalala(String Usuario, String Pass, Usuario r) {

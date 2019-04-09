@@ -5,6 +5,8 @@
  */
 package AdapterPackage;
 
+import Flyweight.FlyWeight;
+import Flyweight.FlyWeightFactory;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,5 +52,15 @@ public class Adapter extends Usuario{
     public String Permisos() {
         return "Modificar_ConceptoPago,CrearReserva,LeerReserva,ModificarLugarReserva,LeerPago,CrearPago";
     }
-    
+
+    @Override
+    public FlyWeightFactory getFactory() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void AñadirPago(FlyWeight i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

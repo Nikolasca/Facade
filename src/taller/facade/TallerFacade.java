@@ -20,10 +20,10 @@ public class TallerFacade {
      * @throws java.lang.NoSuchMethodException
      */
     public static void main(String[] args) throws NoSuchMethodException {
-     Facade f = new Facade();
+     Facade f = Facade.getFacade();
       Usuario user = new Adapter("Hola","123");
-     f.Acceso("CrearReserva", user,"reserva1-123");
-     f.Acceso("LeerReserva", user,"123");
+     f.Acceso("CrearReserva", "hola","123","reserva1-123");
+     //f.Acceso("LeerReserva", user,"123");
     }
     
 }

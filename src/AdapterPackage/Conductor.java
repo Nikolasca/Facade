@@ -5,22 +5,26 @@
  */
 package AdapterPackage;
 
-import javax.swing.JOptionPane;
+import Flyweight.FlyWeight;
+import Flyweight.FlyWeightFactory;
+
 
 /**
  *
  * @author Nikolas
  */
 public class Conductor extends Usuario {
-
+    private FlyWeightFactory factory;
     private String Usuario;
     private String Password;
     
     public Conductor(String Usuario, String Password) {
         super(Usuario, Password);
+        FlyWeightFactory factory =  new FlyWeightFactory();
     }
     public Conductor() {
         super();
+        FlyWeightFactory factory =  new FlyWeightFactory();
     }
    
 
@@ -45,7 +49,14 @@ public class Conductor extends Usuario {
         return "LeerPago,Otro permiso";
     }
 
-    
+    public FlyWeightFactory getFactory() {
+        return factory;
+    }
+
+    public void AñadirPago(FlyWeight i){
+   this.factory.AgregarPago(i);
+   
+   }
 }
      
        

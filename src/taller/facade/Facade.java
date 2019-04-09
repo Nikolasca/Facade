@@ -9,6 +9,9 @@ import AdapterPackage.Adapter;
 import AdapterPackage.Conductor;
 import AdapterPackage.Pasajero;
 import AdapterPackage.Usuario;
+import Composite.Vehiculo_hoja;
+import Composite.composite;
+import Composite.interfaceGrupo;
 import Flyweight.FlyWeightFactory;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -25,6 +28,8 @@ public class Facade {
     ArrayList<Usuario> componentes = new ArrayList();
     private static Facade facade;
     FlyWeightFactory FF = new FlyWeightFactory();
+    composite GrupoBase = new composite("GrupoBase");
+     
     
     public Facade() {
         Usuario user = new Adapter("Hola", "123");
@@ -147,10 +152,41 @@ public class Facade {
                                     
                                 }
                                  else if (Accion.equals("crearCredito")) {
-                                    //-crearCredito(para[0],para[1],para[2]);
+                                     int a = componentes.get(i).getFactory().getFly().size();
+                                     componentes.get(i).getFactory().CrearPagoTarjeta(a, NombreUser, para[0], Integer.parseInt(para[1]), para[2]);
                                     break;
                                     
                                 }
+                                else if (Accion.equals("crearEfectivo")) {
+                                     int a = componentes.get(i).getFactory().getFly().size();
+                                     componentes.get(i).getFactory().CrearPagoEfectivo(a, NombreUser, para[0], Integer.parseInt(para[1]), para[2]);
+                                    break;
+                                    
+                                }
+                                 else if (Accion.equals("crearAgrupacion")) {
+                                    crearAgrupacion(para[0]);
+                                    break;
+                                    
+                                }
+                                else if (Accion.equals("CrearVehiculo")) {
+                                    
+                                    AgregarElemento(CrearVehiculo(para[0], para[1], para[2],Integer.parseInt(para[3]), para[4]));
+                                    break;
+                                    
+                                }
+                                else if (Accion.equals("AgregarAgrupacion")) {
+                                    
+                                    AgregarElemento(crearAgrupacion(para[0]));
+                                    break;
+                                    
+                                }
+                                else if (Accion.equals("EliminarElemto")) {
+                                    
+                                    AgregarElemento(crearAgrupacion(para[0]));
+                                    break;
+                                    
+                                }
+                                
                             }
                         }
                         
@@ -226,12 +262,25 @@ public class Facade {
         FF.CrearPagoEfectivo(id, nombrePasajero, nombreConductor, monto, otros);
     }
     
-    public void crearTransporteIndividial() {
+    
+    public composite crearAgrupacion(String NombreGrupo) {
+        composite grupo = new composite(NombreGrupo);
+        return grupo;
         
     }
+    public Vehiculo_hoja CrearVehiculo(String Nombre, String Tipo, String Placa, int capacidad, String Referencia){
+        Vehiculo_hoja carro = new Vehiculo_hoja(Nombre,Tipo,Placa,capacidad,Referencia);
+        return carro;
     
-    public void crearAgrupaciones() {
-        
+    
     }
+    public void AgregarElemento(interfaceGrupo componente){
+    this.GrupoBase.Añadir(componente);
     
+    }
+    public void EliminarElemento(interfaceGrupo componente){
+        this.GrupoBase.Eliminar(componente);
+    
+    
+    }
 }
