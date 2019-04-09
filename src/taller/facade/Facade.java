@@ -147,7 +147,7 @@ public class Facade {
                                     
                                 }
                                  else if (Accion.equals("crearCredito")) {
-                                    //crearCredito(para[0],para[1],para[2]);
+                                    //-crearCredito(para[0],para[1],para[2]);
                                     break;
                                     
                                 }
