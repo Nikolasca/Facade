@@ -110,6 +110,17 @@ public class composite implements interfaceGrupo {
         }
 
     }
+    public interfaceGrupo  Getelemento(String Nombre) {
+        interfaceGrupo s = new composite("");
+        for (int i = 0; i < this.componentes.size(); i++) {
+
+            if (Nombre.compareTo(getNombreGrupo()) == 0) {
+           s = this.componentes.get(i);
+            }
+
+        }
+        return s;
+    }
 
     @Override
     public String getReferencia() {

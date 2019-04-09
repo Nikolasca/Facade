@@ -53,5 +53,22 @@ public class FlyWeightFactory {
     public void setFly(ArrayList<FlyWeight> Fly) {
         this.Fly = Fly;
     }
+    public FlyWeight Getpago(int id) {
+           FlyWeight s = null;
+        for (int i = 0; i < Fly.size(); i++) {
+            if (id == Fly.get(i).getId())
+            {
+                s = Fly.get(i);
+            }
+        }
+        return s;
+    }
     
+    public void EliminarPago(FlyWeight i){
+        Fly.remove(i);
+    
+    }
+    public void ModificarPago(int i, String NuevoValor, String NuevoValor2, String NuevoValor3){
+        Fly.get(i).setOtros(NuevoValor, NuevoValor2, NuevoValor3);
+    }
 }
