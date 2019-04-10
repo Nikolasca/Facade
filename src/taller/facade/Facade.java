@@ -45,7 +45,6 @@ public class Facade {
 
     public void CrearReserva(String nombre, String id, String fecha, String concepto, String lugar) {
         Reserva reserva = new Reserva(nombre, id, fecha, concepto, lugar);
-                System.out.println("RR");
         G2.AñadirGrupito(reserva);
 
     }
@@ -139,41 +138,42 @@ public class Facade {
                             for (Method metodosFacade1 : metodosFacade) {
                                 if (part.contains(metodosFacade1.getName()) && metodosFacade1.getName().contains(Accion)) {
                                     if (Accion.equals("CrearReserva")) {
-                                        System.out.println("CrearR");
                                         CrearReserva(para[0], para[1], para[2], para[3], para[4]);
+                                        break;
                                     }
                                 } else if (Accion.equals("LeerReserva")) {
                                     LeerReserva(para[0]);
-
+                                    break;
                                 } else if (Accion.equals("ModificarLugarReserva")) {
                                     ModificarLugarReserva(para[0], para[1]);
-
+                                    break;
                                 } else if (Accion.equals("CrearPago")) {
                                     CrearPago(para[0], para[1], Integer.parseInt(para[2]), para[3], para[4]);
-
+                                    break;
                                 } else if (Accion.equals("EliminarPago")) {
                                     EliminarPago(G1.ObtenerPago(para[0]));
-
+                                    break;
                                 } else if (Accion.equals("EliminarReserva")) {
                                     EliminarReserva(G2.ObtenerReserva(para[0]));
-
+                                    break;
                                 } else if (Accion.equals("Modificar_ConceptoPago")) {
                                     Modificar_ConceptoPago(para[0], para[1]);
-
+                                    break;
                                 } else if (Accion.equals("LeerPago")) {
                                     LeerPago(para[0]);
-
+                                    break;
                                 } else if (Accion.equals("Consultar_Usuario")) {
                                     Consultar_Usuario(para[0]);
-
+                                    break;
                                 } else if (Accion.equals("eliminar_Usuario")) {
                                     eliminar__Usuario(para[0], para[1]);
-
+                                    break;
                                 } else if (Accion.equals("mod_Usuario")) {
                                     mod_Usuario(para[0], para[1], para[2]);
-
+                                    break;
                                 } else if (Accion.equals("crearCredito")) {
                                     crearCredito(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
+                                    break;
 
                                 } else if (Accion.equals("crearEfectivo")) {
                                     crearEfectivo(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
@@ -182,31 +182,31 @@ public class Facade {
                                 } else if (Accion.equals("EliminarPago")) {
 
                                     componentes.get(i).getFactory().EliminarPago(componentes.get(i).getFactory().Getpago(Integer.parseInt(para[0])));
-
+                                    break;
                                 } else if (Accion.equals("ModificarPago")) {
                                     componentes.get(i).getFactory().ModificarPago(Integer.parseInt(para[0]), para[1], para[2], para[3]);
-
+                                    break;
                                 } else if (Accion.equals("VerPagos")) {
                                     componentes.get(i).getFactory().toString();
-
+                                    break;
                                 } else if (Accion.equals("crearAgrupacion")) {
                                     crearAgrupacion(para[0]);
-
+                                    break;
                                 } else if (Accion.equals("CrearVehiculo")) {
 
                                     AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));
-
+                                    break;
                                 } else if (Accion.equals("AgregarAgrupacion")) {
 
                                     AgregarElemento(Getelemento(para[0]));
-
+                                    break;
                                 } else if (Accion.equals("EliminarElemento")) {
 
                                     EliminarElemento(Getelemento(para[0]));
-
+                                    break;
                                 } else if (Accion.equals("VerTransporte")) {
                                     VerTransporte(para[0]);
-
+                                    break;
                                 }
 //break;
                             }

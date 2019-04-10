@@ -20,7 +20,6 @@ public class ReservaGrupo {
     }
     
     public void AñadirGrupito(Reserva r) {
-        System.out.println("1R");
         this.componentes.add(r);
     }
     
