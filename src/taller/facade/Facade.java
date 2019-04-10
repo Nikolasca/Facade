@@ -44,8 +44,8 @@ public class Facade {
         return facade;
     }
     
-    public void CrearReserva(String nombre, String id) {
-        Reserva reserva = new Reserva(nombre, id);
+    public void CrearReserva(String nombre, String id, String fecha, String concepto, String lugar) {
+        Reserva reserva = new Reserva(nombre, id,fecha,concepto,lugar);
         G2.AñadirGrupito(reserva);
         
     }
@@ -67,8 +67,9 @@ public class Facade {
         return G2.LeerReserva(id);
     }
     
-    public void CrearPago(String pago, String id) {
-        Pago pago1 = new Pago(pago, id);
+    public void CrearPago(String nombre, String id, int pago, String fecha, String concepto) {
+        Pago pago1 = new Pago(nombre, id,pago,fecha,concepto);
+        G1.AñadirGrupito(pago1);
         
     }
     
@@ -109,7 +110,7 @@ public class Facade {
                                 if (part.contains(metodosFacade1.getName()) && metodosFacade1.getName().contains(Accion)) {
                                     if (Accion.equals("CrearReserva")) {
 
-                                        CrearReserva(para[0], para[1]);
+                                        CrearReserva(para[0], para[1],para[2],para[3],para[4]);
                                         break;
                                     }
                                 } else if (Accion.equals("LeerReserva")) {
@@ -121,7 +122,7 @@ public class Facade {
                                     break;
 
                                 } else if (Accion.equals("CrearPago")) {
-                                    CrearPago(para[0], para[1]);
+                                    CrearPago(para[0], para[1],Integer.parseInt(para[2]),para[3],para[4]);
                                     break;
 
                                 } else if (Accion.equals("EliminarPago")) {

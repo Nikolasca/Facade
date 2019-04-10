@@ -43,8 +43,8 @@ return this.componentes.size();
          String nombre = "";
         for (int i = 0; i < this.componentes.size(); i++) {
             if(id.compareTo(this.componentes.get(i).getId())==0 ){
-             nombre = this.componentes.get(i).getNombre();
-             nombre = nombre +  this.componentes.get(i).getId();
+             nombre = "Nombre: "+this.componentes.get(i).getNombre();
+             nombre = nombre +", id: "+  this.componentes.get(i).getId()+", fecha: "+this.componentes.get(i).getFecha() +", concepto: "+this.componentes.get(i).getConcepto()+", lugar: "+this.componentes.get(i).getLugar();
              System.out.print(nombre);
            
         }

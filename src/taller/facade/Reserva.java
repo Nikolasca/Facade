@@ -16,9 +16,12 @@ public class Reserva {
     String Concepto;
     String Lugar;
 
-    public Reserva(String Nombre, String id) {
+    public Reserva(String Nombre, String id,String Fecha, String Concepto, String Lugar) {
         this.Nombre = Nombre;
         this.Id = id;
+        this.Fecha=Fecha;
+        this.Concepto=Concepto;
+        this.Lugar=Lugar;
     }
 
     public String getId() {

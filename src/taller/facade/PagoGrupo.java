@@ -40,8 +40,8 @@ public class PagoGrupo {
          String nombre = "";
         for (int i = 0; i < this.componentes.size(); i++) {
             if(id.compareTo(this.componentes.get(i).getId())==0 ){
-             nombre = this.componentes.get(i).getNombre(); 
-             nombre = nombre + this.componentes.get(i).getConcepto();
+             nombre = "Nombre: "+this.componentes.get(i).getNombre(); 
+             nombre = nombre + ", id: "+this.componentes.get(i).getId()+", monto: "+this.componentes.get(i).getPago()+", fecha: "+this.componentes.get(i).getFecha()+", concepto: "+this.componentes.get(i).getConcepto();
         }
             
         }

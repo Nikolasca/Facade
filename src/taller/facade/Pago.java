@@ -19,9 +19,12 @@ public class Pago {
     public Pago() {
     }
 
-    public Pago(String nombre, String id) {
+    public Pago(String nombre, String id,int Pago,String Fecha,String Concepto) {
         this.Nombre = nombre;
         this.Id = id;
+        this.Pago=Pago;
+        this.Fecha=Fecha;
+        this.Concepto=Concepto;
     }
 
     public String getId() {

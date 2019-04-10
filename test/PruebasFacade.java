@@ -53,15 +53,50 @@ public class PruebasFacade {
         F.Crear_Usuario("Conductor1", "111", "Conductor");
         assertEquals("Conductor1,111,Conductor,", F.Consultar_Usuario("Conductor1"));
     }
-        @Test
+
+    @Test
     public void crearAdmin() {
         Facade F = new Facade();
         F.Crear_Usuario("Admin1", "111", "Administrador");
         assertEquals("Admin1,111,Administrador,", F.Consultar_Usuario("Admin1"));
     }
+
     @Test
-    public void devolverPermisosPasajero(){
-        Facade F=new Facade();
+    public void crearYConsultarReservaPasajero() throws NoSuchMethodException {
+        Facade F = new Facade();
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero");
+        F.Acceso("CrearReserva", "Pasajero1", "111", "Visita a Unicentro-1-01/01/2019-Visita a Unicentro-Unicentro");
+        assertEquals("Nombre: Visita a Unicentro, id: 1, fecha: 01/01/2019, concepto: Visita a Unicentro, lugar: Unicentro", F.LeerReserva("1"));
+        //assertEquals("Visita a Unicentro, id: 1",F.Acceso("LeerReserva", "Pasajero1", "111", "1"));
     }
+
+    @Test
+    public void modificarLugarReservaPasajero() throws NoSuchMethodException {
+        Facade F = new Facade();
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero");
+        F.Acceso("CrearReserva", "Pasajero1", "111", "Visita a Unicentro-1-01/01/2019-Visita a Unicentro-Unicentro");
+        F.Acceso("ModificarLugarReserva", "Pasajero1", "111", "1-Unicentro Salida Sur");
+        assertEquals("Nombre: Visita a Unicentro, id: 1, fecha: 01/01/2019, concepto: Visita a Unicentro, lugar: Unicentro Salida Sur", F.LeerReserva("1"));
+        //assertEquals("Visita a Unicentro, id: 1",F.Acceso("LeerReserva", "Pasajero1", "111", "1"));
+    }
+
+    @Test
+    public void eliminarReservaPasajero() throws NoSuchMethodException {
+        Facade F = new Facade();
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero");
+        F.Acceso("CrearReserva", "Pasajero1", "111", "Visita a Unicentro-1-01/01/2019-Visita a Unicentro-Unicentro");
+        F.Acceso("EliminarReserva", "Pasajero1", "111", "1");
+        assertEquals("", F.LeerReserva("1"));
+        //assertEquals("Visita a Unicentro, id: 1",F.Acceso("LeerReserva", "Pasajero1", "111", "1"));
+    }
+
+    @Test
+    public void crearPagoPasajero() throws NoSuchMethodException {
+        Facade F = new Facade();
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero");
+        F.Acceso("CrearPago", "Pasajero1", "111", "Visita a Unicentro-1-5000-01/01/2019-Visita a Unicentro");
+        assertEquals("Nombre: Visita a Unicentro, id: 1, monto: 5000, fecha: 01/01/2019, concepto: Visita a Unicentro", F.LeerPago("1"));
+    }
+    
     
 }
