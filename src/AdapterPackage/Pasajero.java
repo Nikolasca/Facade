@@ -13,35 +13,35 @@ import Flyweight.FlyWeightFactory;
  * @author Nikolas
  */
 public class Pasajero extends Usuario {
- private FlyWeightFactory factory;
+
+    private FlyWeightFactory factory;
+    private String usuario;
+    private String pass;
+    private String tipo="Pasajero";
 
     public Pasajero(String Usuario, String Password) {
         super(Usuario, Password);
         this.factory = new FlyWeightFactory();
     }
-     public Pasajero() {
+
+    public Pasajero() {
         super();
     }
-    
-    
 
     @Override
     public boolean ingresar(String Usuario, String Pass, Usuario r) {
         boolean x = false;
         if (Usuario.compareToIgnoreCase(r.getUsuario()) == 0 && Pass.compareToIgnoreCase(r.getPassword()) == 0) {
-           
+
             x = true;
 
-        } 
-return x;
-    }  
-
-
-
+        }
+        return x;
+    }
 
     @Override
     public String getTipo_Usuario() {
-       return this.getTipo_Usuario(); 
+        return this.tipo;
     }
 
     @Override
@@ -49,15 +49,13 @@ return x;
         return "CrearReserva,LeerReserva,ModificarLugarReserva,EliminarReserva,CrearPago,LeerPago,Consultar_Usuario,mod_Usuario,crearCredito,crearEfectivo,ModificarPago,VerPagos,VerTransporte,crearTarjetaCredito,crearTarjetaDebito,ModificarTarjetaCredito,ModificarTarjetaDebito,VerViajesRealizados,VerRutas,VerAyudas,GuardarUbicaciones,CerrarSesion";
     }
 
-  
-   public FlyWeightFactory getFactory(){
-            return this.factory;
-   }
+    public FlyWeightFactory getFactory() {
+        return this.factory;
+    }
 
-   public void AñadirPago(FlyWeight i){
-   this.factory.AgregarPago(i);
-   
-   }
+    public void AñadirPago(FlyWeight i) {
+        this.factory.AgregarPago(i);
 
-    
+    }
+
 }

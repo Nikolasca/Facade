@@ -228,11 +228,11 @@ public class Facade {
             componentes.add(usuario);
 
         } else if (Tipo.equals("Conductor")) {
-            Usuario usuario = new Conductor();
+            Usuario usuario = new Conductor(User,pass);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
-        } else if (Tipo.equals("Admministrador")) {
-            Usuario usuario = new Adapter();
+        } else if (Tipo.equals("Administrador")) {
+            Usuario usuario = new Adapter(User,pass);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
 
@@ -244,7 +244,9 @@ public class Facade {
     public String Consultar_Usuario(String User) {
         String info = "";
         for (int i = 0; i < componentes.size(); i++) {
+            System.out.println("1");
             if (componentes.get(i).getUsuario().equalsIgnoreCase(User)) {
+                System.out.println("2");
                 info = componentes.get(i).getUsuario() + "," + componentes.get(i).getPassword() + "," + componentes.get(i).getTipo_Usuario() + ",";
             }
         }
