@@ -154,8 +154,7 @@ public class Facade {
                                     break;
 
                                 } else if (Accion.equals("crearCredito")) {
-                                    int a = componentes.get(i).getFactory().getFly().size();
-                                    componentes.get(i).getFactory().CrearPagoTarjeta(a, NombreUser, para[0], Integer.parseInt(para[1]), para[2]);
+                                    componentes.get(i).getFactory().CrearPagoTarjeta(Integer.parseInt(para[0]), para[1], para[2], Integer.parseInt(para[3]), para[4]);
                                     break;
 
                                 } else if (Accion.equals("crearEfectivo")) {
@@ -281,6 +280,10 @@ public class Facade {
 
     public void crearEfectivo(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
         FF.CrearPagoEfectivo(id, nombrePasajero, nombreConductor, monto, otros);
+    }
+    
+    public String leerEoC(int id){
+        return FF.LeerPagoEoC(id);
     }
 
     public composite crearAgrupacion(String NombreGrupo) {

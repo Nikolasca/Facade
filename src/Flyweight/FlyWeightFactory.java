@@ -25,6 +25,7 @@ public class FlyWeightFactory {
     public void CrearPagoTarjeta(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
         FlyWeight f = new PagoTarjeta(id, nombrePasajero, nombreConductor, monto, otros);
         this.Fly.add(f);
+        System.out.println(Fly.size());
     }
 
     public String verSaldosFavor(String nombreU) {
@@ -70,5 +71,14 @@ public class FlyWeightFactory {
     }
     public void ModificarPago(int i, String NuevoValor, String NuevoValor2, String NuevoValor3){
         Fly.get(i).setOtros(NuevoValor, NuevoValor2, NuevoValor3);
+    }
+    public String LeerPagoEoC(int id){
+        String info="";
+        for(int i=0;i<Fly.size();i++){
+            if(id==Fly.get(i).getId()){
+               info=Fly.get(i).toString();
+            }
+        }
+        return info;
     }
 }
