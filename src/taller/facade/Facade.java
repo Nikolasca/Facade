@@ -23,72 +23,71 @@ import java.util.ArrayList;
  * @author Nikolas
  */
 public class Facade {
-    
+
     PagoGrupo G1 = new PagoGrupo();
     ReservaGrupo G2 = new ReservaGrupo();
     ArrayList<Usuario> componentes = new ArrayList();
     private static Facade facade;
     FlyWeightFactory FF = new FlyWeightFactory();
     composite GrupoBase = new composite("GrupoBase");
-     
-    
+
     public Facade() {
         Usuario user = new Adapter("Hola", "123");
         this.componentes.add(user);
     }
-    
+
     public static Facade getFacade() {
         if (facade == null) {
             facade = new Facade();
         }
         return facade;
     }
-    
+
     public void CrearReserva(String nombre, String id, String fecha, String concepto, String lugar) {
-        Reserva reserva = new Reserva(nombre, id,fecha,concepto,lugar);
+        Reserva reserva = new Reserva(nombre, id, fecha, concepto, lugar);
         G2.AñadirGrupito(reserva);
-        
+
     }
-    
+
     public void AñadirReserva(Reserva r) {
         G2.AñadirGrupito(r);
-        
+
     }
-    
+
     public void EliminarReservaGrupo(Reserva r) {
         G2.EliminarAlGrupito(r);
     }
-    
+
     public void ModificarLugarReserva(String id, String Lugar) {
         G2.ModificarLugar(id, Lugar);
     }
-    
+
     public String LeerReserva(String id) {
         return G2.LeerReserva(id);
     }
-    
+
     public void CrearPago(String nombre, String id, int pago, String fecha, String concepto) {
-        Pago pago1 = new Pago(nombre, id,pago,fecha,concepto);
+        Pago pago1 = new Pago(nombre, id, pago, fecha, concepto);
         G1.AñadirGrupito(pago1);
-        
+
     }
-    
+
     public void AñadirPago(Pago r) {
         G1.AñadirGrupito(r);
     }
-    
+
     public void EliminarPago(Pago r) {
         G1.EliminarAlGrupito(r);
     }
-    
+
     public String LeerPago(String id) {
         return G1.LeerPago(id);
     }
-    
+
     public void Modificar_ConceptoPago(String id, String Concepto) {
         G1.ModificarConcepto(id, Concepto);
     }
-    
+
     public void Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
         for (int i = 0; i < this.componentes.size(); i++) {
             if (NombreUser.compareTo(componentes.get(i).getUsuario()) == 0 && PassUser.compareTo(componentes.get(i).getPassword()) == 0) {
@@ -110,7 +109,7 @@ public class Facade {
                                 if (part.contains(metodosFacade1.getName()) && metodosFacade1.getName().contains(Accion)) {
                                     if (Accion.equals("CrearReserva")) {
 
-                                        CrearReserva(para[0], para[1],para[2],para[3],para[4]);
+                                        CrearReserva(para[0], para[1], para[2], para[3], para[4]);
                                         break;
                                     }
                                 } else if (Accion.equals("LeerReserva")) {
@@ -122,7 +121,7 @@ public class Facade {
                                     break;
 
                                 } else if (Accion.equals("CrearPago")) {
-                                    CrearPago(para[0], para[1],Integer.parseInt(para[2]),para[3],para[4]);
+                                    CrearPago(para[0], para[1], Integer.parseInt(para[2]), para[3], para[4]);
                                     break;
 
                                 } else if (Accion.equals("EliminarPago")) {
@@ -132,8 +131,8 @@ public class Facade {
                                 } else if (Accion.equals("EliminarReserva")) {
                                     EliminarReserva(G2.ObtenerReserva(para[0]));
                                     break;
-                                    
-                                }else if (Accion.equals("Modificar_ConceptoPago")) {
+
+                                } else if (Accion.equals("Modificar_ConceptoPago")) {
                                     Modificar_ConceptoPago(para[0], para[1]);
                                     break;
 
@@ -154,12 +153,11 @@ public class Facade {
                                     break;
 
                                 } else if (Accion.equals("crearCredito")) {
-                                    componentes.get(i).getFactory().CrearPagoTarjeta(Integer.parseInt(para[0]), para[1], para[2], Integer.parseInt(para[3]), para[4]);
+                                    crearCredito(Integer.parseInt(para[0]),para[1],para[2],Float.parseFloat(para[3]),para[4]);
                                     break;
 
                                 } else if (Accion.equals("crearEfectivo")) {
-                                    int a = componentes.get(i).getFactory().getFly().size();
-                                    componentes.get(i).getFactory().CrearPagoEfectivo(a, NombreUser, para[0], Integer.parseInt(para[1]), para[2]);
+                                   crearEfectivo(Integer.parseInt(para[0]),para[1],para[2],Float.parseFloat(para[3]),para[4]);
                                     break;
 
                                 } else if (Accion.equals("EliminarPago")) {
@@ -171,11 +169,10 @@ public class Facade {
                                     componentes.get(i).getFactory().ModificarPago(Integer.parseInt(para[0]), para[1], para[2], para[3]);
 
                                     break;
-                                    
 
-                                }else if (Accion.equals("VerPagos")) {
+                                } else if (Accion.equals("VerPagos")) {
                                     componentes.get(i).getFactory().toString();
-                                    
+
                                     break;
 
                                 } else if (Accion.equals("crearAgrupacion")) {
@@ -197,10 +194,9 @@ public class Facade {
                                     EliminarElemento(Getelemento(para[0]));
                                     break;
 
-                                }
-                                 else if (Accion.equals("VerTransporte")) {
+                                } else if (Accion.equals("VerTransporte")) {
                                     VerTransporte(para[0]);
-                                    
+
                                     break;
 
                                 }
@@ -228,11 +224,11 @@ public class Facade {
             componentes.add(usuario);
 
         } else if (Tipo.equals("Conductor")) {
-            Usuario usuario = new Conductor(User,pass);
+            Usuario usuario = new Conductor(User, pass);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
         } else if (Tipo.equals("Administrador")) {
-            Usuario usuario = new Adapter(User,pass);
+            Usuario usuario = new Adapter(User, pass);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
 
@@ -276,14 +272,33 @@ public class Facade {
 
     public void crearCredito(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
         FF.CrearPagoTarjeta(id, nombrePasajero, nombreConductor, monto, otros);
+        FlyWeight F = FF.Getpago(id);
+        for (int i = 0; i < componentes.size(); i++) {
+            if (componentes.get(i).getUsuario().equalsIgnoreCase(nombrePasajero)) {
+                componentes.get(i).AñadirPago(F);
+            }
+        }
     }
 
     public void crearEfectivo(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
         FF.CrearPagoEfectivo(id, nombrePasajero, nombreConductor, monto, otros);
+        FlyWeight F = FF.Getpago(id);
+        for (int i = 0; i < componentes.size(); i++) {
+            if (componentes.get(i).getUsuario().equalsIgnoreCase(nombrePasajero)) {
+                componentes.get(i).AñadirPago(F);
+            }
+        }
     }
-    
-    public String leerEoC(int id){
-        return FF.LeerPagoEoC(id);
+
+    public String leerEoC(String nombreU, int id) {
+        String info = "";
+        for (int i = 0; i < componentes.size(); i++) {
+            if (componentes.get(i).getUsuario().equalsIgnoreCase(nombreU)) {
+                info = componentes.get(i).getPago(id);
+            }
+        }
+        return info;
+//return FF.LeerPagoEoC(id);
     }
 
     public composite crearAgrupacion(String NombreGrupo) {
@@ -324,14 +339,13 @@ public class Facade {
         user.getFactory().ModificarPago(index, Varios1, Varios2, Varios3);
 
     }
-    
-    public String VerTransporte(String Nombre){
-       return GrupoBase.getNombreGrupo();
-    
+
+    public String VerTransporte(String Nombre) {
+        return GrupoBase.getNombreGrupo();
+
     }
-    
+
     public void EliminarReserva(Reserva r) {
         G2.EliminarAlGrupito(r);
     }
 }
-

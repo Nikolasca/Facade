@@ -25,7 +25,6 @@ public class FlyWeightFactory {
     public void CrearPagoTarjeta(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
         FlyWeight f = new PagoTarjeta(id, nombrePasajero, nombreConductor, monto, otros);
         this.Fly.add(f);
-        System.out.println(Fly.size());
     }
 
     public String verSaldosFavor(String nombreU) {

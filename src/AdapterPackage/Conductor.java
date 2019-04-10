@@ -58,4 +58,9 @@ public class Conductor extends Usuario {
         this.factory.AgregarPago(i);
 
     }
+
+    @Override
+    public String getPago(int id) {
+        return this.factory.LeerPagoEoC(id);
+    }
 }

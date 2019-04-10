@@ -40,7 +40,7 @@ public class PruebasFacade {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-/*   @Test
+    @Test
     public void crearPasajero() {
         Facade F = new Facade();
         F.Crear_Usuario("Pasajero1", "111", "Pasajero");
@@ -60,6 +60,7 @@ public class PruebasFacade {
         F.Crear_Usuario("Admin1", "111", "Administrador");
         assertEquals("Admin1,111,Administrador,", F.Consultar_Usuario("Admin1"));
     }
+
     @Test
     public void modPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
@@ -67,6 +68,7 @@ public class PruebasFacade {
         F.Acceso("mod_Usuario", "Pasajero1", "111", "Pasajero1-Pasajero1-123");
         assertEquals("Pasajero1,123,Pasajero,", F.Consultar_Usuario("Pasajero1"));
     }
+
     @Test
     public void crearYConsultarReservaPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
@@ -103,23 +105,36 @@ public class PruebasFacade {
         F.Acceso("CrearPago", "Pasajero1", "111", "Visita a Unicentro-1-5000-01/01/2019-Visita a Unicentro");
         assertEquals("Nombre: Visita a Unicentro, id: 1, monto: 5000, fecha: 01/01/2019, concepto: Visita a Unicentro", F.LeerPago("1"));
     }
-     */
+
     @Test
     public void crearCreditoPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
         F.Crear_Usuario("Pasajero1", "111", "Pasajero");
-        //int id, String nombrePasajero, String nombreConductor, float monto, String otros
-        F.Acceso("crearCredito", "Pasajero1", "111", "1-Pasajero1-Conductor1-50000-CVV:1,Num:92929282882,FechaVenc:Manana");
-        assertEquals("Datos crédito{id=1, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=50000.0, otros=CVV:1,Num:92929282882,FechaVenc:Manana}", F.verPagos());
+        F.Acceso("crearCredito", "Pasajero1", "111", "1-Pasajero1-Conductor1-10-CVV:1,Num:92929282882,FechaVenc:Manana");
+        assertEquals("Datos crédito{id=1, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=10.0, otros=CVV:1,Num:92929282882,FechaVenc:Manana}", F.leerEoC("Pasajero1", 1));
     }
-
+    
     @Test
     public void crearEfectivoPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
         F.Crear_Usuario("Pasajero1", "111", "Pasajero");
-        //int id, String nombrePasajero, String nombreConductor, float monto, String otros
-//        F.Acceso("crearCredito", "Pasajero1", "111", "1-Pasajero1-Conductor1-50000-CVV:1,Num:92929282882,FechaVenc:Manana");
-  //      assertEquals("Datos crédito{id=1, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=50000.0, otros=CVV:1,Num:92929282882,FechaVenc:Manana}", F.leerEoC(1));
+        F.Acceso("crearEfectivo", "Pasajero1", "111", "2-Pasajero1-Conductor1-10-CVV:1,Num:92929282882,FechaVenc:Manana");
+        System.out.println(F.leerEoC("Pasajero1", 2));
+        assertEquals("Datos efectivo {id=2, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=10.0, otros=CVV:1,Num:92929282882,FechaVenc:Manana}", F.leerEoC("Pasajero1", 2));
     }
+    /*
+    @Test
+    public void verTransporte(){}
+    
+    @Test 
+    public void verPermisos(){}    
 
+    @Test
+    public void leerPagoConductor() throws NoSuchMethodException {
+        Facade F = new Facade();
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero");
+        F.Acceso("CrearPago", "Pasajero1", "111", "Visita a Unicentro-1-5000-01/01/2019-Visita a Unicentro");
+        F.Acceso("verPagos", "Pasajero1","111","");
+    }
+     */
 }

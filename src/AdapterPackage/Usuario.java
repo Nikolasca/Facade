@@ -75,4 +75,5 @@ public abstract class Usuario {
    public abstract FlyWeightFactory getFactory();
    
     public abstract void AñadirPago(FlyWeight i);
+    public abstract String getPago(int id);
 }

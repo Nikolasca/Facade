@@ -56,7 +56,11 @@ public class Pasajero extends Usuario {
 
     public void AñadirPago(FlyWeight i) {
         this.factory.AgregarPago(i);
+    }
 
+    @Override
+    public String getPago(int id) {
+        return this.factory.LeerPagoEoC(id);
     }
 
 }
