@@ -83,22 +83,20 @@ public class FlyWeightFactory {
     
     public String toStringPagosPasajero(String nombreP){
         String info="";
-        for(int i=0;i<Fly.size();i+=21){
+        for(int i=0;i<Fly.size();i++){
             if(Fly.get(i).getNombrePasajero().equalsIgnoreCase(nombreP)){
                 info+=Fly.get(i).toString()+"\n";
             }
         }
-        System.out.println("Size Fly: "+Fly.size());
         return info;
     }
     public String toStringPagosConductor(String nombreC){
         String info="";
-        for(int i=0;i<Fly.size();i+=42){
+        for(int i=0;i<Fly.size();i++){
             if(Fly.get(i).getNombreConductor().equalsIgnoreCase(nombreC)){
                 info+=Fly.get(i).toString()+"\n";
             }
-        }
-        System.out.println("Size Fly: "+Fly.size());
+        }System.out.println(Fly.size());
         return info;
     }
 }

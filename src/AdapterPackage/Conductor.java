@@ -66,7 +66,6 @@ public class Conductor extends Usuario {
 
     @Override
     public String getPagos(String nombreC) {
-        System.out.println("A");
          return this.factory.toStringPagosConductor(nombreC);
     }
 }

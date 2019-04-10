@@ -40,7 +40,7 @@ public class PruebasFacade {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-/*    @Test
+    @Test
     public void crearPasajero() {
         Facade F = new Facade();
         F.Crear_Usuario("Pasajero1", "111", "Pasajero");
@@ -68,7 +68,6 @@ public class PruebasFacade {
         F.Acceso("mod_Usuario", "Pasajero1", "111", "Pasajero1-Pasajero1-123");
         assertEquals("Pasajero1,123,Pasajero,", F.Consultar_Usuario("Pasajero1"));
     }
-    
     @Test
     public void crearYConsultarReservaPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
@@ -77,7 +76,7 @@ public class PruebasFacade {
         assertEquals("Nombre: Visita a Unicentro, id: 1, fecha: 01/01/2019, concepto: Visita a Unicentro, lugar: Unicentro", F.LeerReserva("1"));
         //assertEquals("Visita a Unicentro, id: 1",F.Acceso("LeerReserva", "Pasajero1", "111", "1"));
     }
-    
+
     @Test
     public void modificarLugarReservaPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
@@ -87,7 +86,7 @@ public class PruebasFacade {
         assertEquals("Nombre: Visita a Unicentro, id: 1, fecha: 01/01/2019, concepto: Visita a Unicentro, lugar: Unicentro Salida Sur", F.LeerReserva("1"));
         //assertEquals("Visita a Unicentro, id: 1",F.Acceso("LeerReserva", "Pasajero1", "111", "1"));
     }
-    
+       
     @Test
     public void eliminarReservaPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
@@ -97,7 +96,7 @@ public class PruebasFacade {
         assertEquals("", F.LeerReserva("1"));
         //assertEquals("Visita a Unicentro, id: 1",F.Acceso("LeerReserva", "Pasajero1", "111", "1"));
     }
-    
+
     @Test
     public void crearPagoPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
@@ -139,7 +138,6 @@ public class PruebasFacade {
         assertEquals("Datos efectivo {id=2, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=10.0, otros=CVV:1,Num:92929282882,FechaVenc:Manana}\n"
                 + "Datos efectivo {id=1, nombrePasajero=Pasajero1, nombreConductor=Conductor2, monto=700.0, otros=CVV:1,Num:92929282882,FechaVenc:Manana}\n", F.verPagosP("Pasajero1"));
     }
-     */
     @Test
     public void leerPagosConductor() throws NoSuchMethodException {
         Facade F = new Facade();
