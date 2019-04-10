@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Proxy.Proxy;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -40,5 +41,15 @@ public class PruebasGenerales {
     // The methods must be annotated with annotation @Test. For example:
     // Aftertest beforetest
     @Test
-    public void hello() {}
+    public void hello() {
+    Proxy x = new Proxy();
+    String nombre = "1";
+    String pass = "1";
+    String tipo = "Pasajero";
+
+    x.crearUsuario(nombre, pass, tipo);
+    //Proxy probado1 = x.llamarMetodoGeneral();
+
+     //   assertTrue(probado1.ingresar("1", "1"));
+    }
 }
