@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class Adapter extends Usuario{
  
     private Administrador admin;
-
+private FlyWeightFactory factory;
     public Adapter(String Usuario, String Password) {
         super(Usuario, Password);
         this.admin = new Administrador();
@@ -55,8 +55,7 @@ public class Adapter extends Usuario{
 
     @Override
     public FlyWeightFactory getFactory() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+return     factory;}
 
     @Override
     public void AñadirPago(FlyWeight i) {
@@ -66,6 +65,11 @@ public class Adapter extends Usuario{
     @Override
     public String getPago(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getPagos(String nombreP) {
+       return "Pagos no posibles";
     }
 
 }

@@ -45,7 +45,6 @@ return this.componentes.size();
             if(id.compareTo(this.componentes.get(i).getId())==0 ){
              nombre = "Nombre: "+this.componentes.get(i).getNombre();
              nombre = nombre +", id: "+  this.componentes.get(i).getId()+", fecha: "+this.componentes.get(i).getFecha() +", concepto: "+this.componentes.get(i).getConcepto()+", lugar: "+this.componentes.get(i).getLugar();
-             System.out.print(nombre);
            
         }
             

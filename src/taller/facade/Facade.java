@@ -54,6 +54,10 @@ public class Facade {
 
     }
 
+    public void EliminarReserva(Reserva r) {
+        G2.EliminarAlGrupito(r);
+    }
+
     public void EliminarReservaGrupo(Reserva r) {
         G2.EliminarAlGrupito(r);
     }
@@ -88,6 +92,32 @@ public class Facade {
         G1.ModificarConcepto(id, Concepto);
     }
 
+    public FlyWeight Getpago(int i, Usuario u) {
+        return u.getFactory().Getpago(i);
+    }
+
+    public String verPagosP(String nombreU) {
+        String info = "";
+        for (int i = 0; i < componentes.size(); i++) {
+            if (componentes.get(i).getUsuario().equalsIgnoreCase(nombreU)) {
+                info = componentes.get(i).getPagos(nombreU);
+            }
+        }
+        return info;
+    }
+
+    public String verPagosC(String nombreC) {
+        String info = "";
+        info=FF.toStringPagosConductor(nombreC);
+        return info;
+    }
+
+    public void ModificarPago(int index, Usuario user, String Varios1, String Varios2, String Varios3) {
+
+        user.getFactory().ModificarPago(index, Varios1, Varios2, Varios3);
+
+    }
+
     public void Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
         for (int i = 0; i < this.componentes.size(); i++) {
             if (NombreUser.compareTo(componentes.get(i).getUsuario()) == 0 && PassUser.compareTo(componentes.get(i).getPassword()) == 0) {
@@ -108,7 +138,6 @@ public class Facade {
                             for (Method metodosFacade1 : metodosFacade) {
                                 if (part.contains(metodosFacade1.getName()) && metodosFacade1.getName().contains(Accion)) {
                                     if (Accion.equals("CrearReserva")) {
-
                                         CrearReserva(para[0], para[1], para[2], para[3], para[4]);
                                         break;
                                     }
@@ -153,11 +182,11 @@ public class Facade {
                                     break;
 
                                 } else if (Accion.equals("crearCredito")) {
-                                    crearCredito(Integer.parseInt(para[0]),para[1],para[2],Float.parseFloat(para[3]),para[4]);
+                                    crearCredito(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
                                     break;
 
                                 } else if (Accion.equals("crearEfectivo")) {
-                                   crearEfectivo(Integer.parseInt(para[0]),para[1],para[2],Float.parseFloat(para[3]),para[4]);
+                                    crearEfectivo(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
                                     break;
 
                                 } else if (Accion.equals("EliminarPago")) {
@@ -172,7 +201,6 @@ public class Facade {
 
                                 } else if (Accion.equals("VerPagos")) {
                                     componentes.get(i).getFactory().toString();
-
                                     break;
 
                                 } else if (Accion.equals("crearAgrupacion")) {
@@ -283,11 +311,13 @@ public class Facade {
     public void crearEfectivo(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
         FF.CrearPagoEfectivo(id, nombrePasajero, nombreConductor, monto, otros);
         FlyWeight F = FF.Getpago(id);
+        int a = 0;
         for (int i = 0; i < componentes.size(); i++) {
             if (componentes.get(i).getUsuario().equalsIgnoreCase(nombrePasajero)) {
-                componentes.get(i).AñadirPago(F);
+                a = i;
             }
         }
+        componentes.get(a).AñadirPago(F);
     }
 
     public String leerEoC(String nombreU, int id) {
@@ -298,7 +328,6 @@ public class Facade {
             }
         }
         return info;
-//return FF.LeerPagoEoC(id);
     }
 
     public composite crearAgrupacion(String NombreGrupo) {
@@ -329,23 +358,9 @@ public class Facade {
 
     }
 
-    public FlyWeight Getpago(int i, Usuario u) {
-        return u.getFactory().Getpago(i);
-
-    }
-
-    public void ModificarPago(int index, Usuario user, String Varios1, String Varios2, String Varios3) {
-
-        user.getFactory().ModificarPago(index, Varios1, Varios2, Varios3);
-
-    }
-
     public String VerTransporte(String Nombre) {
         return GrupoBase.getNombreGrupo();
 
     }
 
-    public void EliminarReserva(Reserva r) {
-        G2.EliminarAlGrupito(r);
-    }
 }

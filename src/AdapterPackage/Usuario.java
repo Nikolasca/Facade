@@ -76,4 +76,5 @@ public abstract class Usuario {
    
     public abstract void AñadirPago(FlyWeight i);
     public abstract String getPago(int id);
+    public abstract String getPagos(String nombre);
 }

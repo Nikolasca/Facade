@@ -63,4 +63,8 @@ public class Pasajero extends Usuario {
         return this.factory.LeerPagoEoC(id);
     }
 
+    @Override
+    public String getPagos(String nombreP) {
+        return this.factory.toStringPagosPasajero(nombreP);
+    }
 }

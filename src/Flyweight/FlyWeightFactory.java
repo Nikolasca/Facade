@@ -75,9 +75,30 @@ public class FlyWeightFactory {
         String info="";
         for(int i=0;i<Fly.size();i++){
             if(id==Fly.get(i).getId()){
-               info=Fly.get(i).toString();
+               info=Fly.get(i).toString()+"\n";
             }
         }
+        return info;
+    }
+    
+    public String toStringPagosPasajero(String nombreP){
+        String info="";
+        for(int i=0;i<Fly.size();i+=21){
+            if(Fly.get(i).getNombrePasajero().equalsIgnoreCase(nombreP)){
+                info+=Fly.get(i).toString()+"\n";
+            }
+        }
+        System.out.println("Size Fly: "+Fly.size());
+        return info;
+    }
+    public String toStringPagosConductor(String nombreC){
+        String info="";
+        for(int i=0;i<Fly.size();i+=42){
+            if(Fly.get(i).getNombreConductor().equalsIgnoreCase(nombreC)){
+                info+=Fly.get(i).toString()+"\n";
+            }
+        }
+        System.out.println("Size Fly: "+Fly.size());
         return info;
     }
 }
