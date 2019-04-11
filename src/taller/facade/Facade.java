@@ -118,8 +118,12 @@ public class Facade {
 
     }
 
-    public void Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
+    public String Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
+        String x = "";
         for (int i = 0; i < this.componentes.size(); i++) {
+            
+            System.out.println("i" + NombreUser.compareTo(componentes.get(i).getUsuario()));
+            
             if (NombreUser.compareTo(componentes.get(i).getUsuario()) == 0 && PassUser.compareTo(componentes.get(i).getPassword()) == 0) {
 
                 for (Object c : componentes) {
@@ -135,6 +139,7 @@ public class Facade {
                         String[] para = Para.split("-");
 
                         for (String part : parts) {
+                            
                             for (Method metodosFacade1 : metodosFacade) {
                                 if (part.contains(metodosFacade1.getName()) && metodosFacade1.getName().contains(Accion)) {
                                     if (Accion.equals("CrearReserva")) {
@@ -163,7 +168,7 @@ public class Facade {
                                     LeerPago(para[0]);
                                     break;
                                 } else if (Accion.equals("Consultar_Usuario")) {
-                                    Consultar_Usuario(para[0]);
+                                    x = Consultar_Usuario(para[0]);
                                     break;
                                 } else if (Accion.equals("eliminar_Usuario")) {
                                     eliminar__Usuario(para[0], para[1]);
@@ -201,16 +206,14 @@ public class Facade {
                                 } else if (Accion.equals("VerTransporte")) {
                                     VerTransporte(para[0]);
                                     break;
-                                }
-                                else if (Accion.equals("verPagosC")) {
+                                } else if (Accion.equals("verPagosC")) {
                                     verPagosC(para[0]);
                                     break;
-                                }
-                                else if (Accion.equals("verPagosP")) {
+                                } else if (Accion.equals("verPagosP")) {
                                     verPagosP(para[0]);
                                     break;
-                                }  else if (Accion.equals("verPermisos")) {
-                                   componentes.get(i).Permisos();
+                                } else if (Accion.equals("verPermisos")) {
+                                    componentes.get(i).Permisos();
                                     break;
                                 }
 //break;
@@ -225,6 +228,8 @@ public class Facade {
                 }
             }
         }
+        System.out.println("x: " + x);
+        return x;
     }
 
     public void Crear_Usuario(String User, String pass, String Tipo) {
@@ -342,8 +347,9 @@ public class Facade {
         return GrupoBase.getNombreGrupo();
 
     }
-    public String retornar_permisos(Usuario e){
-       return e.Permisos();
-    
+
+    public String retornar_permisos(Usuario e) {
+        return e.Permisos();
+
     }
 }
