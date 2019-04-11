@@ -122,9 +122,7 @@ public class Facade {
         String x = "";
         for (int i = 0; i < this.componentes.size(); i++) {
             
-            System.out.println("i" + NombreUser.compareTo(componentes.get(i).getUsuario()));
-            
-            if (NombreUser.compareTo(componentes.get(i).getUsuario()) == 0 && PassUser.compareTo(componentes.get(i).getPassword()) == 0) {
+            //if (NombreUser.compareTo(componentes.get(i).getUsuario()) == 0 && PassUser.compareTo(componentes.get(i).getPassword()) == 0) {
 
                 for (Object c : componentes) {
 
@@ -226,7 +224,7 @@ public class Facade {
                         e.printStackTrace();
                     }
                 }
-            }
+           // }
         }
         System.out.println("x: " + x);
         return x;
@@ -253,9 +251,7 @@ public class Facade {
     public String Consultar_Usuario(String User) {
         String info = "";
         for (int i = 0; i < componentes.size(); i++) {
-            System.out.println("1");
             if (componentes.get(i).getUsuario().equalsIgnoreCase(User)) {
-                System.out.println("2");
                 info = componentes.get(i).getUsuario() + "," + componentes.get(i).getPassword() + "," + componentes.get(i).getTipo_Usuario() + ",";
             }
         }
