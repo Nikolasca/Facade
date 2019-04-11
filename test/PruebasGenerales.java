@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author Valentina
  */
 public class PruebasGenerales {
-    
+
     public PruebasGenerales() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -41,15 +41,11 @@ public class PruebasGenerales {
     // The methods must be annotated with annotation @Test. For example:
     // Aftertest beforetest
     @Test
-    public void hello() {
-    Proxy x = new Proxy();
-    String nombre = "1";
-    String pass = "1";
-    String tipo = "Pasajero";
+    public void hello() throws NoSuchMethodException {
+        Proxy x = new Proxy();
+        x.crearUsuario("NombrePasajero", "1", "Pasajero");
 
-    x.crearUsuario(nombre, pass, tipo);
-    //Proxy probado1 = x.llamarMetodoGeneral();
-
-     //   assertTrue(probado1.ingresar("1", "1"));
+        assertEquals("NombrePasajero, 1, Pasajero,", x.llamarMetodoGeneral("Consultar Usuario, NombrePasajero, 1, Pasajero"));
+//assertTrue(x.validarUsuario("NombrePasajero", "1"));
     }
 }
