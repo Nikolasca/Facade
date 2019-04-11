@@ -208,6 +208,14 @@ public class Facade {
                                     VerTransporte(para[0]);
                                     break;
                                 }
+                                else if (Accion.equals("verPagosC")) {
+                                    verPagosC(para[0]);
+                                    break;
+                                }
+                                else if (Accion.equals("verPagosP")) {
+                                    verPagosP(para[0]);
+                                    break;
+                                }
 //break;
                             }
                             break;
@@ -339,5 +347,8 @@ public class Facade {
         return GrupoBase.getNombreGrupo();
 
     }
-
+    public String retornar_permisos(Usuario e){
+       return e.Permisos();
+    
+    }
 }
