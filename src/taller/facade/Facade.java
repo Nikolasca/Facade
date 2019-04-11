@@ -121,110 +121,108 @@ public class Facade {
     public String Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
         String x = "";
         for (int i = 0; i < this.componentes.size(); i++) {
-            
+
             //if (NombreUser.compareTo(componentes.get(i).getUsuario()) == 0 && PassUser.compareTo(componentes.get(i).getPassword()) == 0) {
+            for (Object c : componentes) {
+                Method[] metodos = componentes.get(i).getClass().getMethods();
+                Method[] metodosFacade = Facade.class.getMethods();
 
-                for (Object c : componentes) {
+                try {
+                    Method methodcall1 = componentes.get(i).getClass().getDeclaredMethod("Permisos");
+                    String cadena = (String) methodcall1.invoke(c);
+                    String[] parts = cadena.split(",");
+                    String[] para = Para.split("-");
 
-                    Method[] metodos = componentes.get(i).getClass().getMethods();
-                    Method[] metodosFacade = Facade.class.getMethods();
+                    for (String part : parts) {
 
-                    try {
+                        for (Method metodosFacade1 : metodosFacade) {
 
-                        Method methodcall1 = componentes.get(i).getClass().getDeclaredMethod("Permisos");
-                        String cadena = (String) methodcall1.invoke(c);
-                        String[] parts = cadena.split(",");
-                        String[] para = Para.split("-");
-
-                        for (String part : parts) {
-                            
-                            for (Method metodosFacade1 : metodosFacade) {
-                                if (part.contains(metodosFacade1.getName()) && metodosFacade1.getName().contains(Accion)) {
-                                    if (Accion.equals("CrearReserva")) {
-                                        CrearReserva(para[0], para[1], para[2], para[3], para[4]);
-                                        break;
-                                    }
-                                } else if (Accion.equals("LeerReserva")) {
-                                    LeerReserva(para[0]);
-                                    break;
-                                } else if (Accion.equals("ModificarLugarReserva")) {
-                                    ModificarLugarReserva(para[0], para[1]);
-                                    break;
-                                } else if (Accion.equals("CrearPago")) {
-                                    CrearPago(para[0], para[1], Integer.parseInt(para[2]), para[3], para[4]);
-                                    break;
-                                } else if (Accion.equals("EliminarPago")) {
-                                    EliminarPago(G1.ObtenerPago(para[0]));
-                                    break;
-                                } else if (Accion.equals("EliminarReserva")) {
-                                    EliminarReserva(G2.ObtenerReserva(para[0]));
-                                    break;
-                                } else if (Accion.equals("Modificar_ConceptoPago")) {
-                                    Modificar_ConceptoPago(para[0], para[1]);
-                                    break;
-                                } else if (Accion.equals("LeerPago")) {
-                                    LeerPago(para[0]);
-                                    break;
-                                } else if (Accion.equals("Consultar_Usuario")) {
-                                    x = Consultar_Usuario(para[0]);
-                                    break;
-                                } else if (Accion.equals("eliminar_Usuario")) {
-                                    eliminar__Usuario(para[0], para[1]);
-                                    break;
-                                } else if (Accion.equals("mod_Usuario")) {
-                                    mod_Usuario(para[0], para[1], para[2]);
-                                    break;
-                                } else if (Accion.equals("crearCredito")) {
-                                    crearCredito(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
-                                    break;
-                                } else if (Accion.equals("crearEfectivo")) {
-                                    crearEfectivo(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
-                                    break;
-                                } else if (Accion.equals("EliminarPago")) {
-                                    componentes.get(i).getFactory().EliminarPago(componentes.get(i).getFactory().Getpago(Integer.parseInt(para[0])));
-                                    break;
-                                } else if (Accion.equals("ModificarPago")) {
-                                    componentes.get(i).getFactory().ModificarPago(Integer.parseInt(para[0]), para[1], para[2], para[3]);
-                                    break;
-                                } else if (Accion.equals("VerPagos")) {
-                                    componentes.get(i).getFactory().toString();
-                                    break;
-                                } else if (Accion.equals("crearAgrupacion")) {
-                                    crearAgrupacion(para[0]);
-                                    break;
-                                } else if (Accion.equals("CrearVehiculo")) {
-                                    AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));
-                                    break;
-                                } else if (Accion.equals("AgregarAgrupacion")) {
-                                    AgregarElemento(Getelemento(para[0]));
-                                    break;
-                                } else if (Accion.equals("EliminarElemento")) {
-                                    EliminarElemento(Getelemento(para[0]));
-                                    break;
-                                } else if (Accion.equals("VerTransporte")) {
-                                    VerTransporte(para[0]);
-                                    break;
-                                } else if (Accion.equals("verPagosC")) {
-                                    verPagosC(para[0]);
-                                    break;
-                                } else if (Accion.equals("verPagosP")) {
-                                    verPagosP(para[0]);
-                                    break;
-                                } else if (Accion.equals("verPermisos")) {
-                                    componentes.get(i).Permisos();
+                            if (part.contains(metodosFacade1.getName()) && metodosFacade1.getName().contains(Accion)) {
+                                if (Accion.equals("CrearReserva")) {
+                                    CrearReserva(para[0], para[1], para[2], para[3], para[4]);
                                     break;
                                 }
-//break;
+                            } else if (Accion.equals("LeerReserva")) {
+                                LeerReserva(para[0]);
+                                break;
+                            } else if (Accion.equals("ModificarLugarReserva")) {
+                                ModificarLugarReserva(para[0], para[1]);
+                                break;
+                            } else if (Accion.equals("CrearPago")) {
+                                CrearPago(para[0], para[1], Integer.parseInt(para[2]), para[3], para[4]);
+                                break;
+                            } else if (Accion.equals("EliminarPago")) {
+                                EliminarPago(G1.ObtenerPago(para[0]));
+                                break;
+                            } else if (Accion.equals("EliminarReserva")) {
+                                EliminarReserva(G2.ObtenerReserva(para[0]));
+                                break;
+                            } else if (Accion.equals("Modificar_ConceptoPago")) {
+                                Modificar_ConceptoPago(para[0], para[1]);
+                                break;
+                            } else if (Accion.equals("LeerPago")) {
+                                LeerPago(para[0]);
+                                break;
+                            } else if (Accion.equals("Consultar_Usuario")) {
+                                x = Consultar_Usuario(para[0]);
+                                break;
+                            } else if (Accion.equals("eliminar_Usuario")) {
+                                eliminar__Usuario(para[0], para[1]);
+                                break;
+                            } else if (Accion.equals("mod_Usuario")) {
+                                mod_Usuario(para[0], para[1], para[2]);
+                                break;
+                            } else if (Accion.equals("crearCredito")) {
+                                crearCredito(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
+                                break;
+                            } else if (Accion.equals("crearEfectivo")) {
+                                crearEfectivo(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
+                                break;
+                            } else if (Accion.equals("EliminarPago")) {
+                                componentes.get(i).getFactory().EliminarPago(componentes.get(i).getFactory().Getpago(Integer.parseInt(para[0])));
+                                break;
+                            } else if (Accion.equals("ModificarPago")) {
+                                componentes.get(i).getFactory().ModificarPago(Integer.parseInt(para[0]), para[1], para[2], para[3]);
+                                break;
+                            } else if (Accion.equals("VerPagos")) {
+                                componentes.get(i).getFactory().toString();
+                                break;
+                            } else if (Accion.equals("crearAgrupacion")) {
+                                crearAgrupacion(para[0]);
+                                break;
+                            } else if (Accion.equals("CrearVehiculo")) {
+                                AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));
+                                break;
+                            } else if (Accion.equals("AgregarAgrupacion")) {
+                                AgregarElemento(Getelemento(para[0]));
+                                break;
+                            } else if (Accion.equals("EliminarElemento")) {
+                                EliminarElemento(Getelemento(para[0]));
+                                break;
+                            } else if (Accion.equals("VerTransporte")) {
+                                VerTransporte(para[0]);
+                                break;
+                            } else if (Accion.equals("verPagosC")) {
+                                verPagosC(para[0]);
+                                break;
+                            } else if (Accion.equals("verPagosP")) {
+                                verPagosP(para[0]);
+                                break;
+                            } else if (Accion.equals("verPermisos")) {
+                                componentes.get(i).Permisos();
+                                break;
                             }
-                            break;
+//break;
                         }
                         break;
-                    } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
                     }
+                    break;
+                } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
-           // }
+            }
+            // }
         }
         System.out.println("x: " + x);
         return x;
