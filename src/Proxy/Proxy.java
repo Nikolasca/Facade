@@ -47,12 +47,14 @@ public class Proxy {
         paseUsuario.add(pass);
     }
 
-    public void llamarMetodoGeneral(String informacion) throws NoSuchMethodException {
+    public String llamarMetodoGeneral(String informacion) throws NoSuchMethodException {
         String[] info = informacion.split(",");
         String accion = info[0];
         String nombreU = info[1];
         String passU = info[2];
         String para = info[3];
         facade.Acceso(accion, nombreU, passU, para);
+        
+        return "";
     }
 }
