@@ -174,13 +174,10 @@ public class Facade {
                                 } else if (Accion.equals("crearCredito")) {
                                     crearCredito(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
                                     break;
-
                                 } else if (Accion.equals("crearEfectivo")) {
                                     crearEfectivo(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
                                     break;
-
                                 } else if (Accion.equals("EliminarPago")) {
-
                                     componentes.get(i).getFactory().EliminarPago(componentes.get(i).getFactory().Getpago(Integer.parseInt(para[0])));
                                     break;
                                 } else if (Accion.equals("ModificarPago")) {
@@ -193,15 +190,12 @@ public class Facade {
                                     crearAgrupacion(para[0]);
                                     break;
                                 } else if (Accion.equals("CrearVehiculo")) {
-
                                     AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));
                                     break;
                                 } else if (Accion.equals("AgregarAgrupacion")) {
-
                                     AgregarElemento(Getelemento(para[0]));
                                     break;
                                 } else if (Accion.equals("EliminarElemento")) {
-
                                     EliminarElemento(Getelemento(para[0]));
                                     break;
                                 } else if (Accion.equals("VerTransporte")) {
@@ -227,7 +221,6 @@ public class Facade {
             Usuario usuario = new Pasajero(User, pass);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
-
         } else if (Tipo.equals("Conductor")) {
             Usuario usuario = new Conductor(User, pass);
             usuario.setTipo_Usuario(Tipo);
@@ -236,7 +229,6 @@ public class Facade {
             Usuario usuario = new Adapter(User, pass);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
-
         } else {
             System.out.print("No hizo match tipo");
         }
