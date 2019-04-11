@@ -215,6 +215,9 @@ public class Facade {
                                 else if (Accion.equals("verPagosP")) {
                                     verPagosP(para[0]);
                                     break;
+                                }  else if (Accion.equals("verPermisos")) {
+                                   componentes.get(i).Permisos();
+                                    break;
                                 }
 //break;
                             }
