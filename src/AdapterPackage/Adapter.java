@@ -17,6 +17,7 @@ public class Adapter extends Usuario{
  
     private Administrador admin;
 private FlyWeightFactory factory;
+
     public Adapter(String Usuario, String Password) {
         super(Usuario, Password);
         this.admin = new Administrador();
@@ -27,13 +28,6 @@ private FlyWeightFactory factory;
     }
 
    
-    @Override
- 
-    public boolean ingresar(String Usuario, String Pass,  Usuario r) {
-
-              return admin.Ingresarlalalala(Usuario, Pass, r);
-    }
-
 
     public String gettipoUsuario() {
         return  this.admin.tomatuusuario(); 
