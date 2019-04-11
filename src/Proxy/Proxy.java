@@ -53,8 +53,7 @@ public class Proxy {
         String nombreU = info[1];
         String passU = info[2];
         String para = info[3];
-        facade.Acceso(accion, nombreU, passU, para);
-        
-        return "";
+        String x = facade.Acceso(accion, nombreU, passU, para);
+        return x;
     }
 }
