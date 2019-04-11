@@ -224,7 +224,6 @@ public class Facade {
             }
             // }
         }
-        System.out.println("x: " + x);
         return x;
     }
 

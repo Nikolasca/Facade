@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import Proxy.Proxy;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,36 +15,30 @@ import static org.junit.Assert.*;
  *
  * @author Valentina
  */
-public class PruebasGenerales {
-
-    public PruebasGenerales() {
+public class PruebasConductor {
+    
+    public PruebasConductor() {
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
-
+    
     @Before
     public void setUp() {
-        Proxy x = new Proxy();
-        x.crearUsuario("NombrePasajero", "1", "Pasajero");
-        assertTrue(x.validarUsuario("NombrePasajero", "1"));
     }
-
+    
     @After
     public void tearDown() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
-    // Aftertest beforetest
-    @Test
-    public void hello() throws NoSuchMethodException {
-        Proxy x = new Proxy();
-        assertEquals("NombrePasajero,1,Pasajero,", x.llamarMetodoGeneral("Consultar_Usuario, NombrePasajero, 1, Pasajero"));
-    }
+    //
+    // @Test
+    // public void hello() {}
 }
