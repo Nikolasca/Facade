@@ -46,6 +46,12 @@ public class PruebasPasajero {
     @Test
     public void ConsultarInformacion() throws NoSuchMethodException {
         Proxy x = new Proxy();
+        assertEquals("NombrePasajero,1,Pasajero,", x.llamarMetodoGeneral("Consultar_Usuario,NombrePasajero,1,Pasajero,NombrePasajero"));
+    }
+    
+    public void EliminarUsuario() throws NoSuchMethodException {
+        Proxy x = new Proxy();
+        x.llamarMetodoGeneral("eliminar_Usuario,NombrePasajero,1,");
         assertEquals("NombrePasajero,1,Pasajero,", x.llamarMetodoGeneral("Consultar_Usuario, NombrePasajero, 1, Pasajero"));
     }
 }
