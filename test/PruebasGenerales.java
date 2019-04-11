@@ -45,7 +45,7 @@ public class PruebasGenerales {
         Proxy x = new Proxy();
         x.crearUsuario("NombrePasajero", "1", "Pasajero");
 
-        assertEquals("NombrePasajero, 1, Pasajero,", x.llamarMetodoGeneral("Consultar Usuario, NombrePasajero, 1, Pasajero"));
+        assertEquals("NombrePasajero, 1, Pasajero,", x.llamarMetodoGeneral("Consultar_Usuario, NombrePasajero, 1, Pasajero"));
 //assertTrue(x.validarUsuario("NombrePasajero", "1"));
     }
 }
