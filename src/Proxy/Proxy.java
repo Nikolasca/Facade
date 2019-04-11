@@ -29,7 +29,6 @@ public class Proxy {
         int encontrado = 0;
         String[] info = facade.Consultar_Usuario(nombreU).split(",");
         for (int i = 0; i < nombreUsuario.size(); i++) {
-            System.out.println("i: " + nombreUsuario.get(i) + " - " + paseUsuario.get(i));
             if (nombreUsuario.get(i).equalsIgnoreCase(nombreU) && paseUsuario.get(i).equalsIgnoreCase(passwordU) && info[0].equalsIgnoreCase(nombreU) && info[1].equalsIgnoreCase(passwordU)) {
                 encontrado += 1;
             }
