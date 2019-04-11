@@ -24,16 +24,12 @@ public class Proxy {
         this.facade = Facade.getFacade();
     }
 
-    public void crearCopia(String nombre, String pass) {
-        nombreUsuario.add(nombre);
-        paseUsuario.add(pass);
-    }
-
     public boolean validarUsuario(String nombreU, String passwordU) {
         boolean ingreso = false;
         int encontrado = 0;
         String[] info = facade.Consultar_Usuario(nombreU).split(",");
         for (int i = 0; i < nombreUsuario.size(); i++) {
+            System.out.println("i: " + nombreUsuario.get(i) + " - " + paseUsuario.get(i));
             if (nombreUsuario.get(i).equalsIgnoreCase(nombreU) && paseUsuario.get(i).equalsIgnoreCase(passwordU) && info[0].equalsIgnoreCase(nombreU) && info[1].equalsIgnoreCase(passwordU)) {
                 encontrado += 1;
             }
@@ -47,6 +43,8 @@ public class Proxy {
 
     public void crearUsuario(String nombre, String pass, String tipo) {
         facade.Crear_Usuario(nombre, pass, tipo);
+        nombreUsuario.add(nombre);
+        paseUsuario.add(pass);
     }
 
     public void llamarMetodoGeneral(String informacion) throws NoSuchMethodException {
