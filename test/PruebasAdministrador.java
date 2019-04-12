@@ -100,8 +100,7 @@ public class PruebasAdministrador {
         Proxy x = new Proxy();
         x.llamarMetodoGeneral("CrearVehiculo,Individual,123,NombrePrueba-1");
         x.llamarMetodoGeneral("EliminarElemento,Individual,123,1");
-        System.out.println(x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo"));
-        assertEquals("", x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo")); // --- No Elimina
+        assertEquals("", x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo"));
     }
 
     @Test
