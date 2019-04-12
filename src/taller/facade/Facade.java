@@ -217,6 +217,11 @@ public class Facade {
                                 x = leerEoC(para[0], Integer.parseInt(para[1]));
 
                                 break;
+                            }else if (Accion.equals(" ModificarNombre_Elemento")) {
+                                composite p = Getelemento(Integer.parseInt(para[0]));
+                                ModificarNombre_Elemento(p,para[1]);
+
+                                break;
                             }
 //break;
                         }
@@ -360,5 +365,9 @@ public class Facade {
     public String retornar_permisos(Usuario e) {
         return e.Permisos();
 
+    }
+    public void ModificarNombre_Elemento(composite s, String n){
+        s.setNombre(n);
+    
     }
 }

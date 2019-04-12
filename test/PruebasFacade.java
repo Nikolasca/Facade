@@ -178,7 +178,7 @@ public class PruebasFacade {
     public void verPermisosAdmin() throws NoSuchMethodException {
         Facade F = new Facade();
         F.Crear_Usuario("Admin1", "111", "Administrador");
-        assertEquals("CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario,VerTodos", F.Acceso("verPermisos", "Admin1", "111", ""));
+        assertEquals("CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario,VerTodos,ModificarNombre_Elemento", F.Acceso("verPermisos", "Admin1", "111", ""));
     }
 
     @Test
@@ -198,7 +198,11 @@ public class PruebasFacade {
     }
 
     @Test
-    public void AgregarAgrupacionAdmin() throws NoSuchMethodException {
+    public void ModificarGrupo() throws NoSuchMethodException {
+        Facade f = Facade.getFacade();
+        f.Acceso("crearAgrupacion", "Hola", "123", "Particular-1");
+        f.Acceso(" ModificarNombre_Elemento", "Hola", "123", "1-Nombrenuevo");
+        assertEquals("GrupoBase   0 Nombrenuevo ", f.Acceso("VerTodos", "hola", "123", ""));
     }
 
     @Test

@@ -23,9 +23,8 @@ public class TallerFacade {
      Facade f = Facade.getFacade();
    f.Acceso("crearAgrupacion", "Hola", "123", "Particular-1");
    
-   f.Acceso("crearAgrupacion", "Hola", "123", "Publico-2");
-   f.Acceso("crearAgrupacion", "Hola", "123", "Otro-3");
-   f.Acceso("EliminarElemento", "Hola", "123","2");
+   
+   f.Acceso(" ModificarNombre_Elemento", "Hola", "123","1-Nombrenuevo");
    System.out.println(f.Acceso("VerTodos", "hola","123",""));
     
      //f.Acceso("LeerReserva", user,"123");

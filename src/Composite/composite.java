@@ -125,7 +125,7 @@ public class composite implements interfaceGrupo {
             if (L ==this.componentes.get(i).getId() || L == this.id ) {
                
            s = (composite)this.componentes.get(i);
-           System.out.print(s.toString());
+          // System.out.print(s.toString());
            
             }
            
