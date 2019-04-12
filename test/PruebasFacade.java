@@ -170,26 +170,37 @@ public class PruebasFacade {
     public void verPermisosConductor() throws NoSuchMethodException {
         Facade F = new Facade();
         F.Crear_Usuario("Conductor1", "111", "Conductor");
-        assertEquals("CrearVehiculo,LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión,AñadirTarjetaCredito,AñadirTarjetaDebito", F.Acceso("verPermisos", "Conductor1", "111", ""));
+        assertEquals("LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión,AñadirTarjetaCredito,AñadirTarjetaDebito", F.Acceso("verPermisos", "Conductor1", "111", ""));
     }
 
     @Test
     public void verPermisosAdmin() throws NoSuchMethodException {
         Facade F = new Facade();
         F.Crear_Usuario("Admin1", "111", "Administrador");
-        assertEquals("CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario", F.Acceso("verPermisos", "Admin1", "111", ""));
+        assertEquals("CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario,VerTodos", F.Acceso("verPermisos", "Admin1", "111", ""));
     }
     @Test
     public void crearVehículoAdmin() throws NoSuchMethodException {
+   Facade f = new Facade();
+    f.Acceso("CrearVehiculo", "hola","123","NombrePrueba-Tipo-ABC123-4-Mazda");
+    assertEquals("GrupoBase NombrePrueba Mazda 4 ABC123",f.Acceso("VerTransporte", "hola","123","NombreVehiculo"));
+    
     }
     @Test
     public void crearAgrupacionAdmin() throws NoSuchMethodException {
+        Facade f = new Facade();
+        f.Acceso("crearAgrupacion", "Hola", "123", "GrupoNuevo");
+     assertEquals("GrupoBase   0 GrupoNuevo ",f.Acceso("VerTodos", "hola","123",""));  
     }
     @Test
     public void AgregarAgrupacionAdmin() throws NoSuchMethodException {
     }
     @Test
     public void EliminarElementoAdmin() throws NoSuchMethodException {
+         Facade f = new Facade();
+        f.Acceso("crearAgrupacion", "Hola", "123", "GrupoNuevo");
+        f.Acceso("crearAgrupacion", "Hola", "123", "GrupoNuevo2");
+     assertEquals("GrupoBase   0 GrupoNuevo GrupoBase   0 GrupoNuevo2 ",f.Acceso("VerTodos", "hola","123",""));
     }
     @Test
     public void Eliminar_UsuarioAdmin() throws NoSuchMethodException {
