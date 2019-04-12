@@ -75,10 +75,9 @@ public class PruebasAdministrador {
     public void CrearIndividual() throws NoSuchMethodException {
         Proxy x = new Proxy();
         x.llamarMetodoGeneral("CrearVehiculo,Individual,123,NombrePrueba-Tipo-ABC123-4-Mazda");
-        /*
         System.out.println(x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo"));
         assertEquals("GrupoBase NombrePrueba Mazda 4 ABC123", x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo")); // --- Se repiten lo que se imprime
-        */
+        
     }
     /* 
     @Test
