@@ -48,27 +48,27 @@ public class PruebasConductor {
         Proxy x = new Proxy();
         assertEquals("LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión", x.llamarMetodoGeneral("verPermisos,NombreConductor,2,Conductor"));
     }
-    
+
     @Test
     public void ConsultarInformacion() throws NoSuchMethodException {
         Proxy x = new Proxy();
-        assertEquals("NombrePasajero,1,Pasajero,", x.llamarMetodoGeneral("Consultar_Usuario,NombrePasajero,1,NombrePasajero"));
+        assertEquals("NombreConductor,2,Conductor,", x.llamarMetodoGeneral("Consultar_Usuario,NombreConductor,2,NombreConductor"));
     }
 
     @Test
     public void EliminarUsuario() throws NoSuchMethodException {
         Proxy x = new Proxy();
-        x.llamarMetodoGeneral("eliminar_Usuario,NombrePasajero,1,NombrePasajero-1");
-        assertEquals("", x.llamarMetodoGeneral("Consultar_Usuario,NombrePasajero,1,NombrePasajero"));
+        x.llamarMetodoGeneral("eliminar_Usuario,NombreConductor,2,NombreConductor-2");
+        assertEquals("", x.llamarMetodoGeneral("Consultar_Usuario,NombreConductor,2,NombreConductor"));
     }
 
     @Test
     public void ModificarUsuario() throws NoSuchMethodException {
         Proxy x = new Proxy();
-        x.llamarMetodoGeneral("mod_Usuario,NombrePasajero,1,NombrePasajero-NombrePasajero1-1");
-        assertEquals("NombrePasajero1,1,Pasajero,", x.llamarMetodoGeneral("Consultar_Usuario,NombrePasajero1,1,NombrePasajero1"));
+        x.llamarMetodoGeneral("mod_Usuario,NombreConductor,2,NombreConductor-NombreConductor1-2");
+        assertEquals("NombreConductor1,2,Conductor,", x.llamarMetodoGeneral("Consultar_Usuario,NombreConductor1,2,NombreConductor1"));
     }
-    
+
     @Test
     public void VerPagosConductor() throws NoSuchMethodException {
         Proxy x = new Proxy();
