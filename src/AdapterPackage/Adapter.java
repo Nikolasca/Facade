@@ -42,7 +42,7 @@ public class Adapter extends Usuario {
 
     @Override
     public String Permisos() {
-        return "CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario,VerTodos";
+        return admin.PP();
     }
 
     @Override

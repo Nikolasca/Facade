@@ -13,19 +13,9 @@ public class Administrador {
     private String Usuario;
     private String Password;
     private String TipoUsuario;
-    public boolean Ingresarlalalala(String Usuario, String Pass, Usuario r) {
-       boolean x = false;
-        if (Usuario.compareToIgnoreCase(r.getUsuario()) == 0 && Pass.compareToIgnoreCase(r.getPassword()) == 0) {
-            
-            x = true;
-
-        }
-        
-        return x;
-    }  //To change body o
     
     public String tomatuusuario() {
-        return Password;
+        return TipoUsuario;
     }
     public String getUsuario() {
         return Usuario;
@@ -39,7 +29,9 @@ public class Administrador {
         return Password;
     }
 
-    
+    public String PP() {
+        return "CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario,VerTodos";
+    }
 
     public void setPassword(String Password) {
         this.Password = Password;

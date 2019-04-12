@@ -177,7 +177,7 @@ public class Facade {
                                 break;
                             } else if (Accion.equals("crearAgrupacion")) {
                                 if(para.length == 2){
-                                    crearAgrupacion2(para[0],Integer.parseInt(para[1]));
+                                    crearAgrupacion(para[0],Integer.parseInt(para[1]));
                                 } else {crearAgrupacion(para[0]);
                                 }
                                 break;
@@ -320,7 +320,7 @@ public class Facade {
         return grupo;
 
     }
-     public composite crearAgrupacion2(String NombreGrupo, int id) {
+     public composite crearAgrupacion(String NombreGrupo, int id) {
         composite grupo = new composite(NombreGrupo,id);
         GrupoBase.Añadir(grupo);
         return grupo;
