@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Valentina
  */
 public class FlyWeightFactory {
+
     private ArrayList<FlyWeight> Fly = new ArrayList<>();
 
     public FlyWeightFactory() {
@@ -19,20 +20,33 @@ public class FlyWeightFactory {
 
     public void CrearPagoEfectivo(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
         FlyWeight f = new PagoEfectivo(id, nombrePasajero, nombreConductor, monto, otros);
-        this.Fly.add(f);
+        int agregar = 1;
+        for (int a = 0; a < Fly.size(); a++) {
+            if (Fly.get(a).getId() == id) {
+                agregar = 0;
+            }
+        }
+        if (agregar > 0) {
+            this.Fly.add(f);
+        }
     }
 
     public void CrearPagoTarjeta(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
         FlyWeight f = new PagoTarjeta(id, nombrePasajero, nombreConductor, monto, otros);
-        this.Fly.add(f);
+        int agregar = 1;
+        for (int a = 0; a < Fly.size(); a++) {
+            if (Fly.get(a).getId() == id) {
+                agregar = 0;
+            }
+        }
+        if (agregar > 0) {
+            this.Fly.add(f);
+        }
     }
 
     public String verSaldosFavor(String nombreU) {
         String favor = "";
 
-        
-        
-        
         return favor;
     }
 
@@ -41,9 +55,17 @@ public class FlyWeightFactory {
 
         return pagado;
     }
-    public void AgregarPago(FlyWeight i){
-        Fly.add(i);
-    
+
+    public void AgregarPago(FlyWeight i) {
+        int agregar = 1;
+        for (int a = 0; a < Fly.size(); a++) {
+            if (Fly.get(a).getId() == i.getId()) {
+                agregar = 0;
+            }
+        }
+        if (agregar > 0) {
+            Fly.add(i);
+        }
     }
 
     public ArrayList<FlyWeight> getFly() {
@@ -53,50 +75,53 @@ public class FlyWeightFactory {
     public void setFly(ArrayList<FlyWeight> Fly) {
         this.Fly = Fly;
     }
+
     public FlyWeight Getpago(int id) {
-           FlyWeight s = null;
+        FlyWeight s = null;
         for (int i = 0; i < Fly.size(); i++) {
-            if (id == Fly.get(i).getId())
-            {
+            if (id == Fly.get(i).getId()) {
                 s = Fly.get(i);
             }
         }
         return s;
     }
-    
-    public void EliminarPago(FlyWeight i){
+
+    public void EliminarPago(FlyWeight i) {
         Fly.remove(i);
-    
+
     }
-    public void ModificarPago(int i, String NuevoValor, String NuevoValor2, String NuevoValor3){
+
+    public void ModificarPago(int i, String NuevoValor, String NuevoValor2, String NuevoValor3) {
         Fly.get(i).setOtros(NuevoValor, NuevoValor2, NuevoValor3);
     }
-    public String LeerPagoEoC(int id){
-        String info="";
-        for(int i=0;i<Fly.size();i++){
-            if(id==Fly.get(i).getId()){
-               info=Fly.get(i).toString()+"\n";
+
+    public String LeerPagoEoC(int id) {
+        String info = "";
+        for (int i = 0; i < Fly.size(); i++) {
+            if (id == Fly.get(i).getId()) {
+                info = Fly.get(i).toString() + "\n";
             }
         }
         return info;
     }
-    
-    public String toStringPagosPasajero(String nombreP){
-        String info="";
-        for(int i=0;i<Fly.size();i++){
-            if(Fly.get(i).getNombrePasajero().equalsIgnoreCase(nombreP)){
-                info+=Fly.get(i).toString()+"\n";
+
+    public String toStringPagosPasajero(String nombreP) {
+        String info = "";
+        for (int i = 0; i < Fly.size(); i++) {
+            if (Fly.get(i).getNombrePasajero().equalsIgnoreCase(nombreP)) {
+                info += Fly.get(i).toString() + "\n";
             }
         }
         return info;
     }
-    public String toStringPagosConductor(String nombreC){
-        String info="";
-        for(int i=0;i<Fly.size();i++){
-            if(Fly.get(i).getNombreConductor().equalsIgnoreCase(nombreC)){
-                info+=Fly.get(i).toString()+"\n";
+
+    public String toStringPagosConductor(String nombreC) {
+        String info = "";
+        for (int i = 0; i < Fly.size(); i++) {
+            if (Fly.get(i).getNombreConductor().equalsIgnoreCase(nombreC)) {
+                info += Fly.get(i).toString() + "\n";
             }
-        }System.out.println(Fly.size());
+        }
         return info;
     }
 }

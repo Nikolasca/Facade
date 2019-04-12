@@ -143,7 +143,7 @@ public class Facade {
                                     break;
                                 }
                             } else if (Accion.equals("LeerReserva")) {
-                                LeerReserva(para[0]);
+                                x=LeerReserva(para[0]);
                                 break;
                             } else if (Accion.equals("ModificarLugarReserva")) {
                                 ModificarLugarReserva(para[0], para[1]);
@@ -161,7 +161,7 @@ public class Facade {
                                 Modificar_ConceptoPago(para[0], para[1]);
                                 break;
                             } else if (Accion.equals("LeerPago")) {
-                                LeerPago(para[0]);
+                                x=LeerPago(para[0]);
                                 break;
                             } else if (Accion.equals("Consultar_Usuario")) {
                                 x = Consultar_Usuario(para[0]);
@@ -203,13 +203,16 @@ public class Facade {
                                 VerTransporte(para[0]);
                                 break;
                             } else if (Accion.equals("verPagosC")) {
-                                verPagosC(para[0]);
+                                x=verPagosC(para[0]);
                                 break;
                             } else if (Accion.equals("verPagosP")) {
-                                verPagosP(para[0]);
+                                x=verPagosP(para[0]);
                                 break;
                             } else if (Accion.equals("verPermisos")) {
                                 componentes.get(i).Permisos();
+                                break;
+                            }else if (Accion.equals("leerEoC")) {
+                                x=leerEoC(para[0],Integer.parseInt(para[1]));
                                 break;
                             }
 //break;
