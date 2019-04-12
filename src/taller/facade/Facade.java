@@ -189,7 +189,6 @@ public class Facade {
                                     crearAgrupacion(para[0], Integer.parseInt(para[1]));
                                     break;
                                 } else {
-                                    System.out.println("-y6");
                                     AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));;
                                     break;
                                 }
