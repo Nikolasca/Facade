@@ -21,11 +21,12 @@ public class TallerFacade {
      */
     public static void main(String[] args) throws NoSuchMethodException {
      Facade f = Facade.getFacade();
-   f.Acceso("crearAgrupacion", "Hola", "123", "Particular");
-   f.Acceso("crearAgrupacion", "Hola", "123", "Publico");
-   f.Acceso("EliminarElemento", "Hola", "123","Carro2");
+   f.Acceso("crearAgrupacion", "Hola", "123", "Particular-1");
    
-   System.out.println(f.Acceso("VerTodos", "hola","123","Particular"));
+   f.Acceso("crearAgrupacion", "Hola", "123", "Publico-2");
+   f.Acceso("crearAgrupacion", "Hola", "123", "Otro-3");
+   f.Acceso("EliminarElemento", "Hola", "123","2");
+   System.out.println(f.Acceso("VerTodos", "hola","123",""));
     
      //f.Acceso("LeerReserva", user,"123");
     }

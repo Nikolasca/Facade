@@ -176,7 +176,10 @@ public class Facade {
                                 componentes.get(i).getFactory().toString();
                                 break;
                             } else if (Accion.equals("crearAgrupacion")) {
-                                crearAgrupacion(para[0]);
+                                if(para.length == 2){
+                                    crearAgrupacion2(para[0],Integer.parseInt(para[1]));
+                                } else {crearAgrupacion(para[0]);
+                                }
                                 break;
                             } else if (Accion.equals("CrearVehiculo")) {
                                 
@@ -184,10 +187,12 @@ public class Facade {
                                 
                                 break;
                             } else if (Accion.equals("AgregarAgrupacion")) {
-                                AgregarElemento(Getelemento(para[0]));
+                               composite p = Getelemento(Integer.parseInt(para[0]));
+                            
                                 break;
                             } else if (Accion.equals("EliminarElemento")) {
-                                EliminarElemento(Getelemento(para[0]));
+                                composite p = Getelemento(Integer.parseInt(para[0]));
+                                EliminarElemento(p);
                                 
                                 break;
                             } else if (Accion.equals("VerTransporte")) {
@@ -315,6 +320,12 @@ public class Facade {
         return grupo;
 
     }
+     public composite crearAgrupacion2(String NombreGrupo, int id) {
+        composite grupo = new composite(NombreGrupo,id);
+        GrupoBase.Añadir(grupo);
+        return grupo;
+
+    }
 
     public Vehiculo_hoja CrearVehiculo(String Nombre, String Tipo, String Placa, int capacidad, String Referencia) {
         Vehiculo_hoja carro = new Vehiculo_hoja(Nombre, Tipo, Placa, capacidad, Referencia);
@@ -327,13 +338,13 @@ public class Facade {
 
     }
 
-    public void EliminarElemento(interfaceGrupo componente) {
+    public void EliminarElemento(composite componente) {
         this.GrupoBase.Eliminar(componente);
 
     }
 
-    public interfaceGrupo Getelemento(String Nombre) {
-        return this.GrupoBase.Getelemento(Nombre);
+    public composite Getelemento(int id) {
+        return this.GrupoBase.Getelemento(id);
 
     }
 

@@ -65,9 +65,6 @@ public class Adapter extends Usuario {
         return "Pagos no posibles";
     }
 
-    @Override
-    public boolean ingresar(String Usuario, String Pass, AdapterPackage.Usuario r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
 }

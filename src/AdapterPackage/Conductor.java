@@ -58,8 +58,5 @@ public class Conductor extends Usuario {
          return this.factory.toStringPagosConductor(nombreC);
     }
 
-    @Override
-    public boolean ingresar(String Usuario, String Pass, AdapterPackage.Usuario r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

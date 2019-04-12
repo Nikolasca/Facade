@@ -118,13 +118,15 @@ public class composite implements interfaceGrupo {
         }
 
     }
-    public interfaceGrupo Getelemento(String Nombre) {
-        interfaceGrupo s = new composite("");
+    public composite Getelemento(int L) {
+        composite s = new composite("");
         for (int i = 0; i < this.componentes.size(); i++) {
-            System.out.println(this.componentes.get(i).getCapacidad());
-            if (Nombre.compareTo(this.componentes.get(i).getNombre()) ==0 || Nombre.compareTo(this.nombre)==0|| Nombre.compareTo("GrupoBase   0 "+this.componentes.get(i).getNombre())==0) {
-           s = this.componentes.get(i);
-           System.out.print(this.componentes.get(i).getNombre());
+            System.out.println(this.componentes.get(i).getId()+""+L);
+            if (L ==this.componentes.get(i).getId() || L == this.id ) {
+               
+           s = (composite)this.componentes.get(i);
+           System.out.print(s.toString());
+           
             }
            
         }
@@ -152,6 +154,14 @@ public class composite implements interfaceGrupo {
         }
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
 
    
@@ -168,8 +178,10 @@ public class composite implements interfaceGrupo {
 
     @Override
     public String toString() {
-        return "nombre=" + nombre + ", componentes=" + componentes.get(0).getNombre();
+        return "composite{" + "nombre=" + nombre + ", id=" + id + '}';
     }
+
+    
 
     @Override
     public String getNombre() {

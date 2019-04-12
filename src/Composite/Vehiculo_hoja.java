@@ -15,6 +15,7 @@ public class Vehiculo_hoja implements interfaceGrupo {
     private String placa;
     private int capacidad;
     private String referencia; 
+    private int id;
     
     public Vehiculo_hoja (String Nombre, String tipo,String placa,int capacidad,String referencia){
   this.tipo=tipo;
@@ -74,6 +75,11 @@ public class Vehiculo_hoja implements interfaceGrupo {
     @Override
     public String toString() {
         return "Vehiculo_hoja " + "Nombre=" + Nombre;
+    }
+
+    @Override
+    public int getId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
          
     
