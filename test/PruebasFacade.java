@@ -171,7 +171,7 @@ public class PruebasFacade {
     public void verPermisosConductor() throws NoSuchMethodException {
         Facade F = new Facade();
         F.Crear_Usuario("Conductor1", "111", "Conductor");
-        assertEquals("LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión,AñadirTarjetaCredito,AñadirTarjetaDebito", F.Acceso("verPermisos", "Conductor1", "111", ""));
+        assertEquals("LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión", F.Acceso("verPermisos", "Conductor1", "111", ""));
     }
 
     @Test
