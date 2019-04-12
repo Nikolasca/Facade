@@ -13,24 +13,23 @@ import javax.swing.JOptionPane;
  *
  * @author Nikolas
  */
-public class Adapter extends Usuario{
- 
+public class Adapter extends Usuario {
+
     private Administrador admin;
-private FlyWeightFactory factory;
+    private FlyWeightFactory factory;
 
     public Adapter(String Usuario, String Password) {
         super(Usuario, Password);
         this.admin = new Administrador();
     }
-    public Adapter(){
+
+    public Adapter() {
         super();
         this.admin = new Administrador();
     }
 
-   
-
     public String gettipoUsuario() {
-        return  this.admin.tomatuusuario(); 
+        return this.admin.tomatuusuario();
     }
 
     public Administrador getAdmin() {
@@ -41,7 +40,6 @@ private FlyWeightFactory factory;
         this.admin = admin;
     }
 
-    
     @Override
     public String Permisos() {
         return "CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario";
@@ -49,11 +47,12 @@ private FlyWeightFactory factory;
 
     @Override
     public FlyWeightFactory getFactory() {
-return     factory;}
+        return factory;
+    }
 
     @Override
     public void AñadirPago(FlyWeight i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.factory.AgregarPago(i);
     }
 
     @Override
@@ -63,7 +62,7 @@ return     factory;}
 
     @Override
     public String getPagos(String nombreP) {
-       return "Pagos no posibles";
+        return "Pagos no posibles";
     }
 
     @Override
