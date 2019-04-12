@@ -43,6 +43,7 @@ public class PruebasAdministrador {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
+    /*
     @Test
     public void VerPermisos() throws NoSuchMethodException {
         Proxy x = new Proxy();
@@ -69,7 +70,7 @@ public class PruebasAdministrador {
         x.llamarMetodoGeneral("mod_Usuario,NombreAdministrador,3,NombreAdministrador-NombreAdministrador1-3");
         assertEquals("NombreAdministrador1,3,Administrador,", x.llamarMetodoGeneral("Consultar_Usuario,NombreAdministrador1,3,NombreAdministrador1"));
     }
-
+     */
     @Test
     public void CrearIndividual() throws NoSuchMethodException {
         Proxy x = new Proxy();
@@ -77,7 +78,7 @@ public class PruebasAdministrador {
         System.out.println(x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo"));
         assertEquals("GrupoBase NombrePrueba Mazda 4 ABC123", x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo")); // --- Se repiten lo que se imprime
     }
-
+    /* 
     @Test
     public void CrearGrupo() throws NoSuchMethodException {
         Proxy x = new Proxy();
@@ -113,7 +114,7 @@ public class PruebasAdministrador {
         System.out.println(x.llamarMetodoGeneral("VerTodos,Hola,123, "));
         assertEquals("GrupoBase   0 Particular GrupoBase   0 Otro ", x.llamarMetodoGeneral("VerTodos,Hola,123, ")); // --- Se repiten lo que se imprime
     }
-    /* 
+    
     @Test
     public void AñadirCaracteristica() throws NoSuchMethodException { // --- No hay métodos para probar
     }

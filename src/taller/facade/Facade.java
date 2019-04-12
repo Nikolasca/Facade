@@ -176,34 +176,37 @@ public class Facade {
                                 componentes.get(i).getFactory().toString();
                                 break;
                             } else if (Accion.equals("crearAgrupacion")) {
-                                if(para.length == 2){
-                                    crearAgrupacion(para[0],Integer.parseInt(para[1]));
+                                if (para.length == 2) {
+                                    crearAgrupacion(para[0], Integer.parseInt(para[1]));
                                     System.out.print(this.GrupoBase.getComponentes().size());
                                     break;
-                                    
-                                } else {crearAgrupacion(para[0]);
+
+                                } else {
+                                    crearAgrupacion(para[0]);
                                 }
                                 break;
                             } else if (Accion.equals("CrearVehiculo")) {
-                                if(para.length == 2){
-                                    crearAgrupacion(para[0],Integer.parseInt(para[1]));
-                                } else {AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));;
+                                System.out.println("pl: " + para.length);
+                                if (para.length == 2) {
+                                    crearAgrupacion(para[0], Integer.parseInt(para[1]));
+                                } else {
+                                    AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));;
                                 }
                                 break;
-                        
+
                             } else if (Accion.equals("AgregarAgrupacion")) {
-                               interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
-                               interfaceGrupo b = Getelemento(Integer.parseInt(para[1]));
-                             //  b.;
-                               //p.Añadir(b);
-                              //  b = Getelemento(Integer.parseInt(para[1]));
-                                
-                            // b.getComponentes().clear();
+                                interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
+                                interfaceGrupo b = Getelemento(Integer.parseInt(para[1]));
+                                //  b.;
+                                //p.Añadir(b);
+                                //  b = Getelemento(Integer.parseInt(para[1]));
+
+                                // b.getComponentes().clear();
                                 break;
                             } else if (Accion.equals("EliminarElemento")) {
                                 interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
                                 EliminarElemento(p);
-                                
+
                                 break;
                             } else if (Accion.equals("VerTransporte")) {
                                 x = VerTransporte(para[0]);
@@ -218,18 +221,18 @@ public class Facade {
                                 x = componentes.get(i).Permisos();
                                 break;
 
-                            }else if (Accion.equals("leerEoC")) {
-                                x=leerEoC(para[0],Integer.parseInt(para[1]));
+                            } else if (Accion.equals("leerEoC")) {
+                                x = leerEoC(para[0], Integer.parseInt(para[1]));
                                 break;
-                            }else if (Accion.equals("VerTodos")) {
-                                x= VerTodos("");
+                            } else if (Accion.equals("VerTodos")) {
+                                x = VerTodos("");
                             } else if (Accion.equals("leerEoC")) {
                                 x = leerEoC(para[0], Integer.parseInt(para[1]));
 
                                 break;
-                            }else if (Accion.equals("ModificarNombre_Elemento")) {
+                            } else if (Accion.equals("ModificarNombre_Elemento")) {
                                 interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
-                                ModificarNombre_Elemento(p,para[1]);
+                                ModificarNombre_Elemento(p, para[1]);
 
                                 break;
                             }
@@ -335,8 +338,9 @@ public class Facade {
         return grupo;
 
     }
-     public composite crearAgrupacion(String NombreGrupo, int id) {
-        composite grupo = new composite(NombreGrupo,id);
+
+    public composite crearAgrupacion(String NombreGrupo, int id) {
+        composite grupo = new composite(NombreGrupo, id);
         GrupoBase.Añadir(grupo);
         return grupo;
 
@@ -347,6 +351,7 @@ public class Facade {
         return carro;
 
     }
+
     public Vehiculo_hoja CrearVehiculo(String Nombre, int id) {
         Vehiculo_hoja carro = new Vehiculo_hoja(Nombre, id);
         return carro;
@@ -372,6 +377,7 @@ public class Facade {
         return GrupoBase.getNombreGrupo();
 
     }
+
     public String VerTodos(String Nombre) {
         return GrupoBase.getNombreGrupo();
 
@@ -381,8 +387,9 @@ public class Facade {
         return e.Permisos();
 
     }
-    public void ModificarNombre_Elemento(interfaceGrupo s, String n){
+
+    public void ModificarNombre_Elemento(interfaceGrupo s, String n) {
         s.setNombre(n);
-    
+
     }
 }
