@@ -67,11 +67,6 @@ public class Facade {
     public void CrearPago(String nombre, String id, int pago, String fecha, String concepto) {
         Pago pago1 = new Pago(nombre, id, pago, fecha, concepto);
         G1.AñadirGrupito(pago1);
-
-    }
-
-    public void AñadirPago(Pago r) {
-        G1.AñadirGrupito(r);
     }
 
     public void EliminarPago(Pago r) {
@@ -115,7 +110,6 @@ public class Facade {
     public String Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
         String x = "";
         for (int i = 0; i < this.componentes.size(); i++) {
-
             //if (NombreUser.compareTo(componentes.get(i).getUsuario()) == 0 && PassUser.compareTo(componentes.get(i).getPassword()) == 0) {
             for (Object c : componentes) {
                 Method[] metodos = componentes.get(i).getClass().getMethods();
@@ -137,7 +131,7 @@ public class Facade {
                                     break;
                                 }
                             } else if (Accion.equals("LeerReserva")) {
-                                x=LeerReserva(para[0]);
+                                x = LeerReserva(para[0]);
                                 break;
                             } else if (Accion.equals("ModificarLugarReserva")) {
                                 ModificarLugarReserva(para[0], para[1]);
@@ -155,7 +149,7 @@ public class Facade {
                                 Modificar_ConceptoPago(para[0], para[1]);
                                 break;
                             } else if (Accion.equals("LeerPago")) {
-                                x=LeerPago(para[0]);
+                                x = LeerPago(para[0]);
                                 break;
                             } else if (Accion.equals("Consultar_Usuario")) {
                                 x = Consultar_Usuario(para[0]);
@@ -197,22 +191,26 @@ public class Facade {
                                 
                                 break;
                             } else if (Accion.equals("VerTransporte")) {
-                                x=VerTransporte(para[0]);
+                                x = VerTransporte(para[0]);
                                 break;
                             } else if (Accion.equals("verPagosC")) {
-                                x=verPagosC(para[0]);
+                                x = verPagosC(para[0]);
                                 break;
                             } else if (Accion.equals("verPagosP")) {
-                                x=verPagosP(para[0]);
+                                x = verPagosP(para[0]);
                                 break;
                             } else if (Accion.equals("verPermisos")) {
-                                x=componentes.get(i).Permisos();
+                                x = componentes.get(i).Permisos();
                                 break;
+
                             }else if (Accion.equals("leerEoC")) {
                                 x=leerEoC(para[0],Integer.parseInt(para[1]));
                                 break;
                             }else if (Accion.equals("VerTodos")) {
                                 x= VerTodos("");
+                            } else if (Accion.equals("leerEoC")) {
+                                x = leerEoC(para[0], Integer.parseInt(para[1]));
+
                                 break;
                             }
 //break;
