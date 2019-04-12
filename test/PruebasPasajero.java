@@ -43,6 +43,7 @@ public class PruebasPasajero {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
+    /*
     @Test
     public void ConsultarInformacion() throws NoSuchMethodException {
         Proxy x = new Proxy();
@@ -64,9 +65,17 @@ public class PruebasPasajero {
     }
 
     @Test
-    public void CrearReserva() throws NoSuchMethodException {
+    public void VerPermisos() throws NoSuchMethodException {
         Proxy x = new Proxy();
-        x.llamarMetodoGeneral("CrearReserva,Pasajero,111,Viaje1-0001-01/01/2000-Primera Reserva-Calle127 #34 27");
-        assertEquals("Nombre: Viaje1, id: 0001, fecha: 01/01/2000, concepto: Primera Reserva, lugar: Calle127 #34 27", x.llamarMetodoGeneral(""));
+        assertEquals("CrearReserva,LeerReserva,ModificarLugarReserva,EliminarReserva,CrearPago,LeerPago,Consultar_Usuario,mod_Usuario,crearCredito,crearEfectivo,VerPagos,VerTransporte,crearTarjetaCredito,crearTarjetaDebito,ModificarTarjetaCredito,ModificarTarjetaDebito,VerViajesRealizados,VerRutas,VerAyudas,GuardarUbicaciones,CerrarSesion",
+                x.llamarMetodoGeneral("verPermisos,NombrePasajero,1,Pasajero"));
+    }
+    */
+    @Test
+    public void Crear_VerReserva() throws NoSuchMethodException {
+        Proxy x = new Proxy();
+        x.llamarMetodoGeneral("CrearReserva,NombrePasajero,1,Viaje1-0001-01/01/2000-Primera Reserva-Calle 127 #34 27");
+        System.out.println("xx" + x.llamarMetodoGeneral("LeerReserva,NombrePasajero,1,0001"));
+        assertEquals("Nombre: Viaje1, id: 0001, fecha: 01/01/2000, concepto: Primera Reserva, lugar: Calle 127 #34 27",  x.llamarMetodoGeneral("LeerReserva,NombrePasajero,1,0001"));
     }
 }
