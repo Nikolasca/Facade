@@ -32,7 +32,7 @@ public abstract class Usuario {
   
 
     
-    public abstract boolean ingresar(String Usuario, String Pass,Usuario r);
+    
 
 
 

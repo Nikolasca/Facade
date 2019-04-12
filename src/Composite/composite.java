@@ -15,8 +15,16 @@ public class composite implements interfaceGrupo {
 
     private String nombre;
     private ArrayList<interfaceGrupo> componentes;
+    private int id=0;
 
     public composite(String Nombre) {
+        
+        this.nombre = Nombre;
+        this.componentes = new ArrayList<>();  
+
+    }
+    public composite(String Nombre, int id) {
+        this.id = id;
         this.nombre = Nombre;
         this.componentes = new ArrayList<>();  
 
@@ -26,8 +34,8 @@ public class composite implements interfaceGrupo {
     public String getNombreGrupo() {
         String resultado = "";
        for (int i = 0; i < this.componentes.size(); i++) {
-           resultado = resultado + this.nombre;
-           resultado = resultado + this.componentes.get(i).getNombre();
+          resultado = resultado + this.nombre;
+          resultado = resultado +" "+ this.componentes.get(i).getNombre()+" "+this.componentes.get(i).getReferencia()+" "+this.componentes.get(i).getCapacidad()+" "+this.componentes.get(i).getPlaca();
             
             }
 
@@ -75,7 +83,7 @@ public class composite implements interfaceGrupo {
             resultado = resultado + this.componentes.get(i).getPlaca();
 
         }
-        return "Las placas de "+this.nombre+" "+resultado;
+        return this.nombre+" "+resultado;
     }
 
     @Override
@@ -110,14 +118,15 @@ public class composite implements interfaceGrupo {
         }
 
     }
-    public interfaceGrupo  Getelemento(String Nombre) {
+    public interfaceGrupo Getelemento(String Nombre) {
         interfaceGrupo s = new composite("");
         for (int i = 0; i < this.componentes.size(); i++) {
-
-            if (Nombre.compareTo(getNombreGrupo()) == 0) {
+            System.out.println(this.componentes.get(i).getCapacidad());
+            if (Nombre.compareTo(this.componentes.get(i).getNombre()) ==0 || Nombre.compareTo(this.nombre)==0|| Nombre.compareTo("GrupoBase   0 "+this.componentes.get(i).getNombre())==0) {
            s = this.componentes.get(i);
+           System.out.print(this.componentes.get(i).getNombre());
             }
-
+           
         }
         return s;
     }

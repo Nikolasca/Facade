@@ -28,17 +28,7 @@ public class Pasajero extends Usuario {
         super();
     }
 
-    @Override
-    public boolean ingresar(String Usuario, String Pass, Usuario r) {
-        boolean x = false;
-        if (Usuario.compareToIgnoreCase(r.getUsuario()) == 0 && Pass.compareToIgnoreCase(r.getPassword()) == 0) {
-
-            x = true;
-
-        }
-        return x;
-    }
-
+    
     @Override
     public String getTipo_Usuario() {
         return this.tipo;

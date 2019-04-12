@@ -44,7 +44,7 @@ private FlyWeightFactory factory;
     
     @Override
     public String Permisos() {
-        return "CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario";
+        return "CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario,VerTodos";
     }
 
     @Override

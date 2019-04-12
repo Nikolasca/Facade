@@ -185,13 +185,16 @@ public class Facade {
                                 crearAgrupacion(para[0]);
                                 break;
                             } else if (Accion.equals("CrearVehiculo")) {
+                                
                                 AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));
+                                
                                 break;
                             } else if (Accion.equals("AgregarAgrupacion")) {
                                 AgregarElemento(Getelemento(para[0]));
                                 break;
                             } else if (Accion.equals("EliminarElemento")) {
                                 EliminarElemento(Getelemento(para[0]));
+                                
                                 break;
                             } else if (Accion.equals("VerTransporte")) {
                                 x=VerTransporte(para[0]);
@@ -207,6 +210,9 @@ public class Facade {
                                 break;
                             }else if (Accion.equals("leerEoC")) {
                                 x=leerEoC(para[0],Integer.parseInt(para[1]));
+                                break;
+                            }else if (Accion.equals("VerTodos")) {
+                                x= VerTodos("");
                                 break;
                             }
 //break;
@@ -334,6 +340,10 @@ public class Facade {
     }
 
     public String VerTransporte(String Nombre) {
+        return GrupoBase.getNombreGrupo();
+
+    }
+    public String VerTodos(String Nombre) {
         return GrupoBase.getNombreGrupo();
 
     }
