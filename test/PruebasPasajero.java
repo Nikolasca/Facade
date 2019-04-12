@@ -48,18 +48,25 @@ public class PruebasPasajero {
         Proxy x = new Proxy();
         assertEquals("NombrePasajero,1,Pasajero,", x.llamarMetodoGeneral("Consultar_Usuario,NombrePasajero,1,NombrePasajero"));
     }
-  
+
     @Test
     public void EliminarUsuario() throws NoSuchMethodException {
         Proxy x = new Proxy();
         x.llamarMetodoGeneral("eliminar_Usuario,NombrePasajero,1,NombrePasajero-1");
         assertEquals("", x.llamarMetodoGeneral("Consultar_Usuario,NombrePasajero,1,NombrePasajero"));
     }
-    
+
     @Test
     public void ModificarUsuario() throws NoSuchMethodException {
         Proxy x = new Proxy();
         x.llamarMetodoGeneral("mod_Usuario,NombrePasajero,1,NombrePasajero-NombrePasajero1-1");
         assertEquals("NombrePasajero1,1,Pasajero,", x.llamarMetodoGeneral("Consultar_Usuario,NombrePasajero1,1,NombrePasajero1"));
+    }
+
+    @Test
+    public void CrearReserva() throws NoSuchMethodException {
+        Proxy x = new Proxy();
+        x.llamarMetodoGeneral("CrearReserva,Pasajero,111,Viaje1-0001-01/01/2000-Primera Reserva-Calle127 #34 27");
+        assertEquals("Nombre: Viaje1, id: 0001, fecha: 01/01/2000, concepto: Primera Reserva, lugar: Calle127 #34 27", x.llamarMetodoGeneral(""));
     }
 }
