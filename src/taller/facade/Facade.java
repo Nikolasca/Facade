@@ -65,7 +65,6 @@ public class Facade {
     }
 
     public void CrearPago(String nombre, String id, int pago, String fecha, String concepto) {
-        System.out.println(nombre + id + pago + fecha + concepto);
         Pago pago1 = new Pago(nombre, id, pago, fecha, concepto);
         G1.AñadirGrupito(pago1);
     }
@@ -125,22 +124,20 @@ public class Facade {
                     for (String part : parts) {
 
                         for (Method metodosFacade1 : metodosFacade) {
-                            
+
                             if (part.contains(metodosFacade1.getName()) && metodosFacade1.getName().contains(Accion)) {
-                                
                                 if (Accion.equals("CrearReserva")) {
                                     CrearReserva(para[0], para[1], para[2], para[3], para[4]);
                                     break;
                                 }
                             } else if (Accion.equals("LeerReserva")) {
-                                x=LeerReserva(para[0]);
+                                x = LeerReserva(para[0]);
                                 break;
                             } else if (Accion.equals("ModificarLugarReserva")) {
                                 ModificarLugarReserva(para[0], para[1]);
                                 break;
                             } else if (Accion.equals("CrearPago")) {
                                 CrearPago(para[0], para[1], Integer.parseInt(para[2]), para[3], para[4]);
-                                System.out.println("y2");
                                 break;
                             } else if (Accion.equals("EliminarPago")) {
                                 EliminarPago(G1.ObtenerPago(para[0]));
@@ -152,7 +149,7 @@ public class Facade {
                                 Modificar_ConceptoPago(para[0], para[1]);
                                 break;
                             } else if (Accion.equals("LeerPago")) {
-                                x=LeerPago(para[0]);
+                                x = LeerPago(para[0]);
                                 break;
                             } else if (Accion.equals("Consultar_Usuario")) {
                                 x = Consultar_Usuario(para[0]);
@@ -191,19 +188,19 @@ public class Facade {
                                 EliminarElemento(Getelemento(para[0]));
                                 break;
                             } else if (Accion.equals("VerTransporte")) {
-                                x=VerTransporte(para[0]);
+                                x = VerTransporte(para[0]);
                                 break;
                             } else if (Accion.equals("verPagosC")) {
-                                x=verPagosC(para[0]);
+                                x = verPagosC(para[0]);
                                 break;
                             } else if (Accion.equals("verPagosP")) {
-                                x=verPagosP(para[0]);
+                                x = verPagosP(para[0]);
                                 break;
                             } else if (Accion.equals("verPermisos")) {
-                                x=componentes.get(i).Permisos();
+                                x = componentes.get(i).Permisos();
                                 break;
-                            }else if (Accion.equals("leerEoC")) {
-                                x=leerEoC(para[0],Integer.parseInt(para[1]));
+                            } else if (Accion.equals("leerEoC")) {
+                                x = leerEoC(para[0], Integer.parseInt(para[1]));
                                 break;
                             }
 //break;
