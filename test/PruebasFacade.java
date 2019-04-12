@@ -126,12 +126,13 @@ public class PruebasFacade {
         F.Acceso("crearEfectivo", "Pasajero1", "111", "2-Pasajero1-Conductor1-10-Moneda:Peso,MontoDado=20,MontoDevuelto=10");
         assertEquals("Datos efectivo {id=2, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=10.0, otros=Moneda:Peso,MontoDado=20,MontoDevuelto=10}\n", F.Acceso("leerEoC", "Pasajero1", "111", "Pasajero1-2"));
     }
-/*
+
+    /*
     @Test
     public void verTransporte() {
 
     }
-*/
+     */
     @Test
     public void verPermisosPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
@@ -166,7 +167,6 @@ public class PruebasFacade {
 
     }
 
-    // Eliminar CrearVehículo
     @Test
     public void verPermisosConductor() throws NoSuchMethodException {
         Facade F = new Facade();
@@ -180,24 +180,36 @@ public class PruebasFacade {
         F.Crear_Usuario("Admin1", "111", "Administrador");
         assertEquals("CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario", F.Acceso("verPermisos", "Admin1", "111", ""));
     }
+
     @Test
+
     public void crearVehículoAdmin() throws NoSuchMethodException {
+        Facade f = new Facade();
+        f.Acceso("CrearVehiculo", "hola", "123", "NombrePrueba-Tipo-ABC123-4-Mazda");
+        assertEquals("GrupoBase NombrePrueba Mazda 4 ABC123", f.Acceso("VerTransporte", "hola", "123", "NombreVehiculo"));
     }
+
     @Test
     public void crearAgrupacionAdmin() throws NoSuchMethodException {
+        Facade f = new Facade();
+        f.Acceso("crearAgrupacion", "Hola", "123", "GrupoNuevo");
+        assertEquals("GrupoBase  0 GrupoNuevo ", f.Acceso("VerTodos", "hola", "123", ""));
     }
+
     @Test
     public void AgregarAgrupacionAdmin() throws NoSuchMethodException {
     }
+
     @Test
     public void EliminarElementoAdmin() throws NoSuchMethodException {
     }
+
     @Test
     public void Eliminar_UsuarioAdmin() throws NoSuchMethodException {
-      Facade F = new Facade();
+        Facade F = new Facade();
         F.Crear_Usuario("Admin1", "111", "Administrador");
         F.Crear_Usuario("Conductor1", "111", "Conductor");
         F.Acceso("eliminar_Usuario", "Admin1", "111", "Conductor1-111");
-        assertEquals("",F.Acceso("Consultar_Usuario", "Admin1", "111", "Conductor1"));
-    }    
+        assertEquals("", F.Acceso("Consultar_Usuario", "Admin1", "111", "Conductor1"));
+    }
 }
