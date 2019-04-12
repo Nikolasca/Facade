@@ -24,12 +24,12 @@ import java.util.ArrayList;
  */
 public class Facade {
 
-    PagoGrupo G1 = new PagoGrupo();
-    ReservaGrupo G2 = new ReservaGrupo();
-    ArrayList<Usuario> componentes = new ArrayList();
+    private PagoGrupo G1 = new PagoGrupo();
+    private ReservaGrupo G2 = new ReservaGrupo();
+    private ArrayList<Usuario> componentes = new ArrayList();
     private static Facade facade;
-    FlyWeightFactory FF = new FlyWeightFactory();
-    composite GrupoBase = new composite("GrupoBase");
+    private FlyWeightFactory FF = new FlyWeightFactory();
+    private composite GrupoBase = new composite("GrupoBase");
 
     public Facade() {
         Usuario user = new Adapter("Hola", "123");
@@ -188,7 +188,12 @@ public class Facade {
                                 break;
                             } else if (Accion.equals("AgregarAgrupacion")) {
                                composite p = Getelemento(Integer.parseInt(para[0]));
-                            
+                               composite b = Getelemento(Integer.parseInt(para[1]));
+                               b.setId(5);
+                               p.Añadir(b);
+                              //  b = Getelemento(Integer.parseInt(para[1]));
+                                
+                            // b.getComponentes().clear();
                                 break;
                             } else if (Accion.equals("EliminarElemento")) {
                                 composite p = Getelemento(Integer.parseInt(para[0]));
