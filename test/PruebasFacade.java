@@ -194,7 +194,7 @@ public class PruebasFacade {
     public void crearAgrupacionAdmin() throws NoSuchMethodException {
         Facade f = new Facade();
         f.Acceso("crearAgrupacion", "Hola", "123", "GrupoNuevo");
-        assertEquals("GrupoBase   0 GrupoNuevo ", f.Acceso("VerTodos", "hola", "123", ""));
+        assertEquals("GrupoBase   0 GrupoNuevo ", f.Acceso("VerTodos", "Hola", "123", ""));
     }
 
     @Test
@@ -202,11 +202,11 @@ public class PruebasFacade {
         Facade f = Facade.getFacade();
         f.Acceso("crearAgrupacion", "Hola", "123", "Particular-1");
         f.Acceso(" ModificarNombre_Elemento", "Hola", "123", "1-Nombrenuevo");
-        assertEquals("GrupoBase   0 Nombrenuevo ", f.Acceso("VerTodos", "hola", "123", ""));
+        assertEquals("GrupoBase   0 Nombrenuevo ", f.Acceso("VerTodos", "Hola", "123", ""));
     }
 
     @Test
-    public void EliminarElementoAdmin() throws NoSuchMethodException {
+    public void EliminarGrupoAdmin() throws NoSuchMethodException {
         Facade f = new Facade();
         f.Acceso("crearAgrupacion", "Hola", "123", "Particular-1");
         f.Acceso("crearAgrupacion", "Hola", "123", "Publico-2");

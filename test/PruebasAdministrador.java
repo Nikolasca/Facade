@@ -46,7 +46,7 @@ public class PruebasAdministrador {
     @Test
     public void VerPermisos() throws NoSuchMethodException {
         Proxy x = new Proxy();
-        assertEquals("CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario",
+        assertEquals("CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario,VerTodos,ModificarNombre_Elemento",
                 x.llamarMetodoGeneral("verPermisos,NombreAdministrador,3,Administrador"));
     }
 
@@ -74,46 +74,59 @@ public class PruebasAdministrador {
     public void CrearIndividual() throws NoSuchMethodException {
         Proxy x = new Proxy();
         x.llamarMetodoGeneral("CrearVehiculo,Individual,123,NombrePrueba-Tipo-ABC123-4-Mazda");
-        assertEquals("GrupoBase NombrePrueba Mazda 4 ABC123", x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo"));
+        System.out.println(x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo"));
+        assertEquals("GrupoBase NombrePrueba Mazda 4 ABC123", x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo")); // --- Se repiten lo que se imprime
     }
-    
+
     @Test
     public void CrearGrupo() throws NoSuchMethodException {
         Proxy x = new Proxy();
+        x.llamarMetodoGeneral("crearAgrupacion,Hola,123,GrupoNuevo");
+        System.out.println(x.llamarMetodoGeneral("VerTodos,hola,123, "));
+        assertEquals("GrupoBase   0 GrupoNuevo ", x.llamarMetodoGeneral("VerTodos,Hola,123, ")); // --- Se repiten lo que se imprime
     }
-    
+
     @Test
-    public void CrearGrupoGrupos() throws NoSuchMethodException {
+    public void Modificar() throws NoSuchMethodException {
         Proxy x = new Proxy();
+        x.llamarMetodoGeneral("crearAgrupacion,A,1234,Particular-11");
+        x.llamarMetodoGeneral(" ModificarNombre_Elemento,A,1234,11-Nombrenuevo");
+        System.out.println(x.llamarMetodoGeneral("VerTodos,A,1234, "));
+        assertEquals("GrupoBase   0 Nombrenuevo ", x.llamarMetodoGeneral("VerTodos,A,1234, ")); // --- Se repiten lo que se imprime
     }
-    
+
     @Test
     public void EliminarIndividual() throws NoSuchMethodException {
         Proxy x = new Proxy();
+        x.llamarMetodoGeneral("CrearVehiculo,Individual,123,NombrePrueba-Tipo-ABC123-4-Mazda");
+        x.llamarMetodoGeneral("EliminarElemento,Individual,123,ABC123");
+        System.out.println(x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo"));
+        assertEquals("", x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo")); // --- No Elimina
     }
-    
+
     @Test
     public void EliminarGrupo() throws NoSuchMethodException {
         Proxy x = new Proxy();
+        x.llamarMetodoGeneral("crearAgrupacion,Hola,123,Particular-1");
+        x.llamarMetodoGeneral("crearAgrupacion,Hola,123,Publico-2");
+        x.llamarMetodoGeneral("crearAgrupacion,Hola,123,Otro-3");
+        x.llamarMetodoGeneral("EliminarElemento,Hola,123,2");
+        System.out.println(x.llamarMetodoGeneral("VerTodos,Hola,123, "));
+        assertEquals("GrupoBase   0 Particular GrupoBase   0 Otro ", x.llamarMetodoGeneral("VerTodos,Hola,123, ")); // --- Se repiten lo que se imprime
     }
-    
+    /* 
     @Test
-    public void EliminarGrupoGrupos() throws NoSuchMethodException {
+    public void AñadirCaracteristica() throws NoSuchMethodException { // --- No hay métodos para probar
+    }
+
+    @Test
+    public void ModificarCaracteristica() throws NoSuchMethodException { // --- No hay métodos para probar
         Proxy x = new Proxy();
     }
-    
+
     @Test
-    public void AñadirCaracteristica() throws NoSuchMethodException {
+    public void EliminarCaracteristica() throws NoSuchMethodException { // --- No hay métodos para probar
         Proxy x = new Proxy();
     }
-    
-    @Test
-    public void ModificarCaracteristica() throws NoSuchMethodException {
-        Proxy x = new Proxy();
-    }
-    
-    @Test
-    public void EliminarCaracteristica() throws NoSuchMethodException {
-        Proxy x = new Proxy();
-    }
+     */
 }
