@@ -28,17 +28,6 @@ public class Conductor extends Usuario {
         super();
     }
 
-    @Override
-    public boolean ingresar(String Usuario, String Pass, Usuario r) {
-        boolean x = false;
-        if (Usuario.compareToIgnoreCase(r.getUsuario()) == 0 && Pass.compareToIgnoreCase(r.getPassword()) == 0) {
-
-            x = true;
-
-        }
-
-        return x;
-    }
 
     @Override
     public String getTipo_Usuario() {
@@ -47,7 +36,7 @@ public class Conductor extends Usuario {
 
     @Override
     public String Permisos() {
-        return "CrearVehiculo,LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión,AñadirTarjetaCredito,AñadirTarjetaDebito";
+        return "LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión,AñadirTarjetaCredito,AñadirTarjetaDebito";
     }
 
     public FlyWeightFactory getFactory() {
