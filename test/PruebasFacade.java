@@ -172,10 +172,6 @@ public class PruebasFacade {
         F.Crear_Usuario("Conductor1", "111", "Conductor");
         assertEquals("CrearVehiculo,LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión,AñadirTarjetaCredito,AñadirTarjetaDebito", F.Acceso("verPermisos", "Conductor1", "111", ""));
     }
-    @Test
-    public void crearVehículoConductor() throws NoSuchMethodException {
-    }
-
 
     @Test
     public void verPermisosAdmin() throws NoSuchMethodException {
