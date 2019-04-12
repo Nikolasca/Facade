@@ -46,12 +46,6 @@ public class Facade {
     public void CrearReserva(String nombre, String id, String fecha, String concepto, String lugar) {
         Reserva reserva = new Reserva(nombre, id, fecha, concepto, lugar);
         G2.AñadirGrupito(reserva);
-
-    }
-
-    public void AñadirReserva(Reserva r) {
-        G2.AñadirGrupito(r);
-
     }
 
     public void EliminarReserva(Reserva r) {
