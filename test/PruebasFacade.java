@@ -126,12 +126,12 @@ public class PruebasFacade {
         F.Acceso("crearEfectivo", "Pasajero1", "111", "2-Pasajero1-Conductor1-10-Moneda:Peso,MontoDado=20,MontoDevuelto=10");
         assertEquals("Datos efectivo {id=2, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=10.0, otros=Moneda:Peso,MontoDado=20,MontoDevuelto=10}\n", F.Acceso("leerEoC", "Pasajero1", "111", "Pasajero1-2"));
     }
-
+/*
     @Test
     public void verTransporte() {
 
     }
-
+*/
     @Test
     public void verPermisosPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
@@ -166,11 +166,12 @@ public class PruebasFacade {
 
     }
 
+    // Eliminar CrearVehículo
     @Test
     public void verPermisosConductor() throws NoSuchMethodException {
         Facade F = new Facade();
         F.Crear_Usuario("Conductor1", "111", "Conductor");
-        assertEquals("CrearVehiculo,LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión,AñadirTarjetaCredito,AñadirTarjetaDebito", F.Acceso("verPermisos", "Conductor1", "111", ""));
+        assertEquals("LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión,AñadirTarjetaCredito,AñadirTarjetaDebito", F.Acceso("verPermisos", "Conductor1", "111", ""));
     }
 
     @Test
