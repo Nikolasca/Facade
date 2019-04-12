@@ -129,11 +129,15 @@ public class PruebasFacade {
 
     @Test
     public void verTransporte() {
-        
+
     }
 
     @Test
-    public void verPermisosPasajero() {
+    public void verPermisosPasajero() throws NoSuchMethodException {
+        Facade F = new Facade();
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero");
+        assertEquals("CrearReserva,LeerReserva,ModificarLugarReserva,EliminarReserva,CrearPago,LeerPago,Consultar_Usuario,mod_Usuario,crearCredito,crearEfectivo,VerPagos,VerTransporte,crearTarjetaCredito,crearTarjetaDebito,ModificarTarjetaCredito,ModificarTarjetaDebito,VerViajesRealizados,VerRutas,VerAyudas,GuardarUbicaciones,CerrarSesion",
+                F.Acceso("verPermisos", "Pasajero1", "111", ""));
     }
 
     @Test
@@ -145,6 +149,7 @@ public class PruebasFacade {
         assertEquals("Datos efectivo {id=2, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=10.0, otros=Moneda:Peso,MontoDado=20,MontoDevuelto=10}\n"
                 + "Datos crédito{id=1, nombrePasajero=Pasajero1, nombreConductor=Conductor2, monto=700.0, otros=CVV:1,Num:92929282882,FechaVenc:Manana}\n", F.Acceso("verPagosP", "Pasajero1", "111", "Pasajero1"));
     }
+
     @Test
     public void leerPagosConductor() throws NoSuchMethodException {
         Facade F = new Facade();
@@ -160,4 +165,42 @@ public class PruebasFacade {
                 + "Datos crédito{id=3, nombrePasajero=Pasajero3, nombreConductor=Conductor1, monto=700.0, otros=CVV:1,Num:92929282882,FechaVenc:Manana}\n");
 
     }
+
+    @Test
+    public void verPermisosConductor() throws NoSuchMethodException {
+        Facade F = new Facade();
+        F.Crear_Usuario("Conductor1", "111", "Conductor");
+        assertEquals("CrearVehiculo,LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión,AñadirTarjetaCredito,AñadirTarjetaDebito", F.Acceso("verPermisos", "Conductor1", "111", ""));
+    }
+    @Test
+    public void crearVehículoConductor() throws NoSuchMethodException {
+    }
+
+
+    @Test
+    public void verPermisosAdmin() throws NoSuchMethodException {
+        Facade F = new Facade();
+        F.Crear_Usuario("Admin1", "111", "Administrador");
+        assertEquals("CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario", F.Acceso("verPermisos", "Admin1", "111", ""));
+    }
+    @Test
+    public void crearVehículoAdmin() throws NoSuchMethodException {
+    }
+    @Test
+    public void crearAgrupacionAdmin() throws NoSuchMethodException {
+    }
+    @Test
+    public void AgregarAgrupacionAdmin() throws NoSuchMethodException {
+    }
+    @Test
+    public void EliminarElementoAdmin() throws NoSuchMethodException {
+    }
+    @Test
+    public void Eliminar_UsuarioAdmin() throws NoSuchMethodException {
+      Facade F = new Facade();
+        F.Crear_Usuario("Admin1", "111", "Administrador");
+        F.Crear_Usuario("Conductor1", "111", "Conductor");
+        F.Acceso("eliminar_Usuario", "Admin1", "111", "Conductor1-111");
+        assertEquals("",F.Acceso("Consultar_Usuario", "Admin1", "111", "Conductor1"));
+    }    
 }

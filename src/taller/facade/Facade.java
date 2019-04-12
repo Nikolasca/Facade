@@ -200,7 +200,7 @@ public class Facade {
                                 EliminarElemento(Getelemento(para[0]));
                                 break;
                             } else if (Accion.equals("VerTransporte")) {
-                                VerTransporte(para[0]);
+                                x=VerTransporte(para[0]);
                                 break;
                             } else if (Accion.equals("verPagosC")) {
                                 x=verPagosC(para[0]);
@@ -209,7 +209,7 @@ public class Facade {
                                 x=verPagosP(para[0]);
                                 break;
                             } else if (Accion.equals("verPermisos")) {
-                                componentes.get(i).Permisos();
+                                x=componentes.get(i).Permisos();
                                 break;
                             }else if (Accion.equals("leerEoC")) {
                                 x=leerEoC(para[0],Integer.parseInt(para[1]));
