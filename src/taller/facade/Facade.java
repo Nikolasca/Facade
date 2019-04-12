@@ -109,8 +109,9 @@ public class Facade {
 
     public String Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
         String x = "";
+
         for (int i = 0; i < this.componentes.size(); i++) {
-            //if (NombreUser.compareTo(componentes.get(i).getUsuario()) == 0 && PassUser.compareTo(componentes.get(i).getPassword()) == 0) {
+            
             for (Object c : componentes) {
                 Method[] metodos = componentes.get(i).getClass().getMethods();
                 Method[] metodosFacade = Facade.class.getMethods();
@@ -180,7 +181,6 @@ public class Facade {
                                     crearAgrupacion(para[0], Integer.parseInt(para[1]));
                                     System.out.print(this.GrupoBase.getComponentes().size());
                                     break;
-
                                 } else {
                                     crearAgrupacion(para[0]);
                                 }
@@ -193,7 +193,6 @@ public class Facade {
                                     AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));;
                                 }
                                 break;
-
                             } else if (Accion.equals("AgregarAgrupacion")) {
                                 interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
                                 interfaceGrupo b = Getelemento(Integer.parseInt(para[1]));
@@ -220,7 +219,6 @@ public class Facade {
                             } else if (Accion.equals("verPermisos")) {
                                 x = componentes.get(i).Permisos();
                                 break;
-
                             } else if (Accion.equals("leerEoC")) {
                                 x = leerEoC(para[0], Integer.parseInt(para[1]));
                                 break;
@@ -228,12 +226,10 @@ public class Facade {
                                 x = VerTodos("");
                             } else if (Accion.equals("leerEoC")) {
                                 x = leerEoC(para[0], Integer.parseInt(para[1]));
-
                                 break;
                             } else if (Accion.equals("ModificarNombre_Elemento")) {
                                 interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
                                 ModificarNombre_Elemento(p, para[1]);
-
                                 break;
                             }
 //break;
@@ -246,7 +242,6 @@ public class Facade {
                     e.printStackTrace();
                 }
             }
-            // }
         }
         return x;
     }
