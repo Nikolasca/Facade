@@ -201,7 +201,7 @@ public class PruebasFacade {
     public void ModificarGrupo() throws NoSuchMethodException {
         Facade f = Facade.getFacade();
         f.Acceso("crearAgrupacion", "Hola", "123", "Particular-1");
-        f.Acceso(" ModificarNombre_Elemento", "Hola", "123", "1-Nombrenuevo");
+        f.Acceso("ModificarNombre_Elemento", "Hola", "123", "1-Nombrenuevo");
         assertEquals("GrupoBase   0 Nombrenuevo ", f.Acceso("VerTodos", "Hola", "123", ""));
     }
 

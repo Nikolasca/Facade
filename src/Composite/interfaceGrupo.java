@@ -22,6 +22,7 @@ public interface interfaceGrupo {
     public String getNombre();
     public void setReferencia(String referencia, String Nombre);
    public int getId();
+   public void setNombre(String nombre);
     
    
     

@@ -98,8 +98,8 @@ public class PruebasAdministrador {
     @Test
     public void EliminarIndividual() throws NoSuchMethodException {
         Proxy x = new Proxy();
-        x.llamarMetodoGeneral("CrearVehiculo,Individual,123,NombrePrueba-Tipo-ABC123-4-Mazda");
-        x.llamarMetodoGeneral("EliminarElemento,Individual,123,ABC123");
+        x.llamarMetodoGeneral("CrearVehiculo,Individual,123,NombrePrueba-1");
+        x.llamarMetodoGeneral("EliminarElemento,Individual,123,1");
         System.out.println(x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo"));
         assertEquals("", x.llamarMetodoGeneral("VerTransporte,Individual,123,NombreVehiculo")); // --- No Elimina
     }
@@ -109,7 +109,7 @@ public class PruebasAdministrador {
         Proxy x = new Proxy();
         x.llamarMetodoGeneral("crearAgrupacion,Hola,123,Particular-1");
         x.llamarMetodoGeneral("crearAgrupacion,Hola,123,Publico-2");
-        x.llamarMetodoGeneral("crearAgrupacion,Hola,123,Otro-3");
+        //x.llamarMetodoGeneral("crearAgrupacion,Hola,123,Otro-3");
         x.llamarMetodoGeneral("EliminarElemento,Hola,123,2");
         System.out.println(x.llamarMetodoGeneral("VerTodos,Hola,123, "));
         assertEquals("GrupoBase   0 Particular GrupoBase   0 Otro ", x.llamarMetodoGeneral("VerTodos,Hola,123, ")); // --- Se repiten lo que se imprime

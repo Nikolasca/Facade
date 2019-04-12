@@ -27,6 +27,10 @@ public class Vehiculo_hoja implements interfaceGrupo {
     
     public Vehiculo_hoja(){
     };
+    public Vehiculo_hoja(String Nombre, int id){
+        this.Nombre = Nombre;
+        this.id = id;
+    };
 
     @Override
     public String getTipo() {
@@ -79,8 +83,14 @@ public class Vehiculo_hoja implements interfaceGrupo {
 
     @Override
     public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.id; //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+    
          
     
 }
