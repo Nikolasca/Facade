@@ -44,7 +44,6 @@ public class Facade {
     }
 
     public void CrearReserva(String nombre, String id, String fecha, String concepto, String lugar) {
-        System.out.println("y2: " );
         Reserva reserva = new Reserva(nombre, id, fecha, concepto, lugar);
         G2.AñadirGrupito(reserva);
     }
@@ -62,7 +61,6 @@ public class Facade {
     }
 
     public String LeerReserva(String id) {
-        System.out.println("y1");
         return G2.LeerReserva(id);
     }
 
@@ -116,15 +114,12 @@ public class Facade {
     public String Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
         String x = "";
         for (int i = 0; i < this.componentes.size(); i++) {
-            System.out.println("z1");
             //if (NombreUser.compareTo(componentes.get(i).getUsuario()) == 0 && PassUser.compareTo(componentes.get(i).getPassword()) == 0) {
             for (Object c : componentes) {
-                System.out.println("z2");
                 Method[] metodos = componentes.get(i).getClass().getMethods();
                 Method[] metodosFacade = Facade.class.getMethods();
 
                 try {
-                    System.out.println("z3");
                     Method methodcall1 = componentes.get(i).getClass().getDeclaredMethod("Permisos");
                     String cadena = (String) methodcall1.invoke(c);
                     String[] parts = cadena.split(",");
@@ -132,15 +127,12 @@ public class Facade {
 
                     for (String part : parts) {
 
-                        System.out.println("z4");
                         for (Method metodosFacade1 : metodosFacade) {
-                            System.out.println("z5");
+                            
                             if (part.contains(metodosFacade1.getName()) && metodosFacade1.getName().contains(Accion)) {
-                                System.out.println("z6");
+                                
                                 if (Accion.equals("CrearReserva")) {
-                                    System.out.println("z7");
                                     CrearReserva(para[0], para[1], para[2], para[3], para[4]);
-                                    System.out.println("z8");
                                     break;
                                 }
                             } else if (Accion.equals("LeerReserva")) {
