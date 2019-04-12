@@ -121,14 +121,10 @@ public class composite implements interfaceGrupo {
     public interfaceGrupo Getelemento(int L) {
         interfaceGrupo s = new composite("");
         for (int i = 0; i < this.componentes.size(); i++) {
-            System.out.println(this.componentes.get(i).getId()+""+L);
-            if (L ==this.componentes.get(i).getId() || L == this.id ) {
-               
-           s = (composite)this.componentes.get(i);
-          // System.out.print(s.toString());
-           
+            if (L == this.componentes.get(i).getId() || L == this.id) {
+                s = (composite) this.componentes.get(i);
             }
-           
+
         }
         return s;
     }
