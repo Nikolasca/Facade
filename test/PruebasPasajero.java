@@ -91,7 +91,23 @@ public class PruebasPasajero {
         Proxy x = new Proxy();
         x.llamarMetodoGeneral("CrearReserva,NombrePasajero,1,Viaje1-0002-01/01/2000-Primera Reserva-Calle 127 #34 27");
         x.llamarMetodoGeneral("EliminarReserva,NombrePasajero,1,0002");
-        System.out.println(x.llamarMetodoGeneral("LeerReserva,NombrePasajero,1,0002"));
         assertEquals("", x.llamarMetodoGeneral("LeerReserva,NombrePasajero,1,0002"));
+    }
+    
+    @Test
+    public void crearPagoPasajero() throws NoSuchMethodException {
+        Proxy x = new Proxy();
+        x.llamarMetodoGeneral("CrearPago,NombrePasajero,1,Viaje1-0001-5.000-01/01/2019-01/01/2000-Primera Reserva-Calle 127 #34 27");
+        assertEquals("Nombre: Viaje1, id: 0001, monto: 5.000, fecha: 01/01/2000, concepto: Primera Reserva, lugar: Calle 127 #34 27", x.llamarMetodoGeneral("LeerPago,NombrePasajero,1,0001"));
+    }
+    
+    @Test
+    public void VerPagosPasajero() throws NoSuchMethodException {
+        Proxy x = new Proxy();
+        x.llamarMetodoGeneral("crearEfectivo,NombrePasajero,1,2-NombrePasajero-NombreConductor1-10.0-Moneda:Peso,MontoDado=20,MontoDevuelto=10");
+        x.llamarMetodoGeneral("crearCredito,NombrePasajero,1,1-NombrePasajero-NombreConductor2-700.0-CVV:1,Num:92929282882,FechaVenc:Manana");
+        System.out.println(x.llamarMetodoGeneral("verPagosP,NombrePasajero,1,NombrePasajero"));
+        assertEquals("Datos efectivo {id=2, nombrePasajero=NombrePasajero, nombreConductor=NombreConductor1, monto=10.0, otros=Moneda:Peso,MontoDado=20,MontoDevuelto=10}\n"
+                + "Datos crédito{id=1, nombrePasajero=NombrePasajero, nombreConductor=NombreConductor2, monto=700.00, otros=CVV:1,Num:92929282882,FechaVenc:Manana}\n", x.llamarMetodoGeneral("verPagosP,NombrePasajero,1,NombrePasajero"));
     }
 }

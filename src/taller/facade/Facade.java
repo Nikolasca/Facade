@@ -65,12 +65,9 @@ public class Facade {
     }
 
     public void CrearPago(String nombre, String id, int pago, String fecha, String concepto) {
+        System.out.println(nombre + id + pago + fecha + concepto);
         Pago pago1 = new Pago(nombre, id, pago, fecha, concepto);
         G1.AñadirGrupito(pago1);
-    }
-
-    public void AñadirPago(Pago r) {
-        G1.AñadirGrupito(r);
     }
 
     public void EliminarPago(Pago r) {
@@ -143,6 +140,7 @@ public class Facade {
                                 break;
                             } else if (Accion.equals("CrearPago")) {
                                 CrearPago(para[0], para[1], Integer.parseInt(para[2]), para[3], para[4]);
+                                System.out.println("y2");
                                 break;
                             } else if (Accion.equals("EliminarPago")) {
                                 EliminarPago(G1.ObtenerPago(para[0]));
