@@ -111,21 +111,21 @@ public class Facade {
         String x = "";
 
         for (int i = 0; i < this.componentes.size(); i++) {
-            
+
             for (Object c : componentes) {
                 Method[] metodos = componentes.get(i).getClass().getMethods();
                 Method[] metodosFacade = Facade.class.getMethods();
-
+           
                 try {
                     Method methodcall1 = componentes.get(i).getClass().getDeclaredMethod("Permisos");
                     String cadena = (String) methodcall1.invoke(c);
                     String[] parts = cadena.split(",");
                     String[] para = Para.split("-");
-
+                 
                     for (String part : parts) {
-
+               
                         for (Method metodosFacade1 : metodosFacade) {
-
+                         
                             if (part.contains(metodosFacade1.getName()) && metodosFacade1.getName().contains(Accion)) {
                                 if (Accion.equals("CrearReserva")) {
                                     CrearReserva(para[0], para[1], para[2], para[3], para[4]);
@@ -179,33 +179,31 @@ public class Facade {
                             } else if (Accion.equals("crearAgrupacion")) {
                                 if (para.length == 2) {
                                     crearAgrupacion(para[0], Integer.parseInt(para[1]));
-                                    System.out.print(this.GrupoBase.getComponentes().size());
                                     break;
                                 } else {
                                     crearAgrupacion(para[0]);
                                 }
                                 break;
                             } else if (Accion.equals("CrearVehiculo")) {
-                                System.out.println("pl: " + para.length);
                                 if (para.length == 2) {
                                     crearAgrupacion(para[0], Integer.parseInt(para[1]));
+                                    break;
                                 } else {
+                                    System.out.println("-y6");
                                     AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));;
+                                    break;
                                 }
-                                break;
                             } else if (Accion.equals("AgregarAgrupacion")) {
                                 interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
                                 interfaceGrupo b = Getelemento(Integer.parseInt(para[1]));
                                 //  b.;
                                 //p.Añadir(b);
                                 //  b = Getelemento(Integer.parseInt(para[1]));
-
                                 // b.getComponentes().clear();
                                 break;
                             } else if (Accion.equals("EliminarElemento")) {
                                 interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
                                 EliminarElemento(p);
-
                                 break;
                             } else if (Accion.equals("VerTransporte")) {
                                 x = VerTransporte(para[0]);

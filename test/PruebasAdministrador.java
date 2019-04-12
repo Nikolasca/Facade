@@ -111,7 +111,6 @@ public class PruebasAdministrador {
         Proxy x = new Proxy();
         x.llamarMetodoGeneral("crearAgrupacion,Hola,123,Particular-1");
         x.llamarMetodoGeneral("crearAgrupacion,Hola,123,Publico-2");
-        //x.llamarMetodoGeneral("crearAgrupacion,Hola,123,Otro-3");
         x.llamarMetodoGeneral("EliminarElemento,Hola,123,2");
         System.out.println(x.llamarMetodoGeneral("VerTodos,Hola,123, "));
         assertEquals("GrupoBase   0 Particular GrupoBase   0 Otro ", x.llamarMetodoGeneral("VerTodos,Hola,123, ")); // --- Se repiten lo que se imprime
