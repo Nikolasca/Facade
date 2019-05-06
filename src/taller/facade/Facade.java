@@ -17,6 +17,8 @@ import Flyweight.FlyWeightFactory;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -107,6 +109,7 @@ public class Facade {
 
     }
 
+    /*
     public String Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
         String x = "";
 
@@ -242,6 +245,139 @@ public class Facade {
         }
         return x;
     }
+     */
+    public String Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
+        String x = "";
+        int a = 0, w = 0;
+        for (int i = 0; i < componentes.size(); i++) {
+            if (componentes.get(i).getUsuario().equals(NombreUser));
+            a = i;
+        }
+        Method[] metodos = componentes.get(a).getClass().getMethods();
+        Method[] metodosFacade = Facade.class.getMethods();
+        Method methodcall = componentes.get(a).getClass().getDeclaredMethod("Permisos");
+        String cadena = "";
+        try {
+            cadena += (String) methodcall.invoke(componentes.get(a)) + "; ";
+            String[] parts = cadena.split(",");
+            String[] para = Para.split("-");
+            for (int j = 0; j < parts.length; j++) {
+                if (Accion.equals("CrearReserva")) {
+                    CrearReserva(para[0], para[1], para[2], para[3], para[4]);
+                    j = parts.length;
+                }if (Accion.equals("LeerReserva")) {
+                    x = LeerReserva(para[0]);
+                    j = parts.length;
+                }if (Accion.equals("ModificarLugarReserva")) {
+                    ModificarLugarReserva(para[0], para[1]);
+                    j = parts.length;
+                }if (Accion.equals("CrearPago")) {
+                    CrearPago(para[0], para[1], Integer.parseInt(para[2]), para[3], para[4]);
+                    j = parts.length;
+                }if (Accion.equals("EliminarPago")) {
+                    EliminarPago(G1.ObtenerPago(para[0]));
+                    j = parts.length;
+                } if (Accion.equals("EliminarReserva")) {
+                    EliminarReserva(G2.ObtenerReserva(para[0]));
+                    j = parts.length;
+                } if (Accion.equals("Modificar_ConceptoPago")) {
+                    Modificar_ConceptoPago(para[0], para[1]);
+                    j = parts.length;
+                } if (Accion.equals("LeerPago")) {
+                    x = LeerPago(para[0]);
+                    j = parts.length;
+                } if (Accion.equals("Consultar_Usuario")) {
+                    x = Consultar_Usuario(para[0]);
+                    j = parts.length;
+                } if (Accion.equals("eliminar_Usuario")) {
+                    eliminar__Usuario(para[0], para[1]);
+                    System.out.println("eU");
+                    j = parts.length;
+                } if (Accion.equals("mod_Usuario")) {
+                    mod_Usuario(para[0], para[1], para[2]);
+                    j = parts.length;
+                } if (Accion.equals("crearCredito")) {
+                    crearCredito(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
+                    j = parts.length;
+                } if (Accion.equals("crearEfectivo")) {
+                    crearEfectivo(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
+                    j = parts.length;
+                } if (Accion.equals("EliminarPago")) {
+                    componentes.get(a).getFactory().EliminarPago(componentes.get(a).getFactory().Getpago(Integer.parseInt(para[0])));
+                    j = parts.length;
+                } if (Accion.equals("ModificarPago")) {
+                    componentes.get(a).getFactory().ModificarPago(Integer.parseInt(para[0]), para[1], para[2], para[3]);
+                    j = parts.length;
+                } if (Accion.equals("VerPagos")) {
+                    componentes.get(a).getFactory().toString();
+                    j = parts.length;
+                }
+                if (Accion.equals("crearAgrupacion")) {
+                    if (para.length == 2) {
+                        crearAgrupacion(para[0], Integer.parseInt(para[1]));
+                        j = parts.length;
+                    } else {
+                        crearAgrupacion(para[0]);
+                    }
+                    j = parts.length;
+                }
+                if (Accion.equals("CrearVehiculo")) {
+                    if (para.length == 2) {
+                        crearAgrupacion(para[0], Integer.parseInt(para[1]));
+                        j = parts.length;
+                    } else {
+                        AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));;
+                        j = parts.length;
+                    }
+                }
+                if (Accion.equals("AgregarAgrupacion")) {
+                    interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
+                    interfaceGrupo b = Getelemento(Integer.parseInt(para[1]));
+                    //  b.;
+                    //p.Añadir(b);
+                    //  b = Getelemento(Integer.parseInt(para[1]));
+                    // b.getComponentes().clear();
+                    j = parts.length;
+                } if (Accion.equals("EliminarElemento")) {
+                    interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
+                    EliminarElemento(p);
+                    j = parts.length;
+                } if (Accion.equals("VerTransporte")) {
+                    x = VerTransporte(para[0]);
+                    j = parts.length;
+                } if (Accion.equals("verPagosC")) {
+                    x = verPagosC(para[0]);
+                    j = parts.length;
+                } if (Accion.equals("verPagosP")) {
+                    x = verPagosP(para[0]);
+                    j = parts.length;
+                } if (Accion.equals("verPermisos")) {
+                    x = componentes.get(a).Permisos();
+                    j = parts.length;
+                } if (Accion.equals("leerEoC")) {
+                    x = leerEoC(para[0], Integer.parseInt(para[1]));
+                    j = parts.length;
+                } if (Accion.equals("VerTodos")) {
+                    x = VerTodos("");
+                    j = parts.length;
+                } if (Accion.equals("leerEoC")) {
+                    x = leerEoC(para[0], Integer.parseInt(para[1]));
+                    j = parts.length;
+                } if (Accion.equals("ModificarNombre_Elemento")) {
+                    interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
+                    ModificarNombre_Elemento(p, para[1]);
+                    j = parts.length;
+                }
+            }
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Facade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(Facade.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(Facade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return x;
+    }
 
     public void Crear_Usuario(String User, String pass, String Tipo) {
         if (Tipo.equals("Pasajero")) {
@@ -273,6 +409,7 @@ public class Facade {
 
     public void eliminar__Usuario(String User, String pass) {
         int a = 0;
+        System.out.println("Eli");
         for (int i = 0; i < componentes.size(); i++) {
             if (componentes.get(i).getUsuario().equalsIgnoreCase(User) && componentes.get(i).getPassword().equalsIgnoreCase(pass)) {
                 a = i;
