@@ -9,9 +9,7 @@ import AdapterPackage.Adapter;
 import AdapterPackage.Conductor;
 import AdapterPackage.Pasajero;
 import AdapterPackage.Usuario;
-import Composite.Vehiculo_hoja;
-import Composite.composite;
-import Composite.interfaceGrupo;
+import Composite.*;
 import Flyweight.FlyWeight;
 import Flyweight.FlyWeightFactory;
 import java.lang.reflect.InvocationTargetException;
@@ -31,7 +29,7 @@ public class Facade {
     private ArrayList<Usuario> componentes = new ArrayList();
     private static Facade facade;
     private FlyWeightFactory FF = new FlyWeightFactory();
-    private composite GrupoBase = new composite("GrupoBase");
+   // private composite GrupoBase = new composite("GrupoBase");
 
     public Facade() {
         Usuario user = new Adapter("Hola", "123");
@@ -314,36 +312,36 @@ public class Facade {
                 }
                 if (Accion.equals("crearAgrupacion")) {
                     if (para.length == 2) {
-                        crearAgrupacion(para[0], Integer.parseInt(para[1]));
+                        //crearAgrupacion(para[0], Integer.parseInt(para[1]));
                         j = parts.length;
                     } else {
-                        crearAgrupacion(para[0]);
+                       // crearAgrupacion(para[0]);
                     }
                     j = parts.length;
                 }
                 if (Accion.equals("CrearVehiculo")) {
                     if (para.length == 2) {
-                        crearAgrupacion(para[0], Integer.parseInt(para[1]));
+                        //crearAgrupacion(para[0], Integer.parseInt(para[1]));
                         j = parts.length;
                     } else {
-                        AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));;
+                       // AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));;
                         j = parts.length;
                     }
                 }
                 if (Accion.equals("AgregarAgrupacion")) {
-                    interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
-                    interfaceGrupo b = Getelemento(Integer.parseInt(para[1]));
+                   // interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
+                   // interfaceGrupo b = Getelemento(Integer.parseInt(para[1]));
                     //  b.;
                     //p.Añadir(b);
                     //  b = Getelemento(Integer.parseInt(para[1]));
                     // b.getComponentes().clear();
                     j = parts.length;
                 } if (Accion.equals("EliminarElemento")) {
-                    interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
-                    EliminarElemento(p);
+                   // interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
+                   // EliminarElemento(p);
                     j = parts.length;
                 } if (Accion.equals("VerTransporte")) {
-                    x = VerTransporte(para[0]);
+                    //x = VerTransporte(para[0]);
                     j = parts.length;
                 } if (Accion.equals("verPagosC")) {
                     x = verPagosC(para[0]);
@@ -358,14 +356,14 @@ public class Facade {
                     x = leerEoC(para[0], Integer.parseInt(para[1]));
                     j = parts.length;
                 } if (Accion.equals("VerTodos")) {
-                    x = VerTodos("");
+                   // x = VerTodos("");
                     j = parts.length;
                 } if (Accion.equals("leerEoC")) {
                     x = leerEoC(para[0], Integer.parseInt(para[1]));
                     j = parts.length;
                 } if (Accion.equals("ModificarNombre_Elemento")) {
-                    interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
-                    ModificarNombre_Elemento(p, para[1]);
+                    //interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
+                   // ModificarNombre_Elemento(p, para[1]);
                     j = parts.length;
                 }
             }
@@ -460,7 +458,7 @@ public class Facade {
         }
         return info;
     }
-
+/*
     public composite crearAgrupacion(String NombreGrupo) {
         composite grupo = new composite(NombreGrupo);
         GrupoBase.Añadir(grupo);
@@ -521,4 +519,5 @@ public class Facade {
         s.setNombre(n);
 
     }
+*/
 }
