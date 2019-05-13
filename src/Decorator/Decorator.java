@@ -5,17 +5,18 @@
  */
 package Decorator;
 
+import Composite.Transporte;
 import java.util.ArrayList;
 
 /**
  *
  * @author Pedro de Jesús
  */
-public abstract class Decorator implements Componente{
+public abstract class Decorator implements Transporte{
 
-    protected Componente C;
+    protected Transporte C;
 
-    public Decorator(Componente C) {
+    public Decorator(Transporte C) {
         this.C = C;
     }
     
@@ -25,6 +26,9 @@ public abstract class Decorator implements Componente{
     public void cambiarAtributo(String caracteristica, String nuevo) {
      C.cambiarAtributo(caracteristica, nuevo);
         }
+     public String ConsultarNombre(String nombre) {
+         return C.consultarAtributos();
+    }
     }
     
 

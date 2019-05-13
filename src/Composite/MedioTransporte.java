@@ -14,11 +14,13 @@ import java.util.ArrayList;
 public class MedioTransporte implements Transporte {
 
     private String nombre;
-    ArrayList<Transporte> Grupo;
+    private ArrayList<Transporte> Grupo;
+   // private java.util.List<Transporte> G;
 
     public MedioTransporte(String nombre) {
         this.nombre = nombre;
         this.Grupo = new ArrayList<>();
+       // this.G = new java.util.ArrayList<>();
     }
 
     public String getNombre() {
@@ -30,12 +32,29 @@ public class MedioTransporte implements Transporte {
         this.nombre = nombre;
     }
 
-    public String buscarNombre() {
+    public String buscarNombre(String nomb, int x) {
         String nom = "";
+        /*
         for (Transporte t : Grupo) {
             nom += t.getNombre() + "\n";
         }
-        return this.nombre + "\n" + nom;
+         */
+        String nombre = nomb;
+        //System.out.println(nombre);
+        int y = x;
+        //System.out.println("1");
+        for (int i = y; i < Grupo.size(); i++) {
+          //  System.out.println("2");
+            if (Grupo.get(i).getNombre().equalsIgnoreCase(nombre)) {
+            //    System.out.println("3");
+                for (int a = i; a < Grupo.size(); a++) {
+                    nom += Grupo.get(a).getNombre() + "\n";
+              //      System.out.println("nom: " + nom);
+                }
+            }
+        }
+
+        return nom;
     }
 
     @Override
@@ -57,12 +76,12 @@ public class MedioTransporte implements Transporte {
     }
 
     @Override
-    public int getCantidadPuesto() {
+    public String getCantidadPuesto() {
         String cantidadpuestos = "";
         for (Transporte t : Grupo) {
             cantidadpuestos += t.getCantidadPuesto() + "\n";
         }
-        return Integer.parseInt(cantidadpuestos);
+        return cantidadpuestos;
     }
 
     @Override
@@ -95,20 +114,18 @@ public class MedioTransporte implements Transporte {
     public String ConsultarNombre(String nombre) {
         String n = nombre;
         String nom = "";
-
         for (int i = 0; i < Grupo.size(); i++) {
-            System.out.println("1");
             if (Grupo.get(i).getNombre().equalsIgnoreCase(nombre)) {
-                System.out.println("2");
-                for (int a = i; a <Grupo.size(); a++) {
-                    System.out.println("a: " + a);
-                    System.out.println("3");
-                    System.out.println("get: " + Grupo.get(a).getNombre());
-                    nom += Grupo.get(a).ConsultarNombre(Grupo.get(a).getNombre()) + "\n";
-                    System.out.println("nom: " + nom);
+                for (int a = i; a < Grupo.size(); a++) {
+                    //System.out.println(n + "---" + a);
+                    nom += "Nombre: " + this.buscarNombre(n, a) + " - Placa: " + Grupo.get(a).getPlaca() + " - Tipo: " + Grupo.get(a).getTipo() + " - Marca: " + Grupo.get(a).getMarca()
+                            + " - Referencia: " + Grupo.get(a).getReferencia() + " - Año: " + Grupo.get(a).getAno() + " - Cantidad de puestos: " + Grupo.get(a).getCantidadPuesto();
+                    //nom += Grupo.get(a).ConsultarNombre(Grupo.get(a).getNombre()) + "\n";
+                    //System.out.println(nom);
                 }
             }
         }
+
         return nom;
 
         /*
@@ -130,12 +147,12 @@ public class MedioTransporte implements Transporte {
     }
 
     public void Crear(Transporte t) {
-        Grupo.add(t);
+        this.Grupo.add(t);
         System.out.println("Creado");
     }
 
     public void Eliminar(Transporte t) {
-        Grupo.remove(t);
+        this.Grupo.remove(t);
     }
 
     public Transporte CambiarPlaca(String Nombre, String placa) {
@@ -146,5 +163,24 @@ public class MedioTransporte implements Transporte {
             }
         }
         return Grupo.get(porcambiar);
+    }
+
+    @Override
+    public void setPlaca(String placa) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private String getName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String consultarAtributos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void cambiarAtributo(String caracteristica, String nuevo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

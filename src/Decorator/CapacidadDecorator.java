@@ -5,17 +5,19 @@
  */
 package Decorator;
 
+import Composite.Transporte;
+
 /**
  *
  * @author Pedro de Jesús
  */
 public class CapacidadDecorator extends Decorator {
     int capacidad;
-    public CapacidadDecorator(Componente C) {
+    public CapacidadDecorator(Transporte C) {
         super(C);
     }
 
-    public CapacidadDecorator(int capacidad, Componente C) {
+    public CapacidadDecorator(int capacidad, Transporte C) {
         super(C);
         this.capacidad = capacidad;
     }
@@ -36,5 +38,56 @@ public class CapacidadDecorator extends Decorator {
           if (caracteristica.equalsIgnoreCase("capacidad")){
             this.setCapacidad(Integer.parseInt(nuevo));
         }
+    }
+
+    @Override
+    public String getNombre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setNombre(String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getTipo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getPlaca() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    @Override
+    public String getCantidadPuesto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getMarca() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getAno() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getReferencia() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public String ConsultarNombre(String nombre) {
+       return C.consultarAtributos()+"La capacidad es "+this.getCapacidad()+";";
+    }
+
+    @Override
+    public void setPlaca(String placa) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

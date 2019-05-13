@@ -9,7 +9,13 @@ package Decorator;
  *
  * @author Pedro de Jesús
  */
-public interface Componente {
-    public String consultarAtributos();
-    public void cambiarAtributo(String caracteristica, String nuevo);
+public class PatronDecorator {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
+    
 }

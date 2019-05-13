@@ -21,7 +21,9 @@ public interface Transporte {
 
     public String getPlaca();
 
-    public int getCantidadPuesto();
+    public void setPlaca(String placa);
+
+    public String getCantidadPuesto();
 
     public String getMarca();
 
@@ -29,5 +31,9 @@ public interface Transporte {
 
     public String getReferencia();
 
-    public String ConsultarNombre(String nombre);  
+    public String ConsultarNombre(String nombre);
+
+    public String consultarAtributos();
+
+    public void cambiarAtributo(String caracteristica, String nuevo);
 }

@@ -5,23 +5,21 @@
  */
 package Composite;
 
-import Decorator.Componente;
-
 /**
  *
  * @author Valentina
  */
-public class Individual implements Transporte, Componente {
+public class Individual implements Transporte {
 
     private String nombre;
     private String tipo;
     private String placa;
-    private int cantidadpuestos;
+    private String cantidadpuestos;
     private String marca;
     private String ano;
     private String referencia;
 
-    public Individual(String nombre, String tipo, String placa, int cantidadpuestos, String marca, String ano, String referencia) {
+    public Individual(String nombre, String tipo, String placa, String cantidadpuestos, String marca, String ano, String referencia) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.placa = placa;
@@ -31,6 +29,7 @@ public class Individual implements Transporte, Componente {
         this.referencia = referencia;
     }
 
+    @Override
     public String getNombre() {
         return this.nombre;
     }
@@ -59,11 +58,11 @@ public class Individual implements Transporte, Componente {
     }
 
     @Override
-    public int getCantidadPuesto() {
+    public String getCantidadPuesto() {
         return this.cantidadpuestos;
     }
 
-    public void setCantidadPuesto(int cantidadpuesto) {
+    public void setCantidadPuesto(String cantidadpuesto) {
         this.cantidadpuestos = cantidadpuesto;
     }
 
@@ -94,24 +93,23 @@ public class Individual implements Transporte, Componente {
         this.referencia = referencia;
     }
 
+    @Override
     public String ConsultarNombre(String nombre) {
         String informacion = "Nombre: " + this.getNombre() + " - Placa: " + this.getPlaca() + " - Tipo: " + this.getTipo() + " - Marca: " + this.getMarca()
                 + " - Referencia: " + this.getReferencia() + " - Año: " + this.getAno() + " - Cantidad de puestos: " + this.getCantidadPuesto();
         return informacion;
     }
+
     public String consultarAtributos() {
-        return "El nombre es " +this.getNombre()+", la placa es "+this.getPlaca()+", el tipo es "+this.getTipo()+", la marca es "+this.getMarca()+", la referencia es "+this.getReferencia()+", el año es "+this.getAno()+", la cantidad de puestos es de "+this.getCantidadPuesto()+", ";
+        System.out.println("A");
+         String informacion = "Nombre: " + this.getNombre() + " - Placa: " + this.getPlaca() + " - Tipo: " + this.getTipo() + " - Marca: " + this.getMarca()
+                + " - Referencia: " + this.getReferencia() + " - Año: " + this.getAno() + " - Cantidad de puestos: " + this.getCantidadPuesto();
+        return informacion;
     }
 
     public void cambiarAtributo(String caracteristica, String nuevo) {
-        if (caracteristica.equalsIgnoreCase("tipo")){
-            this.setTipo(nuevo);
-        }
-        if (caracteristica.equalsIgnoreCase("nombre")){
-            this.setNombre(nuevo);
-        }
-        if (caracteristica.equalsIgnoreCase("cantidadPuestos")){
-            this.setCantidadPuesto(Integer.parseInt(nuevo));
+          if (caracteristica.equalsIgnoreCase("nombre")){
+            this.setNombre(nombre);
         }
     }
 }

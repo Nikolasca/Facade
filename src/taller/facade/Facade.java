@@ -10,6 +10,7 @@ import AdapterPackage.Conductor;
 import AdapterPackage.Pasajero;
 import AdapterPackage.Usuario;
 import Composite.*;
+import Decorator.*;
 import Flyweight.FlyWeight;
 import Flyweight.FlyWeightFactory;
 import java.lang.reflect.InvocationTargetException;
@@ -29,7 +30,7 @@ public class Facade {
     private ArrayList<Usuario> componentes = new ArrayList();
     private static Facade facade;
     private FlyWeightFactory FF = new FlyWeightFactory();
-   // private composite GrupoBase = new composite("GrupoBase");
+   private ArrayList<Transporte> t=new ArrayList();
 
     public Facade() {
         Usuario user = new Adapter("Hola", "123");
@@ -458,7 +459,11 @@ public class Facade {
         }
         return info;
     }
-/*
+    /*
+    public void crearIndividual(){
+        Transporte vehiculo=new Individual("Carro", "Automovil", "AAA123", 5, "Nissan", "2012", "Versa");
+    }
+
     public composite crearAgrupacion(String NombreGrupo) {
         composite grupo = new composite(NombreGrupo);
         GrupoBase.Añadir(grupo);
