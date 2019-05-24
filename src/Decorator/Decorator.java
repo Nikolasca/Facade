@@ -19,7 +19,9 @@ public abstract class Decorator implements Transporte{
     public Decorator(Transporte C) {
         this.C = C;
     }
-    
+    public String getNombre(){
+        return C.getNombre();
+    }
     public String consultarAtributos() {
         return C.consultarAtributos();
     }

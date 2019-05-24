@@ -12,6 +12,7 @@ import Composite.Transporte;
  * @author Pedro de Jesús
  */
 public class DescripcionDecorator extends Decorator {
+
     private String descripcion;
 
     public DescripcionDecorator(String descripcion, Transporte C) {
@@ -30,19 +31,20 @@ public class DescripcionDecorator extends Decorator {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-     public String consultarAtributos() {
-        return C.consultarAtributos()+"La descripción es "+this.getDescripcion()+";";
+
+    public String consultarAtributos() {
+        return C.consultarAtributos() + " Descripción : " + this.getDescripcion() + " -";
     }
-       public void cambiarAtributo(String caracteristica, String nuevo) {
-       C.cambiarAtributo(caracteristica, nuevo);
-           if (caracteristica.equalsIgnoreCase("descripcion")){
+
+    public void cambiarAtributo(String caracteristica, String nuevo) {
+        C.cambiarAtributo(caracteristica, nuevo);
+        if (caracteristica.equalsIgnoreCase("descripcion")) {
             this.setDescripcion(nuevo);
         }
     }
 
-    @Override
     public String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return C.getNombre();
     }
 
     @Override
@@ -80,9 +82,8 @@ public class DescripcionDecorator extends Decorator {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
     public String ConsultarNombre(String nombre) {
-         return C.consultarAtributos()+"La descripción es "+this.getDescripcion()+";";
+        return C.consultarAtributos() + "La descripción es " + this.getDescripcion() + ";";
     }
 
     @Override

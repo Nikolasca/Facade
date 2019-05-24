@@ -14,26 +14,26 @@ import Composite.Transporte;
 public class IdentificadorDecorator extends Decorator {
 
     private String identificador;
-    
+
     public IdentificadorDecorator(String identificador, Transporte C) {
         super(C);
         this.identificador = identificador;
     }
-    
+
     public IdentificadorDecorator(Transporte C) {
         super(C);
     }
-    
+
     public String getIdentificador() {
         return identificador;
     }
-    
+
     public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
 
     public String consultarAtributos() {
-        return C.consultarAtributos() + "El identificador es " + this.getIdentificador() + ";";
+        return C.consultarAtributos() + " Identificador: " + this.getIdentificador() + " -";
     }
 
     public void cambiarAtributo(String caracteristica, String nuevo) {
@@ -43,9 +43,8 @@ public class IdentificadorDecorator extends Decorator {
         }
     }
 
-    @Override
     public String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return C.getNombre();
     }
 
     @Override
@@ -83,7 +82,6 @@ public class IdentificadorDecorator extends Decorator {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
     public String ConsultarNombre(String nombre) {
         return C.consultarAtributos() + "El identificador es " + this.getIdentificador() + ";";
     }
@@ -92,5 +90,5 @@ public class IdentificadorDecorator extends Decorator {
     public void setPlaca(String placa) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

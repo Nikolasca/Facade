@@ -31,7 +31,7 @@ public class CapacidadDecorator extends Decorator {
     }
     
     public String consultarAtributos() {
-        return C.consultarAtributos()+"La capacidad es "+this.getCapacidad()+";";
+        return C.consultarAtributos()+" - Capacidad: "+this.getCapacidad()+" -";
     }
      public void cambiarAtributo(String caracteristica, String nuevo) {
         C.cambiarAtributo(caracteristica, nuevo);
@@ -40,9 +40,8 @@ public class CapacidadDecorator extends Decorator {
         }
     }
 
-    @Override
     public String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return C.getNombre();
     }
 
     @Override

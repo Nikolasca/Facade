@@ -29,7 +29,7 @@ public class Individual implements Transporte {
         this.referencia = referencia;
     }
 
-    @Override
+
     public String getNombre() {
         return this.nombre;
     }
@@ -93,7 +93,7 @@ public class Individual implements Transporte {
         this.referencia = referencia;
     }
 
-    @Override
+
     public String ConsultarNombre(String nombre) {
         String informacion = "Nombre: " + this.getNombre() + " - Placa: " + this.getPlaca() + " - Tipo: " + this.getTipo() + " - Marca: " + this.getMarca()
                 + " - Referencia: " + this.getReferencia() + " - Año: " + this.getAno() + " - Cantidad de puestos: " + this.getCantidadPuesto();
@@ -101,7 +101,6 @@ public class Individual implements Transporte {
     }
 
     public String consultarAtributos() {
-        System.out.println("A");
          String informacion = "Nombre: " + this.getNombre() + " - Placa: " + this.getPlaca() + " - Tipo: " + this.getTipo() + " - Marca: " + this.getMarca()
                 + " - Referencia: " + this.getReferencia() + " - Año: " + this.getAno() + " - Cantidad de puestos: " + this.getCantidadPuesto();
         return informacion;
