@@ -33,7 +33,7 @@ public class Facade {
     private MedioTransporte mT = new MedioTransporte("GrupoBase");
 
     public Facade() {
-        Usuario user = new Adapter("Hola", "123", "Pedro", "A1", "pedrovamounisabana", "216");
+        Usuario user = new Adapter("Hola", "123", 1);
         this.componentes.add(user);
     }
 
@@ -92,8 +92,22 @@ public class Facade {
                     x = LeerPago(para[0]);
                     j = parts.length;
                 }
+                if (Accion.equals("Crear_Usuario")) {
+                    if(para.length==4){
+                    Crear_Usuario(para[0],para[1],para[2],Integer.parseInt(para[3]));
+                    j = parts.length;
+                    }
+                    else{
+                    Crear_Usuario(para[0],para[1],para[2],para[3],Integer.parseInt(para[4]),para[5],para[6],Integer.parseInt(para[7]));
+                    j = parts.length;
+                    }
+                }
                 if (Accion.equals("Consultar_Usuario")) {
                     x = Consultar_Usuario(para[0]);
+                    j = parts.length;
+                }
+                if (Accion.equals("Consultar_UsuarioId")) {
+                    x = ConsultarIdUsuario(Integer.parseInt(para[0]));
                     j = parts.length;
                 }
                 if (Accion.equals("eliminar_Usuario")) {
@@ -181,17 +195,31 @@ public class Facade {
         return x;
     }
 
-    public void Crear_Usuario(String User, String pass, String Tipo, String nombreCompleto, String id, String email, String telefono) {
+    public void Crear_Usuario(String User, String pass, String Tipo, String nombreCompleto, int telefono, String documento,String email,int id) {
         if (Tipo.equals("Pasajero")) {
-            Usuario usuario = new Pasajero(User, pass, nombreCompleto, id, email, telefono);
+            Usuario usuario = new Pasajero(User, pass, nombreCompleto, telefono,documento,email,id);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
         } else if (Tipo.equals("Conductor")) {
-            Usuario usuario = new Conductor(User, pass, nombreCompleto, id, email, telefono);
+            Usuario usuario = new Conductor(User, pass, nombreCompleto, telefono,documento,email,id);
+            usuario.setTipo_Usuario(Tipo);
+            componentes.add(usuario);
+        } else {
+            System.out.print("No hizo match tipo");
+        }
+    }
+
+    public void Crear_Usuario(String User, String pass, String Tipo, int id) {
+        if (Tipo.equals("Pasajero")) {
+            Usuario usuario = new Pasajero(User, pass, id);
+            usuario.setTipo_Usuario(Tipo);
+            componentes.add(usuario);
+        } else if (Tipo.equals("Conductor")) {
+            Usuario usuario = new Conductor(User, pass, id);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
         } else if (Tipo.equals("Administrador")) {
-            Usuario usuario = new Adapter(User, pass, nombreCompleto, id, email, telefono);
+            Usuario usuario = new Adapter(User, pass, id);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
         } else {
@@ -203,8 +231,24 @@ public class Facade {
         String info = "";
         for (int i = 0; i < componentes.size(); i++) {
             if (componentes.get(i).getUsuario().equalsIgnoreCase(User)) {
-                info = componentes.get(i).getUsuario() + "," + componentes.get(i).getPassword() + "," + componentes.get(i).getTipo_Usuario() + "," + componentes.get(i).getNombreapellido() + ","
-                        + componentes.get(i).getId() + "," + componentes.get(i).getEmail() + "," + componentes.get(i).getTelefono() + ",";
+                if(componentes.get(i).getTipo_Usuario().equalsIgnoreCase("Administrador"))
+                    info = componentes.get(i).getUsuario() + "," + componentes.get(i).getPassword() + "," + componentes.get(i).getTipo_Usuario() + ",";
+                else
+                info = componentes.get(i).getUsuario() + "," + componentes.get(i).getPassword() + "," + componentes.get(i).getTipo_Usuario() + "," + componentes.get(i).getNombre() + ","
+                        + componentes.get(i).getTelefono() + "," +componentes.get(i).getDocumento()+","+ componentes.get(i).getEmail() + ",";
+            }
+        }
+        return info;
+    }
+    public String ConsultarIdUsuario(int id){
+        String info = "";
+        for (int i = 0; i < componentes.size(); i++) {
+            if (componentes.get(i).getId()==id) {
+                if(componentes.get(i).getTipo_Usuario().equalsIgnoreCase("Administrador"))
+                    info = componentes.get(i).getUsuario() + "," + componentes.get(i).getPassword() + "," + componentes.get(i).getTipo_Usuario() + ",";
+                else
+                info = componentes.get(i).getUsuario() + "," + componentes.get(i).getPassword() + "," + componentes.get(i).getTipo_Usuario() + "," + componentes.get(i).getNombre() + ","
+                        + componentes.get(i).getTelefono() + "," +componentes.get(i).getDocumento()+","+ componentes.get(i).getEmail() + ",";
             }
         }
         return info;
@@ -235,9 +279,9 @@ public class Facade {
         } else if (carac.equalsIgnoreCase("email")) {
             componentes.get(a).setEmail(nuevo);
         } else if (carac.equalsIgnoreCase("telefono")) {
-            componentes.get(a).setTelefono(nuevo);
-        } else if (carac.equalsIgnoreCase("nombreCompleto")) {
-            componentes.get(a).setNombreapellido(nuevo);
+            componentes.get(a).setTelefono(Integer.parseInt(nuevo));
+        } else if (carac.equalsIgnoreCase("nombre")) {
+            componentes.get(a).setNombre(nuevo);
         }
     }
 
@@ -246,7 +290,7 @@ public class Facade {
         FlyWeight F = FF.Getpago(id);
         for (int i = 0; i < componentes.size(); i++) {
             if (componentes.get(i).getUsuario().equalsIgnoreCase(nombrePasajero)) {
-                componentes.get(i).AñadirPago(F);
+                componentes.get(i).AnadirPago(F);
             }
         }
     }
@@ -260,7 +304,7 @@ public class Facade {
                 a = i;
             }
         }
-        componentes.get(a).AñadirPago(F);
+        componentes.get(a).AnadirPago(F);
     }
 
     public String leerEoC(String nombreU, int id) {

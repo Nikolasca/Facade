@@ -32,7 +32,7 @@ public class PruebasConductor {
     @Before
     public void setUp() {
         Proxy x = new Proxy();
-        x.crearUsuario("NombreConductor", "2", "Conductor","q","er","e","lo");
+        x.crearUsuario("NombreConductor", "2", "Conductor","wq",1,"er","e",23);
         assertTrue(x.validarUsuario("NombreConductor", "2"));
     }
 
@@ -72,8 +72,8 @@ public class PruebasConductor {
     @Test
     public void VerPagosConductor() throws NoSuchMethodException {
         Proxy x = new Proxy();
-        x.crearUsuario("NombrePasajero1", "1", "Pasajero","a","b","c","d");
-        x.crearUsuario("NombrePasajero2", "2", "Pasajero","a","b","c","d");
+        x.crearUsuario("NombrePasajero1", "1", "Pasajero",2);
+        x.crearUsuario("NombrePasajero2", "2", "Pasajero",3);
         x.llamarMetodoGeneral("crearEfectivo,NombrePasajero1,1,2-NombrePasajero1-NombreConductor-10.0-Moneda:Peso;MontoDado=20;MontoDevuelto=10");
         x.llamarMetodoGeneral("crearCredito,NombrePasajero2,2,3-NombrePasajero2-NombreConductor-700.0-CVV:1;Num:92929282882;FechaVenc:Manana");
         assertEquals("Datos efectivo {id=2, nombrePasajero=NombrePasajero1, nombreConductor=NombreConductor, monto=10.0, otros=Moneda:Peso;MontoDado=20;MontoDevuelto=10}\n"

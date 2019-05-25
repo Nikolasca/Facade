@@ -14,69 +14,88 @@ import Flyweight.FlyWeightFactory;
  */
 public abstract class Usuario {
 
-    private String Usuario;
-    private String Password;
-    private String Tipo_Usuario;
-    private String nombreapellido;
-    private String id;
+    private String usuario;
+    private String password;
+    private String tipo_Usuario;
+    private String nombre;
+    private int telefono;
+    private String documento;
     private String email;
-    private String telefono;
+    private int id;
+    private double Lat;
+    private double Long;
 
-    public Usuario(String Usuario, String Password, String nombreapellido, String id, String email, String telefono) {
-        this.Usuario = Usuario;
-        this.Password = Password;
-        this.nombreapellido = nombreapellido;
-        this.id = id;
-        this.email = email;
+    public Usuario(String usuario, String password, String nombre, int telefono, String documento, String email, int id) {
+        this.usuario = usuario;
+        this.password = password;
+        this.nombre = nombre;
         this.telefono = telefono;
+        this.documento = documento;
+        this.email = email;
+        this.id = id;
+    }
+
+   
+    public Usuario(String Usuario, String Password, int id) {
+        this.usuario = Usuario;
+        this.password = Password;
+        this.id = id;
+    }
+
+    public Usuario(String usuario, String password) {
+        this.usuario = usuario;
+        this.password = password;
     }
 
     public Usuario() {
     }
 
-    // public abstract String getUsuario();
-    // public abstract void setUsuario(String Usuario); 
-    //public abstract String getPassword();
-    //public abstract void setPassword(String Password);
-    // public abstract void setTipo_Usuario(String Tipo_Usuario);
     public String getUsuario() {
-        return Usuario;
+        return usuario;
     }
 
     public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
+        this.usuario = Usuario;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String Password) {
-        this.Password = Password;
+        this.password = Password;
     }
 
     public String getTipo_Usuario() {
-        return Tipo_Usuario;
+        return tipo_Usuario;
     }
 
     public void setTipo_Usuario(String Tipo_Usuario) {
-        this.Tipo_Usuario = Tipo_Usuario;
+        this.tipo_Usuario = Tipo_Usuario;
     }
 
-    public String getNombreapellido() {
-        return nombreapellido;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreapellido(String NombreApe) {
-        this.nombreapellido = NombreApe;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getId() {
-        return id;
+    public int getTelefono() {
+        return telefono;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
     public String getEmail() {
@@ -87,21 +106,37 @@ public abstract class Usuario {
         this.email = email;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     public abstract String Permisos();
 
     public abstract FlyWeightFactory getFactory();
 
-    public abstract void AñadirPago(FlyWeight i);
+    public abstract void AnadirPago(FlyWeight i);
 
     public abstract String getPago(int id);
 
     public abstract String getPagos(String nombre);
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getLat() {
+        return Lat;
+    }
+
+    public void setLat(double Lat) {
+        this.Lat = Lat;
+    }
+
+    public double getLong() {
+        return Long;
+    }
+
+    public void setLong(double Long) {
+        this.Long = Long;
+    }
 }

@@ -15,16 +15,15 @@ import Flyweight.FlyWeightFactory;
 public class Conductor extends Usuario {
 
     private FlyWeightFactory factory;
-    private String Usuario;
-    private String Password;
     private String tipo = "Conductor";
-    private String nombreapellido;
-    private String id;
-    private String email;
-    private String telefono;
 
-    public Conductor(String Usuario, String Password,String nombreapellido,String id,String email,String telefono) {
-        super(Usuario, Password,nombreapellido,id,email,telefono);
+    public Conductor(String usuario, String password, String nombre, int telefono, String documento, String email, int id) {
+        super(usuario, password, nombre, telefono, documento, email, id);
+        this.factory = factory;
+    }
+
+    public Conductor(String Usuario, String Password, int ID) {
+        super(Usuario, Password, ID);
         FlyWeightFactory factory = new FlyWeightFactory();
     }
 
@@ -32,22 +31,63 @@ public class Conductor extends Usuario {
         super();
     }
 
+    public Conductor(String usuario, String password) {
+        super(usuario, password);
+    }
+
+    @Override
+    public void setId(int id) {
+        super.setId(id); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getId() {
+        return super.getId(); //To change body of generated methods, choose Tools | Templates.
+
+    }
+
+    @Override
+    public void setTipo_Usuario(String Tipo_Usuario) {
+        super.setTipo_Usuario(Tipo_Usuario); //To change body of generated methods, choose Tools | Templates.
+
+    }
+
+    @Override
+    public void setPassword(String Password) {
+        super.setPassword(Password); //To change body of generated methods, choose Tools | Templates.
+
+    }
+
+    @Override
+    public String getPassword() {
+        return super.getPassword(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setUsuario(String Usuario) {
+        super.setUsuario(Usuario); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getUsuario() {
+        return super.getUsuario(); //To change body of generated methods, choose Tools | Templates.
+    }
 
     @Override
     public String getTipo_Usuario() {
-        return this.tipo;
+        return super.getTipo_Usuario();
     }
 
     @Override
     public String Permisos() {
-        return "LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CrearVehiculo,CerrarSesión";
+        return "LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CrearVehiculo,CerrarSesion";
     }
 
     public FlyWeightFactory getFactory() {
         return factory;
     }
 
-    public void AñadirPago(FlyWeight i) {
+    public void AnadirPago(FlyWeight i) {
         this.factory.AgregarPago(i);
 
     }
@@ -59,8 +99,60 @@ public class Conductor extends Usuario {
 
     @Override
     public String getPagos(String nombreC) {
-         return this.factory.toStringPagosConductor(nombreC);
+        return this.factory.toStringPagosConductor(nombreC);
+
     }
 
-    
+    public void setTipo(String tipo) {
+        super.setTipo_Usuario(tipo);
+    }
+
+    public String getNombre() {
+        return super.getNombre();
+    }
+
+    public void setNombre(String nombre) {
+        super.setNombre(nombre);
+    }
+
+    @Override
+    public String getEmail() {
+        return super.getEmail();
+    }
+
+    @Override
+    public void setEmail(String email) {
+        super.setEmail(email);
+    }
+
+    @Override
+    public int getTelefono() {
+        return super.getTelefono();
+    }
+
+    @Override
+    public void setTelefono(int Telefono) {
+        super.setTelefono(Telefono);
+    }
+
+    @Override
+    public void setLat(double Lat) {
+        super.setLat(Lat);
+    }
+
+    @Override
+    public double getLat() {
+        return super.getLat();
+    }
+
+    @Override
+    public void setLong(double Long) {
+        super.setLong(Long);
+    }
+
+    @Override
+    public double getLong() {
+        return super.getLong();
+    }
+
 }

@@ -43,47 +43,46 @@ public class PruebasFacade {
     @Test
     public void crearPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Pasajero1", "111", "Pasajero","Hernando","AAW","Hernyhotmail","112");
-        assertEquals("Pasajero1,111,Pasajero,Hernando,AAW,Hernyhotmail,112,", F.Acceso("Consultar_Usuario", "Pasajero1", "111", "Pasajero1"));
+        F.Acceso("Crear_Usuario","a","b","Pasajero1-111-Pasajero-Hernando-1-S8-Hernyhotmail-22");
+        assertEquals("Pasajero1,111,Pasajero,Hernando,1,S8,Hernyhotmail,", F.Acceso("Consultar_UsuarioId", "Pasajero1", "111", "22"));
     }
 
     @Test
     public void crearConductor() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Conductor1", "111", "Conductor","Juan Alvarez","113","juanCoAlvarez.hotmail","134");
-        assertEquals("Conductor1,111,Conductor,Juan Alvarez,113,juanCoAlvarez.hotmail,134,", F.Acceso("Consultar_Usuario", "Conductor1", "111", "Conductor1"));
+        F.Crear_Usuario("Conductor1", "111", "Conductor","Juan Alvarez",1,"aa","juanCoAlvarez.hotmail",134);
+        assertEquals("Conductor1,111,Conductor,Juan Alvarez,1,aa,juanCoAlvarez.hotmail,", F.Acceso("Consultar_Usuario", "Conductor1", "111", "Conductor1"));
     }
 
     @Test
     public void crearAdmin() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Admin1", "111", "Administrador","a","ab","abc","abcd");
-        assertEquals("Admin1,111,Administrador,a,ab,abc,abcd,", F.Acceso("Consultar_Usuario", "Admin1", "111", "Admin1"));
+        F.Crear_Usuario("Admin1", "111", "Administrador",12);
+        assertEquals("Admin1,111,Administrador,", F.Acceso("Consultar_Usuario", "Admin1", "111", "Admin1"));
     }
 
     @Test
     public void modPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Pasajero1", "111", "Pasajero","Prenom","id","ema","tel");
-        F.Acceso("mod_Usuario", "Pasajero1", "111", "Pasajero1-nombreCompleto-Sunom");
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero","Prenom",1,"qq","ema",122);
+        F.Acceso("mod_Usuario", "Pasajero1", "111", "Pasajero1-nombre-Sunom");
         F.Acceso("mod_Usuario", "Pasajero1", "111", "Pasajero1-email-Emoaa");
         F.Acceso("mod_Usuario", "Pasajero1", "111", "Pasajero1-telefono-112");
         F.Acceso("mod_Usuario", "Pasajero1", "111", "Pasajero1-contrasena-999");
-        assertEquals("Pasajero1,999,Pasajero,Sunom,id,Emoaa,112,", F.Acceso("Consultar_Usuario", "Pasajero1", "111", "Pasajero1"));
+        assertEquals("Pasajero1,999,Pasajero,Sunom,112,qq,Emoaa,", F.Acceso("Consultar_Usuario", "Pasajero1", "111", "Pasajero1"));
     }
-
     @Test
     public void modConductor() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Conductor1", "111", "Conductor","c","d","f","rr");
+        F.Crear_Usuario("Conductor1", "111", "Conductor","c",3,"f","rr",5);
         F.Acceso("mod_Usuario", "Conductor1", "111", "Conductor1-usuario-PepoConductor");
-        assertEquals("PepoConductor,111,Conductor,c,d,f,rr,", F.Acceso("Consultar_Usuario", "PepoConductor", "111", "PepoConductor"));
+        assertEquals("PepoConductor,111,Conductor,c,3,f,rr,", F.Acceso("Consultar_Usuario", "PepoConductor", "111", "PepoConductor"));
     }
 
     @Test
     public void crearYConsultarReservaPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Pasajero1", "111", "Pasajero","a","b","c","d");
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero","c",3,"f","rr",5);
         F.Acceso("CrearReserva", "Pasajero1", "111", "Visita a Unicentro-1-01/01/2019-Visita a Unicentro-Unicentro");
         assertEquals("Nombre: Visita a Unicentro, id: 1, fecha: 01/01/2019, concepto: Visita a Unicentro, lugar: Unicentro", F.Acceso("LeerReserva", "Pasajero1", "111", "1"));
     }
@@ -91,7 +90,7 @@ public class PruebasFacade {
     @Test
     public void modificarLugarReservaPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Pasajero1", "111", "Pasajero","a","b","c","d");
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero","c",3,"f","rr",5);
         F.Acceso("CrearReserva", "Pasajero1", "111", "Visita a Unicentro-1-01/01/2019-Visita a Unicentro-Unicentro");
         F.Acceso("ModificarLugarReserva", "Pasajero1", "111", "1-Unicentro Salida Sur");
         assertEquals("Nombre: Visita a Unicentro, id: 1, fecha: 01/01/2019, concepto: Visita a Unicentro, lugar: Unicentro Salida Sur", F.Acceso("LeerReserva", "Pasajero1", "111", "1"));
@@ -100,7 +99,7 @@ public class PruebasFacade {
     @Test
     public void eliminarReservaPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Pasajero1", "111", "Pasajero","a","b","c","d");
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero","c",3,"f","rr",5);
         F.Acceso("CrearReserva", "Pasajero1", "111", "Visita a Unicentro-1-01/01/2019-Visita a Unicentro-Unicentro");
         F.Acceso("EliminarReserva", "Pasajero1", "111", "1");
         assertEquals("", F.Acceso("LeerReserva", "Pasajero1", "111", "1"));
@@ -109,7 +108,7 @@ public class PruebasFacade {
     @Test
     public void crearPagoPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Pasajero1", "111", "Pasajero","a","b","c","d");
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero","c",3,"f","rr",5);
         F.Acceso("CrearPago", "Pasajero1", "111", "Visita a Unicentro-1-5000-01/01/2019-Visita a Unicentro");
         assertEquals("Nombre: Visita a Unicentro, id: 1, monto: 5000, fecha: 01/01/2019, concepto: Visita a Unicentro", F.Acceso("LeerPago", "Pasajero1", "111", "1"));
     }
@@ -117,7 +116,7 @@ public class PruebasFacade {
     @Test
     public void crearCreditoPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Pasajero1", "111", "Pasajero","a","b","c","d");
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero","c",3,"f","rr",5);
         F.Acceso("crearCredito", "Pasajero1", "111", "1-Pasajero1-Conductor1-10-CVV:1,Num:92929282882,FechaVenc:Manana");
         assertEquals("Datos crédito{id=1, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=10.0, otros=CVV:1,Num:92929282882,FechaVenc:Manana}\n", F.Acceso("leerEoC", "Pasajero1", "111", "Pasajero1-1"));
     }
@@ -125,7 +124,7 @@ public class PruebasFacade {
     @Test
     public void crearEfectivoPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Pasajero1", "111", "Pasajero","a","b","c","d");
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero","c",3,"f","rr",5);
         F.Acceso("crearEfectivo", "Pasajero1", "111", "2-Pasajero1-Conductor1-10-Moneda:Peso,MontoDado=20,MontoDevuelto=10");
         assertEquals("Datos efectivo {id=2, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=10.0, otros=Moneda:Peso,MontoDado=20,MontoDevuelto=10}\n", F.Acceso("leerEoC", "Pasajero1", "111", "Pasajero1-2"));
     }
@@ -133,7 +132,7 @@ public class PruebasFacade {
     @Test
     public void verPermisosPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Pasajero1", "111", "Pasajero","a","b","c","d");
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero","c",3,"f","rr",5);
         assertEquals("CrearReserva,LeerReserva,ModificarLugarReserva,EliminarReserva,CrearPago,LeerPago,Consultar_Usuario,mod_Usuario,crearCredito,crearEfectivo,VerPagos,VerTransporte,crearTarjetaCredito,crearTarjetaDebito,ModificarTarjetaCredito,ModificarTarjetaDebito,VerViajesRealizados,VerRutas,VerAyudas,GuardarUbicaciones,CerrarSesion",
                 F.Acceso("verPermisos", "Pasajero1", "111", ""));
     }
@@ -141,7 +140,7 @@ public class PruebasFacade {
     @Test
     public void leerPagosPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Pasajero1", "111", "Pasajero","a","b","c","d");
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero","c",3,"f","rr",5);
         F.Acceso("crearEfectivo", "Pasajero1", "111", "2-Pasajero1-Conductor1-10-Moneda:Peso,MontoDado=20,MontoDevuelto=10");
         F.Acceso("crearCredito", "Pasajero1", "111", "1-Pasajero1-Conductor2-700-CVV:1,Num:92929282882,FechaVenc:Manana");
         assertEquals("Datos efectivo {id=2, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=10.0, otros=Moneda:Peso,MontoDado=20,MontoDevuelto=10}\n"
@@ -151,10 +150,10 @@ public class PruebasFacade {
     @Test
     public void leerPagosConductor() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Pasajero1", "111", "Pasajero","a","b","c","d");
-        F.Crear_Usuario("Pasajero2", "111", "Pasajero","a","b","c","d");
-        F.Crear_Usuario("Pasajero3", "222", "Pasajero","a","b","c","d");
-        F.Crear_Usuario("Conductor1", "1112", "Conductor","a","b","c","d");
+        F.Crear_Usuario("Pasajero1", "111", "Pasajero","c",3,"f","rr",5);
+        F.Crear_Usuario("Pasajero2", "111", "Pasajero","c",3,"f","rr",6);
+        F.Crear_Usuario("Pasajero3", "222", "Pasajero","c",3,"f","rr",7);
+        F.Crear_Usuario("Conductor1", "1112", "Conductor","c",3,"f","rr",8);
         F.Acceso("crearEfectivo", "Pasajero1", "111", "2-Pasajero1-Conductor1-10-Moneda:Peso,MontoDado=20,MontoDevuelto=10");
         F.Acceso("crearEfectivo", "Pasajero2", "111", "1-Pasajero2-Conductor1-700-Moneda:Dolar,MontoDado=2000,MontoDevuelto=1300");
         F.Acceso("crearCredito", "Pasajero3", "222", "3-Pasajero3-Conductor1-700-CVV:1,Num:92929282882,FechaVenc:Manana");
@@ -167,15 +166,15 @@ public class PruebasFacade {
     @Test
     public void verPermisosConductor() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Conductor1", "111", "Conductor","a","b","c","d");
-        assertEquals("LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CrearVehiculo,CerrarSesión", F.Acceso("verPermisos", "Conductor1", "111", ""));
+        F.Crear_Usuario("Conductor1", "111", "Conductor","c",3,"f","rr",5);
+        assertEquals("LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CrearVehiculo,CerrarSesion", F.Acceso("verPermisos", "Conductor1", "111", ""));
     }
 
     @Test
     public void verPermisosAdmin() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Admin1", "111", "Administrador","a","b","c","d");
-        assertEquals("CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario,VerTodos,ModificarNombre_Elemento", F.Acceso("verPermisos", "Admin1", "111", ""));
+        F.Crear_Usuario("Admin1", "111", "Administrador","c",3,"f","rr",5);
+        assertEquals("CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario,VerTodos,ModificarNombre_Elemento,Consultar_UsuarioId", F.Acceso("verPermisos", "Admin1", "111", ""));
     }
 
     @Test
@@ -235,8 +234,8 @@ public class PruebasFacade {
     @Test
     public void Eliminar_UsuarioAdmin() throws NoSuchMethodException {
         Facade F = new Facade();
-        F.Crear_Usuario("Admin1", "111", "Administrador","a","b","c","d");
-        F.Crear_Usuario("Conductor1", "111", "Conductor","a","b","c","d");
+        F.Crear_Usuario("Admin1", "111", "Administrador",222);
+        F.Crear_Usuario("Conductor1", "111", "Conductor","c",3,"f","rr",5);
         F.Acceso("eliminar_Usuario", "Admin1", "111", "Conductor1-111");
         assertEquals("", F.Acceso("Consultar_Usuario", "Admin1", "111", "Conductor1"));
 }
