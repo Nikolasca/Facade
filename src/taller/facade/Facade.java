@@ -30,7 +30,7 @@ public class Facade {
     private ArrayList<Usuario> componentes = new ArrayList();
     private static Facade facade;
     private FlyWeightFactory FF = new FlyWeightFactory();
-    
+    private MedioTransporte mT = new MedioTransporte("GrupoBase");
 
     public Facade() {
         Usuario user = new Adapter("Hola", "123");
@@ -127,55 +127,70 @@ public class Facade {
                 if (Accion.equals("CrearReserva")) {
                     CrearReserva(para[0], para[1], para[2], para[3], para[4]);
                     j = parts.length;
-                }if (Accion.equals("LeerReserva")) {
+                }
+                if (Accion.equals("LeerReserva")) {
                     x = LeerReserva(para[0]);
                     j = parts.length;
-                }if (Accion.equals("ModificarLugarReserva")) {
+                }
+                if (Accion.equals("ModificarLugarReserva")) {
                     ModificarLugarReserva(para[0], para[1]);
                     j = parts.length;
-                }if (Accion.equals("CrearPago")) {
+                }
+                if (Accion.equals("CrearPago")) {
                     CrearPago(para[0], para[1], Integer.parseInt(para[2]), para[3], para[4]);
                     j = parts.length;
-                }if (Accion.equals("EliminarPago")) {
+                }
+                if (Accion.equals("EliminarPago")) {
                     EliminarPago(G1.ObtenerPago(para[0]));
                     j = parts.length;
-                } if (Accion.equals("EliminarReserva")) {
+                }
+                if (Accion.equals("EliminarReserva")) {
                     EliminarReserva(G2.ObtenerReserva(para[0]));
                     j = parts.length;
-                } if (Accion.equals("Modificar_ConceptoPago")) {
+                }
+                if (Accion.equals("Modificar_ConceptoPago")) {
                     Modificar_ConceptoPago(para[0], para[1]);
                     j = parts.length;
-                } if (Accion.equals("LeerPago")) {
+                }
+                if (Accion.equals("LeerPago")) {
                     x = LeerPago(para[0]);
                     j = parts.length;
-                } if (Accion.equals("Consultar_Usuario")) {
+                }
+                if (Accion.equals("Consultar_Usuario")) {
                     x = Consultar_Usuario(para[0]);
                     j = parts.length;
-                } if (Accion.equals("eliminar_Usuario")) {
+                }
+                if (Accion.equals("eliminar_Usuario")) {
                     eliminar__Usuario(para[0], para[1]);
                     System.out.println("eU");
                     j = parts.length;
-                } if (Accion.equals("mod_Usuario")) {
+                }
+                if (Accion.equals("mod_Usuario")) {
                     mod_Usuario(para[0], para[1], para[2]);
                     j = parts.length;
-                } if (Accion.equals("crearCredito")) {
+                }
+                if (Accion.equals("crearCredito")) {
                     crearCredito(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
                     j = parts.length;
-                } if (Accion.equals("crearEfectivo")) {
+                }
+                if (Accion.equals("crearEfectivo")) {
                     crearEfectivo(Integer.parseInt(para[0]), para[1], para[2], Float.parseFloat(para[3]), para[4]);
                     j = parts.length;
-                } if (Accion.equals("EliminarPago")) {
+                }
+                if (Accion.equals("EliminarPago")) {
                     componentes.get(a).getFactory().EliminarPago(componentes.get(a).getFactory().Getpago(Integer.parseInt(para[0])));
                     j = parts.length;
-                } if (Accion.equals("ModificarPago")) {
+                }
+                if (Accion.equals("ModificarPago")) {
                     componentes.get(a).getFactory().ModificarPago(Integer.parseInt(para[0]), para[1], para[2], para[3]);
                     j = parts.length;
-                } if (Accion.equals("VerPagos")) {
+                }
+                if (Accion.equals("VerPagos")) {
                     componentes.get(a).getFactory().toString();
                     j = parts.length;
                 }
                 if (Accion.equals("crearAgrupacion")) {
- /*                   if (para.length == 2) {
+                    /*                   if (para.length == 2) {
                         //crearAgrupacion(para[0], Integer.parseInt(para[1]));
                         j = parts.length;
                     } else {
@@ -185,50 +200,62 @@ public class Facade {
                     j = parts.length;
                 }
                 if (Accion.equals("CrearVehiculo")) {
-                    if (para.length == 7) {
-                        crearVehiculo(para[0],para[1],para[2],para[3],para[4],para[5],para[6]);
+                    if (para.length == 8) {
+                        crearVehiculo(para[0], para[1], para[2], para[3], para[4], para[5], para[6], para[7]);
                         j = parts.length;
                     } else {
-                       // AgregarElemento(CrearVehiculo(para[0], para[1], para[2], Integer.parseInt(para[3]), para[4]));;
+                        crearVehiculoconCarac(para[0], para[1], para[2], para[3], para[4], para[5], para[6], para[7],Integer.parseInt(para[8]),para[9],para[10]);
                         j = parts.length;
                     }
                 }
+                if(Accion.equals("ModificarIndividual")){
+                    ModificarIndividual(para[0],para[1]);
+                    j=parts.length;
+                }
                 if (Accion.equals("AgregarAgrupacion")) {
-                   // interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
-                   // interfaceGrupo b = Getelemento(Integer.parseInt(para[1]));
+                    // interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
+                    // interfaceGrupo b = Getelemento(Integer.parseInt(para[1]));
                     //  b.;
                     //p.Añadir(b);
                     //  b = Getelemento(Integer.parseInt(para[1]));
                     // b.getComponentes().clear();
                     j = parts.length;
-                } if (Accion.equals("EliminarElemento")) {
-                   // interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
-                   // EliminarElemento(p);
+                }
+                if (Accion.equals("EliminarElemento")) {
+                    eliminarElemento(para[0]);
                     j = parts.length;
-                } if (Accion.equals("VerTransporte")) {
-                    //x = VerTransporte(para[0]);
+                }
+                if (Accion.equals("VerTransporte")) {
+                    x = verTransporte(para[0]);
                     j = parts.length;
-                } if (Accion.equals("verPagosC")) {
+                }
+                if (Accion.equals("verPagosC")) {
                     x = verPagosC(para[0]);
                     j = parts.length;
-                } if (Accion.equals("verPagosP")) {
+                }
+                if (Accion.equals("verPagosP")) {
                     x = verPagosP(para[0]);
                     j = parts.length;
-                } if (Accion.equals("verPermisos")) {
+                }
+                if (Accion.equals("verPermisos")) {
                     x = componentes.get(a).Permisos();
                     j = parts.length;
-                } if (Accion.equals("leerEoC")) {
+                }
+                if (Accion.equals("leerEoC")) {
                     x = leerEoC(para[0], Integer.parseInt(para[1]));
                     j = parts.length;
-                } if (Accion.equals("VerTodos")) {
-                   // x = VerTodos("");
+                }
+                if (Accion.equals("VerTodos")) {
+                    // x = VerTodos("");
                     j = parts.length;
-                } if (Accion.equals("leerEoC")) {
+                }
+                if (Accion.equals("leerEoC")) {
                     x = leerEoC(para[0], Integer.parseInt(para[1]));
                     j = parts.length;
-                } if (Accion.equals("ModificarNombre_Elemento")) {
+                }
+                if (Accion.equals("ModificarNombre_Elemento")) {
                     //interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
-                   // ModificarNombre_Elemento(p, para[1]);
+                    // ModificarNombre_Elemento(p, para[1]);
                     j = parts.length;
                 }
             }
@@ -323,12 +350,42 @@ public class Facade {
         }
         return info;
     }
-     public void crearAgrupacion(String NombreGrupo) {
+
+    public void crearAgrupacion(String NombreGrupo) {
         MedioTransporte grupo = new MedioTransporte(NombreGrupo);
+        mT.Crear(grupo);
     }
-     public void crearVehiculo(String nombre, String tipo, String placa, String cantidadpuestos, String marca, String ano, String referencia){
-         Transporte aN = new Individual(nombre,tipo,placa,cantidadpuestos,marca,ano,referencia);
-     }
+
+    public void crearVehiculo(String nombreG, String nombre, String tipo, String placa, String cantidadpuestos, String marca, String ano, String referencia) {
+        Transporte aN = new Individual(nombre, tipo, placa, cantidadpuestos, marca, ano, referencia);
+        if (nombreG.equalsIgnoreCase("")) {
+            mT.Crear(aN);
+        } else {
+            mT.getGrupo(nombreG).Crear(aN);
+        }
+    }
+
+    public void crearVehiculoconCarac(String nombreG, String nombre, String tipo, String placa, String cantidadpuestos, String marca, String ano, String referencia, int capacidad, String descripcion, String identificador) {
+        Transporte aN = new IdentificadorDecorator(identificador, new DescripcionDecorator(descripcion, new CapacidadDecorator(capacidad, new Individual(nombre, tipo, placa, cantidadpuestos, marca, ano, referencia))));
+        if (nombreG.equalsIgnoreCase("")) {
+            mT.Crear(aN);
+        } else {
+            mT.getGrupo(nombreG).Crear(aN);
+        }
+    }
+
+    public String verTransporte(String nombreG) {
+        String info = "";
+        info = mT.ConsultarNombre(nombreG);
+        return info;
+    }
+    public void ModificarIndividual(String caracteristica, String nuevo){
+        mT.cambiarAtributo(caracteristica, nuevo);
+        System.out.println("ModInd"+caracteristica);
+    }
+    public void eliminarElemento(String nombre){
+        mT.Eliminar(mT.getGrupo(nombre));
+    }
     /*
     public void crearIndividual(){
         Transporte vehiculo=new Individual("Carro", "Automovil", "AAA123", 5, "Nissan", "2012", "Versa");
@@ -394,5 +451,5 @@ public class Facade {
         s.setNombre(n);
 
     }
-*/
+     */
 }

@@ -111,4 +111,9 @@ public class Individual implements Transporte {
             this.setNombre(nombre);
         }
     }
+
+    @Override
+    public void Crear(Transporte t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

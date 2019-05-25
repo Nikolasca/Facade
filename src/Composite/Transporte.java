@@ -36,4 +36,5 @@ public interface Transporte {
     public String consultarAtributos();
 
     public void cambiarAtributo(String caracteristica, String nuevo);
+    public void Crear(Transporte t);
 }

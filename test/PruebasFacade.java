@@ -127,12 +127,6 @@ public class PruebasFacade {
         assertEquals("Datos efectivo {id=2, nombrePasajero=Pasajero1, nombreConductor=Conductor1, monto=10.0, otros=Moneda:Peso,MontoDado=20,MontoDevuelto=10}\n", F.Acceso("leerEoC", "Pasajero1", "111", "Pasajero1-2"));
     }
 
-    /*
-    @Test
-    public void verTransporte() {
-
-    }
-     */
     @Test
     public void verPermisosPasajero() throws NoSuchMethodException {
         Facade F = new Facade();
@@ -171,7 +165,7 @@ public class PruebasFacade {
     public void verPermisosConductor() throws NoSuchMethodException {
         Facade F = new Facade();
         F.Crear_Usuario("Conductor1", "111", "Conductor");
-        assertEquals("LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CerrarSesión", F.Acceso("verPermisos", "Conductor1", "111", ""));
+        assertEquals("LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CrearVehiculo,CerrarSesión", F.Acceso("verPermisos", "Conductor1", "111", ""));
     }
 
     @Test
@@ -182,37 +176,57 @@ public class PruebasFacade {
     }
 
     @Test
-
     public void crearVehículoAdmin() throws NoSuchMethodException {
-   Facade f = new Facade();
-    f.Acceso("CrearVehiculo", "hola","123","NombrePrueba-Tipo-ABC123-4-Mazda");
-    assertEquals("GrupoBase NombrePrueba Mazda 4 ABC123",f.Acceso("VerTransporte", "hola","123","NombreVehiculo"));
-    
+        Facade f = new Facade();
+        f.Acceso("CrearVehiculo", "hola", "123", "-NombrePrueba-Tipo-ABC123-4-Mazda-a-b");
+        assertEquals("Nombre: NombrePrueba - Placa: ABC123 - Tipo: Tipo - Marca: Mazda - Referencia: b - Año: a - Cantidad de puestos: 4\n", f.Acceso("VerTransporte", "hola", "123", "NombrePrueba"));
+    }
+
+    @Test
+    public void crearVehículoconCaracAdmin() throws NoSuchMethodException {
+        Facade f = new Facade();
+        f.Acceso("CrearVehiculo", "hola", "123", "-NombrePrueba-Tipo-ABC123-4-Mazda-a-b-10-4ruedas-a00001");
+        assertEquals("Nombre: NombrePrueba - Placa: ABC123 - Tipo: Tipo - Marca: Mazda - Referencia: b - Año: a - Cantidad de puestos: 4 - Capacidad: 10 - Descripción : 4ruedas - Identificador: a00001 -\n", f.Acceso("VerTransporte", "hola", "123", "NombrePrueba"));
     }
 
     @Test
     public void crearAgrupacionAdmin() throws NoSuchMethodException {
         Facade f = new Facade();
         f.Acceso("crearAgrupacion", "Hola", "123", "GrupoNuevo");
-        assertEquals("GrupoBase   0 GrupoNuevo ", f.Acceso("VerTodos", "Hola", "123", ""));
+        assertEquals("GrupoNuevo\n", f.Acceso("VerTransporte", "hola", "123", "GrupoNuevo"));
+    }
+
+    @Test
+    public void ModificarIndividual() throws NoSuchMethodException {
+        Facade f = new Facade();
+        f.Acceso("CrearVehiculo", "hola", "123", "-NombrePrueba-Tipo-ABC123-4-Mazda-a-b-10-4ruedas-a00001");
+        f.Acceso("ModificarIndividual", "hola", "123", "NombrePrueba;capacidad-8");
+        assertEquals("Nombre: NombrePrueba - Placa: ABC123 - Tipo: Tipo - Marca: Mazda - Referencia: b - Año: a - Cantidad de puestos: 4 - Capacidad: 8 - Descripción : 4ruedas - Identificador: a00001 -\n", f.Acceso("VerTransporte", "hola", "123", "NombrePrueba"));
     }
 
     @Test
     public void ModificarGrupo() throws NoSuchMethodException {
-        Facade f = Facade.getFacade();
-        f.Acceso("crearAgrupacion", "Hola", "123", "Particular-1");
-        f.Acceso("ModificarNombre_Elemento", "Hola", "123", "1-Nombrenuevo");
-        assertEquals("GrupoBase   0 Nombrenuevo ", f.Acceso("VerTodos", "Hola", "123", ""));
+        Facade f = new Facade();
+        f.Acceso("crearAgrupacion", "Hola", "123", "Particular");
+        f.Acceso("CrearVehiculo", "hola", "123", "Particular-NombrePrueba-Tipo-ABC123-4-Mazda-a-b-10-4ruedas-a00001");
+        f.Acceso("ModificarIndividual", "hola", "123", "Particular;nombreG-Especial");
+        assertEquals("Especial\n"
+                + "Nombre: NombrePrueba - Placa: ABC123 - Tipo: Tipo - Marca: Mazda - Referencia: b - Año: a - Cantidad de puestos: 4 - Capacidad: 10 - Descripción : 4ruedas - Identificador: a00001 -\n\n", f.Acceso("VerTransporte", "hola", "123", "Especial"));
     }
 
     @Test
     public void EliminarGrupoAdmin() throws NoSuchMethodException {
         Facade f = new Facade();
-        f.Acceso("crearAgrupacion", "Hola", "123", "Particular-1");
-        f.Acceso("crearAgrupacion", "Hola", "123", "Publico-2");
-        f.Acceso("crearAgrupacion", "Hola", "123", "Otro-3");
-        f.Acceso("EliminarElemento", "Hola", "123", "2");
-        assertEquals("GrupoBase   0 Particular GrupoBase   0 Otro ", f.Acceso("VerTodos", "hola", "123", ""));
+        f.Acceso("crearAgrupacion", "Hola", "123", "Particular");
+        f.Acceso("crearAgrupacion", "Hola", "123", "Publico");
+        f.Acceso("crearAgrupacion", "Hola", "123", "Otro");
+        f.Acceso("EliminarElemento", "Hola", "123", "Publico");
+        assertEquals("GrupoBase\n"
+                + "Particular\n"
+                + "\n"
+                + "Otro\n"
+                + "\n"
+                + "", f.Acceso("VerTransporte", "Hola", "123", "GrupoBase"));
     }
 
     @Test
@@ -222,5 +236,5 @@ public class PruebasFacade {
         F.Crear_Usuario("Conductor1", "111", "Conductor");
         F.Acceso("eliminar_Usuario", "Admin1", "111", "Conductor1-111");
         assertEquals("", F.Acceso("Consultar_Usuario", "Admin1", "111", "Conductor1"));
-    }
+}
 }

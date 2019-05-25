@@ -38,6 +38,7 @@ public class CapacidadDecorator extends Decorator {
           if (caracteristica.equalsIgnoreCase("capacidad")){
             this.setCapacidad(Integer.parseInt(nuevo));
         }
+          System.out.println("Capacity");
     }
 
     public String getNombre() {
@@ -87,6 +88,11 @@ public class CapacidadDecorator extends Decorator {
 
     @Override
     public void setPlaca(String placa) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Crear(Transporte t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

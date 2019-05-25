@@ -129,6 +129,7 @@ public class MedioTransporte implements Transporte {
                 }
             }
         }
+        System.out.println("Nom:"+nom);
         return nom;
     }
 
@@ -173,15 +174,27 @@ public class MedioTransporte implements Transporte {
             String nombre = a[0];
             String cara = a[1];
             for (int i = 0; i < Grupo.size(); i++) {
+                System.out.println("1");
                 if (Grupo.get(i).getNombre().equalsIgnoreCase(nombre)) {
+                    System.out.println("2");
                     Grupo.get(i).cambiarAtributo(cara, nuevo);
                 }
             }
+                    System.out.println("Cambiar "+cara+nuevo+nombre);
         } else {
             if (caracteristica.equalsIgnoreCase("nombreG")) {
                 this.setNombre(nuevo);
             }
         }
 
+    }
+        public Transporte getGrupo(String nombre){
+        Transporte t=null;
+        for (int i = 0; i < Grupo.size(); i++) {
+            if (Grupo.get(i).getNombre().equalsIgnoreCase(nombre)) {             
+                t = Grupo.get(i);
+            }
+        }
+        return t;
     }
 }
