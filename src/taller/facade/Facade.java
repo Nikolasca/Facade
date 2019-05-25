@@ -44,70 +44,6 @@ public class Facade {
         return facade;
     }
 
-    public void CrearReserva(String nombre, String id, String fecha, String concepto, String lugar) {
-        Reserva reserva = new Reserva(nombre, id, fecha, concepto, lugar);
-        G2.AñadirGrupito(reserva);
-    }
-
-    public void EliminarReserva(Reserva r) {
-        G2.EliminarAlGrupito(r);
-    }
-
-    public void EliminarReservaGrupo(Reserva r) {
-        G2.EliminarAlGrupito(r);
-    }
-
-    public void ModificarLugarReserva(String id, String Lugar) {
-        G2.ModificarLugar(id, Lugar);
-    }
-
-    public String LeerReserva(String id) {
-        return G2.LeerReserva(id);
-    }
-
-    public void CrearPago(String nombre, String id, int pago, String fecha, String concepto) {
-        Pago pago1 = new Pago(nombre, id, pago, fecha, concepto);
-        G1.AñadirGrupito(pago1);
-    }
-
-    public void EliminarPago(Pago r) {
-        G1.EliminarAlGrupito(r);
-    }
-
-    public String LeerPago(String id) {
-        return G1.LeerPago(id);
-    }
-
-    public void Modificar_ConceptoPago(String id, String Concepto) {
-        G1.ModificarConcepto(id, Concepto);
-    }
-
-    public FlyWeight Getpago(int i, Usuario u) {
-        return u.getFactory().Getpago(i);
-    }
-
-    public String verPagosP(String nombreU) {
-        String info = "";
-        for (int i = 0; i < componentes.size(); i++) {
-            if (componentes.get(i).getUsuario().equalsIgnoreCase(nombreU)) {
-                info = componentes.get(i).getPagos(nombreU);
-            }
-        }
-        return info;
-    }
-
-    public String verPagosC(String nombreC) {
-        String info = "";
-        info = FF.toStringPagosConductor(nombreC);
-        return info;
-    }
-
-    public void ModificarPago(int index, Usuario user, String Varios1, String Varios2, String Varios3) {
-
-        user.getFactory().ModificarPago(index, Varios1, Varios2, Varios3);
-
-    }
-
     public String Acceso(String Accion, String NombreUser, String PassUser, String Para) throws NoSuchMethodException {
         String x = "";
         int a = 0, w = 0;
@@ -190,12 +126,6 @@ public class Facade {
                     j = parts.length;
                 }
                 if (Accion.equals("crearAgrupacion")) {
-                    /*                   if (para.length == 2) {
-                        //crearAgrupacion(para[0], Integer.parseInt(para[1]));
-                        j = parts.length;
-                    } else {
-                       // crearAgrupacion(para[0]);
-                    }*/
                     crearAgrupacion(para[0]);
                     j = parts.length;
                 }
@@ -204,21 +134,12 @@ public class Facade {
                         crearVehiculo(para[0], para[1], para[2], para[3], para[4], para[5], para[6], para[7]);
                         j = parts.length;
                     } else {
-                        crearVehiculoconCarac(para[0], para[1], para[2], para[3], para[4], para[5], para[6], para[7],Integer.parseInt(para[8]),para[9],para[10]);
+                        crearVehiculoconCarac(para[0], para[1], para[2], para[3], para[4], para[5], para[6], para[7], Integer.parseInt(para[8]), para[9], para[10]);
                         j = parts.length;
                     }
                 }
-                if(Accion.equals("ModificarIndividual")){
-                    ModificarIndividual(para[0],para[1]);
-                    j=parts.length;
-                }
-                if (Accion.equals("AgregarAgrupacion")) {
-                    // interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
-                    // interfaceGrupo b = Getelemento(Integer.parseInt(para[1]));
-                    //  b.;
-                    //p.Añadir(b);
-                    //  b = Getelemento(Integer.parseInt(para[1]));
-                    // b.getComponentes().clear();
+                if (Accion.equals("ModificarIndividual")) {
+                    ModificarIndividual(para[0], para[1]);
                     j = parts.length;
                 }
                 if (Accion.equals("EliminarElemento")) {
@@ -245,17 +166,8 @@ public class Facade {
                     x = leerEoC(para[0], Integer.parseInt(para[1]));
                     j = parts.length;
                 }
-                if (Accion.equals("VerTodos")) {
-                    // x = VerTodos("");
-                    j = parts.length;
-                }
                 if (Accion.equals("leerEoC")) {
                     x = leerEoC(para[0], Integer.parseInt(para[1]));
-                    j = parts.length;
-                }
-                if (Accion.equals("ModificarNombre_Elemento")) {
-                    //interfaceGrupo p = Getelemento(Integer.parseInt(para[0]));
-                    // ModificarNombre_Elemento(p, para[1]);
                     j = parts.length;
                 }
             }
@@ -379,77 +291,67 @@ public class Facade {
         info = mT.ConsultarNombre(nombreG);
         return info;
     }
-    public void ModificarIndividual(String caracteristica, String nuevo){
+
+    public void ModificarIndividual(String caracteristica, String nuevo) {
         mT.cambiarAtributo(caracteristica, nuevo);
-        System.out.println("ModInd"+caracteristica);
+        System.out.println("ModInd" + caracteristica);
     }
-    public void eliminarElemento(String nombre){
+
+    public void eliminarElemento(String nombre) {
         mT.Eliminar(mT.getGrupo(nombre));
     }
-    /*
-    public void crearIndividual(){
-        Transporte vehiculo=new Individual("Carro", "Automovil", "AAA123", 5, "Nissan", "2012", "Versa");
+
+    public void CrearReserva(String nombre, String id, String fecha, String concepto, String lugar) {
+        Reserva reserva = new Reserva(nombre, id, fecha, concepto, lugar);
+        G2.AñadirGrupito(reserva);
     }
 
-    public composite crearAgrupacion(String NombreGrupo) {
-        composite grupo = new composite(NombreGrupo);
-        GrupoBase.Añadir(grupo);
-        return grupo;
-
+    public void EliminarReserva(Reserva r) {
+        G2.EliminarAlGrupito(r);
     }
 
-    public composite crearAgrupacion(String NombreGrupo, int id) {
-        composite grupo = new composite(NombreGrupo, id);
-        GrupoBase.Añadir(grupo);
-        return grupo;
-
+    public void EliminarReservaGrupo(Reserva r) {
+        G2.EliminarAlGrupito(r);
     }
 
-    public Vehiculo_hoja CrearVehiculo(String Nombre, String Tipo, String Placa, int capacidad, String Referencia) {
-        Vehiculo_hoja carro = new Vehiculo_hoja(Nombre, Tipo, Placa, capacidad, Referencia);
-        return carro;
-
+    public void ModificarLugarReserva(String id, String Lugar) {
+        G2.ModificarLugar(id, Lugar);
     }
 
-    public Vehiculo_hoja CrearVehiculo(String Nombre, int id) {
-        Vehiculo_hoja carro = new Vehiculo_hoja(Nombre, id);
-        return carro;
-
+    public String LeerReserva(String id) {
+        return G2.LeerReserva(id);
     }
 
-    public void AgregarElemento(interfaceGrupo componente) {
-        this.GrupoBase.Añadir(componente);
-
+    public void CrearPago(String nombre, String id, int pago, String fecha, String concepto) {
+        Pago pago1 = new Pago(nombre, id, pago, fecha, concepto);
+        G1.AñadirGrupito(pago1);
     }
 
-    public void EliminarElemento(interfaceGrupo componente) {
-        this.GrupoBase.Eliminar(componente);
-
+    public void EliminarPago(Pago r) {
+        G1.EliminarAlGrupito(r);
     }
 
-    public interfaceGrupo Getelemento(int id) {
-        return this.GrupoBase.Getelemento(id);
-
+    public String LeerPago(String id) {
+        return G1.LeerPago(id);
     }
 
-    public String VerTransporte(String Nombre) {
-        return GrupoBase.getNombreGrupo();
-
+    public void Modificar_ConceptoPago(String id, String Concepto) {
+        G1.ModificarConcepto(id, Concepto);
     }
 
-    public String VerTodos(String Nombre) {
-        return GrupoBase.getNombreGrupo();
-
+    public String verPagosP(String nombreU) {
+        String info = "";
+        for (int i = 0; i < componentes.size(); i++) {
+            if (componentes.get(i).getUsuario().equalsIgnoreCase(nombreU)) {
+                info = componentes.get(i).getPagos(nombreU);
+            }
+        }
+        return info;
     }
 
-    public String retornar_permisos(Usuario e) {
-        return e.Permisos();
-
+    public String verPagosC(String nombreC) {
+        String info = "";
+        info = FF.toStringPagosConductor(nombreC);
+        return info;
     }
-
-    public void ModificarNombre_Elemento(interfaceGrupo s, String n) {
-        s.setNombre(n);
-
-    }
-     */
 }
