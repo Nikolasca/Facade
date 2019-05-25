@@ -33,7 +33,7 @@ public class Facade {
     private MedioTransporte mT = new MedioTransporte("GrupoBase");
 
     public Facade() {
-        Usuario user = new Adapter("Hola", "123");
+        Usuario user = new Adapter("Hola", "123", "Pedro", "A1", "pedrovamounisabana", "216");
         this.componentes.add(user);
     }
 
@@ -181,17 +181,17 @@ public class Facade {
         return x;
     }
 
-    public void Crear_Usuario(String User, String pass, String Tipo) {
+    public void Crear_Usuario(String User, String pass, String Tipo, String nombreCompleto, String id, String email, String telefono) {
         if (Tipo.equals("Pasajero")) {
-            Usuario usuario = new Pasajero(User, pass);
+            Usuario usuario = new Pasajero(User, pass, nombreCompleto, id, email, telefono);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
         } else if (Tipo.equals("Conductor")) {
-            Usuario usuario = new Conductor(User, pass);
+            Usuario usuario = new Conductor(User, pass, nombreCompleto, id, email, telefono);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
         } else if (Tipo.equals("Administrador")) {
-            Usuario usuario = new Adapter(User, pass);
+            Usuario usuario = new Adapter(User, pass, nombreCompleto, id, email, telefono);
             usuario.setTipo_Usuario(Tipo);
             componentes.add(usuario);
         } else {
@@ -203,7 +203,8 @@ public class Facade {
         String info = "";
         for (int i = 0; i < componentes.size(); i++) {
             if (componentes.get(i).getUsuario().equalsIgnoreCase(User)) {
-                info = componentes.get(i).getUsuario() + "," + componentes.get(i).getPassword() + "," + componentes.get(i).getTipo_Usuario() + ",";
+                info = componentes.get(i).getUsuario() + "," + componentes.get(i).getPassword() + "," + componentes.get(i).getTipo_Usuario() + "," + componentes.get(i).getNombreapellido() + ","
+                        + componentes.get(i).getId() + "," + componentes.get(i).getEmail() + "," + componentes.get(i).getTelefono() + ",";
             }
         }
         return info;
@@ -220,15 +221,24 @@ public class Facade {
         componentes.remove(a);
     }
 
-    public void mod_Usuario(String user, String newUser, String pass) {
+    public void mod_Usuario(String user, String carac, String nuevo) {
         int a = 0;
         for (int i = 0; i < componentes.size(); i++) {
             if (componentes.get(i).getUsuario().equalsIgnoreCase(user)) {
                 a = i;
             }
         }
-        componentes.get(a).setUsuario(newUser);
-        componentes.get(a).setPassword(pass);
+        if (carac.equalsIgnoreCase("usuario")) {
+            componentes.get(a).setUsuario(nuevo);
+        } else if (carac.equalsIgnoreCase("contrasena")) {
+            componentes.get(a).setPassword(nuevo);
+        } else if (carac.equalsIgnoreCase("email")) {
+            componentes.get(a).setEmail(nuevo);
+        } else if (carac.equalsIgnoreCase("telefono")) {
+            componentes.get(a).setTelefono(nuevo);
+        } else if (carac.equalsIgnoreCase("nombreCompleto")) {
+            componentes.get(a).setNombreapellido(nuevo);
+        }
     }
 
     public void crearCredito(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {

@@ -18,9 +18,13 @@ public class Pasajero extends Usuario {
     private String usuario;
     private String pass;
     private String tipo="Pasajero";
+    private String nombreapellido;
+    private String id;
+    private String email;
+    private String telefono;
 
-    public Pasajero(String Usuario, String Password) {
-        super(Usuario, Password);
+    public Pasajero(String Usuario, String Password,String nombreapellido, String id, String email, String telefono) {
+        super(Usuario, Password,nombreapellido,id,email,telefono);
         this.factory = new FlyWeightFactory();
     }
 

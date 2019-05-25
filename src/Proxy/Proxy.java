@@ -40,8 +40,8 @@ public class Proxy {
         return ingreso;
     }
 
-    public void crearUsuario(String nombre, String pass, String tipo) {
-        facade.Crear_Usuario(nombre, pass, tipo);
+    public void crearUsuario(String nombre, String pass, String tipo,String nombreCompleto,String id,String email,String telefono) {
+        facade.Crear_Usuario(nombre, pass, tipo,nombreCompleto,id,email,telefono);
         nombreUsuario.add(nombre);
         paseUsuario.add(pass);
     }

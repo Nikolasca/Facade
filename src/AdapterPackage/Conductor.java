@@ -18,9 +18,13 @@ public class Conductor extends Usuario {
     private String Usuario;
     private String Password;
     private String tipo = "Conductor";
+    private String nombreapellido;
+    private String id;
+    private String email;
+    private String telefono;
 
-    public Conductor(String Usuario, String Password) {
-        super(Usuario, Password);
+    public Conductor(String Usuario, String Password,String nombreapellido,String id,String email,String telefono) {
+        super(Usuario, Password,nombreapellido,id,email,telefono);
         FlyWeightFactory factory = new FlyWeightFactory();
     }
 

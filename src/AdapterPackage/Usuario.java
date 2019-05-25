@@ -8,44 +8,37 @@ package AdapterPackage;
 import Flyweight.FlyWeight;
 import Flyweight.FlyWeightFactory;
 
-
-
 /**
  *
  * @author Nikolas
  */
 public abstract class Usuario {
+
     private String Usuario;
     private String Password;
     private String Tipo_Usuario;
+    private String nombreapellido;
+    private String id;
+    private String email;
+    private String telefono;
 
-  
-
-    public Usuario(String Usuario, String Password) {
+    public Usuario(String Usuario, String Password, String nombreapellido, String id, String email, String telefono) {
         this.Usuario = Usuario;
         this.Password = Password;
+        this.nombreapellido = nombreapellido;
+        this.id = id;
+        this.email = email;
+        this.telefono = telefono;
     }
 
     public Usuario() {
     }
 
-  
-
-    
-    
-
-
-
-   // public abstract String getUsuario();
-
-   // public abstract void setUsuario(String Usuario); 
-
-   //public abstract String getPassword();
-
-   //public abstract void setPassword(String Password);
-
-  // public abstract void setTipo_Usuario(String Tipo_Usuario);
-
+    // public abstract String getUsuario();
+    // public abstract void setUsuario(String Usuario); 
+    //public abstract String getPassword();
+    //public abstract void setPassword(String Password);
+    // public abstract void setTipo_Usuario(String Tipo_Usuario);
     public String getUsuario() {
         return Usuario;
     }
@@ -69,12 +62,46 @@ public abstract class Usuario {
     public void setTipo_Usuario(String Tipo_Usuario) {
         this.Tipo_Usuario = Tipo_Usuario;
     }
-    
+
+    public String getNombreapellido() {
+        return nombreapellido;
+    }
+
+    public void setNombreapellido(String NombreApe) {
+        this.nombreapellido = NombreApe;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     public abstract String Permisos();
 
-   public abstract FlyWeightFactory getFactory();
-   
+    public abstract FlyWeightFactory getFactory();
+
     public abstract void AñadirPago(FlyWeight i);
+
     public abstract String getPago(int id);
+
     public abstract String getPagos(String nombre);
 }

@@ -13,6 +13,7 @@ public class Administrador {
     private String Usuario;
     private String Password;
     private String TipoUsuario;
+    private String nombreapellido;
     
     public String tomatuusuario() {
         return TipoUsuario;
