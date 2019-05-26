@@ -117,4 +117,11 @@ private Administrador admin;
     public void setEmail(String email) {
         super.setEmail(email);
     }
+
+    @Override
+    public void crearTarjeta(String Num, String CVV, String FV) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }

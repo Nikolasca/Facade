@@ -16,6 +16,7 @@ public class Conductor extends Usuario {
 
     private FlyWeightFactory factory;
     private String tipo = "Conductor";
+    private String estadoActivo="Activo";
 
     public Conductor(String usuario, String password, String nombre, int telefono, String documento, String email, int id) {
         super(usuario, password, nombre, telefono, documento, email, id);
@@ -80,7 +81,7 @@ public class Conductor extends Usuario {
 
     @Override
     public String Permisos() {
-        return "LeerPago,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CrearVehiculo,CerrarSesion";
+        return "LeerPago,crearCredito,CrearRuta,ModificarRuta,EliminarRuta,VerRuta,VerHorario,CrearVehiculo,mod_Usuario,Consultar_Usuario,CerrarSesion";
     }
 
     public FlyWeightFactory getFactory() {
@@ -154,5 +155,20 @@ public class Conductor extends Usuario {
     public double getLong() {
         return super.getLong();
     }
+
+    public String getEstado() {
+        return estadoActivo;
+    }
+
+    public void setEstado(String estadoActivo) {
+        this.estadoActivo = estadoActivo;
+    }
+
+    @Override
+    public void crearTarjeta(String Num, String CVV, String FV) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 
 }

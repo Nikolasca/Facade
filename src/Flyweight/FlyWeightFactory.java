@@ -14,6 +14,9 @@ import java.util.ArrayList;
 public class FlyWeightFactory {
 
     private ArrayList<FlyWeight> Fly = new ArrayList<>();
+    private String NumTarj="";
+    private String CVV="";
+    private String fechaVenc="";
 
     public FlyWeightFactory() {
     }
@@ -31,8 +34,8 @@ public class FlyWeightFactory {
         }
     }
 
-    public void CrearPagoTarjeta(int id, String nombrePasajero, String nombreConductor, float monto, String otros) {
-        FlyWeight f = new PagoTarjeta(id, nombrePasajero, nombreConductor, monto, otros);
+    public void CrearPagoTarjeta(int id, String nombrePasajero, String nombreConductor, float monto) {
+        FlyWeight f = new PagoTarjeta(id, nombrePasajero, nombreConductor, monto, "Numero de tarjeta: "+NumTarj+",CVV: "+CVV+", Fecha de Vencimiento: "+fechaVenc);
         int agregar = 1;
         for (int a = 0; a < Fly.size(); a++) {
             if (Fly.get(a).getId() == id) {
@@ -124,4 +127,29 @@ public class FlyWeightFactory {
         }
         return info;
     }
+
+    public String getNumTarj() {
+        return NumTarj;
+    }
+
+    public void setNumTarj(String NumTarj) {
+        this.NumTarj = NumTarj;
+    }
+
+    public String getCVV() {
+        return CVV;
+    }
+
+    public void setCVV(String CVV) {
+        this.CVV = CVV;
+    }
+
+    public String getFechaVenc() {
+        return fechaVenc;
+    }
+
+    public void setFechaVenc(String fechaVenc) {
+        this.fechaVenc = fechaVenc;
+    }
+    
 }

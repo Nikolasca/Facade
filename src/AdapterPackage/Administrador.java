@@ -30,7 +30,7 @@ public class Administrador {
     }
 
     public String PP() {
-        return "CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,InmovilizarUsuario,VerTodos,ModificarNombre_Elemento,Consultar_UsuarioId";
+        return "Crear_Usuario,CrearVehiculo,crearAgrupacion,AgregarAgrupacion,EliminarElemento,eliminar_Usuario,Consultar_Usuario,CerrarSesion,mod_Usuario,InmovilizarUsuario,VerTodos,ModificarNombre_Elemento,Consultar_UsuarioId";
     }
 
     public void setPassword(String Password) {

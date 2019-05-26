@@ -32,7 +32,7 @@ public class PruebasConductor {
     @Before
     public void setUp() {
         Proxy x = new Proxy();
-        x.crearUsuario("NombreConductor", "2", "Conductor","wq",1,"er","e",23);
+        x.crearUsuario("NombreConductor", "2", "Conductor","wq",1,"er","e");
         assertTrue(x.validarUsuario("NombreConductor", "2"));
     }
 

@@ -87,8 +87,8 @@ public class Pasajero extends Usuario {
 
     @Override
     public String Permisos() {
-        return "CrearReserva,LeerReserva,ModificarLugarReserva,EliminarReserva,CrearPago,LeerPago,Consultar_Usuario,mod_Usuario,"
-                + "crearCredito,crearEfectivo,VerPagos,VerTransporte,crearTarjetaCredito,crearTarjetaDebito,ModificarTarjetaCredito,ModificarTarjetaDebito,VerViajesRealizados,VerRutas,VerAyudas,GuardarUbicaciones,CerrarSesion";
+        return "CrearReserva,LeerReserva,ModificarLugarReserva,EliminarReserva,CrearPago,LeerPago,Consultar_Usuario,mod_Usuario,CrearTarjetaCredito"
+                + "crearCredito,crearEfectivo,VerPagos,VerTransporte,crearTarjetaCredito,crearTarjetaDebito,ModificarTarjetaCredito,ModificarTarjetaDebito,VerViajesRealizados,VerRutas,VerAyudas,GuardarUbicaciones,agregarUbicaciones,verUbicaciones,CerrarSesion";
     }
 
     public FlyWeightFactory getFactory() {
@@ -148,4 +148,14 @@ public class Pasajero extends Usuario {
     public double getLong() {
         return super.getLong();
     }
+
+    @Override
+    public void crearTarjeta(String Num, String CVV, String FV) {
+        System.out.println("Tarjeta Creada");
+       this.factory.setNumTarj(Num);
+       this.factory.setCVV(CVV);
+       this.factory.setFechaVenc(FV);
+    }
+
+
 }
