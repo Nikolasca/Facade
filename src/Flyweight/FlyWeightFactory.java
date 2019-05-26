@@ -17,6 +17,7 @@ public class FlyWeightFactory {
     private String NumTarj="";
     private String CVV="";
     private String fechaVenc="";
+    private String NumTarjD="";
 
     public FlyWeightFactory() {
     }
@@ -35,7 +36,7 @@ public class FlyWeightFactory {
     }
 
     public void CrearPagoTarjeta(int id, String nombrePasajero, String nombreConductor, float monto) {
-        FlyWeight f = new PagoTarjeta(id, nombrePasajero, nombreConductor, monto, "Numero de tarjeta: "+NumTarj+",CVV: "+CVV+", Fecha de Vencimiento: "+fechaVenc);
+        FlyWeight f = new PagoTarjeta(id, nombrePasajero, nombreConductor, monto, "Numero de tarjeta: "+NumTarj+",CVV: "+CVV+", Fecha de Vencimiento: "+fechaVenc+", Numero de tarjeta del receptor: "+NumTarjD);
         int agregar = 1;
         for (int a = 0; a < Fly.size(); a++) {
             if (Fly.get(a).getId() == id) {
@@ -94,8 +95,8 @@ public class FlyWeightFactory {
 
     }
 
-    public void ModificarPago(int i, String NuevoValor, String NuevoValor2, String NuevoValor3) {
-        Fly.get(i).setOtros(NuevoValor, NuevoValor2, NuevoValor3);
+    public void ModificarPago(int i, String NuevoValor, String NuevoValor2, String NuevoValor3,String NuevoValor4) {
+        Fly.get(i).setOtros(NuevoValor, NuevoValor2, NuevoValor3,NuevoValor4);
     }
 
     public String LeerPagoEoC(int id) {
@@ -151,5 +152,14 @@ public class FlyWeightFactory {
     public void setFechaVenc(String fechaVenc) {
         this.fechaVenc = fechaVenc;
     }
+
+    public String getNumTarjD() {
+        return NumTarjD;
+    }
+
+    public void setNumTarjD(String NumTarjD) {
+        this.NumTarjD = NumTarjD;
+    }
+    
     
 }

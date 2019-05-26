@@ -120,6 +120,8 @@ public abstract class Usuario {
     public abstract String getPagos(String nombre);
     
     public abstract void crearTarjeta(String Num,String CVV, String FV);
+    
+    public abstract void cambiarTarjeta(String carac,String nuevo);
 
     public int getId() {
         return id;

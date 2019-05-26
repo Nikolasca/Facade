@@ -43,11 +43,11 @@ public class Proxy {
     public void crearUsuario(String nombre, String pass, String tipo, String nombreCompleto, int telefono, String documento, String email) {
         nombreUsuario.add(nombre);
         paseUsuario.add(pass);
-        facade.Crear_Usuario(nombre, pass, tipo, nombreCompleto, telefono, documento, email,nombreUsuario.size()+1);
+        facade.Crear_Usuario(nombre, pass, tipo, nombreCompleto, telefono, documento, email);
     }
 
-    public void crearUsuario(String nombre, String pass, String tipo, int id) {
-        facade.Crear_Usuario(nombre, pass, tipo, id);
+    public void crearUsuario(String nombre, String pass, String tipo) {
+        facade.Crear_Usuario(nombre, pass, tipo);
         nombreUsuario.add(nombre);
         paseUsuario.add(pass);
     }

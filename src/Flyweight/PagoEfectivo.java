@@ -71,7 +71,7 @@ public class PagoEfectivo implements FlyWeight {
     }
 
     @Override
-    public void setOtros(String dato1, String dato2, String dato3) {
+    public void setOtros(String dato1, String dato2, String dato3, String dato4) {
         this.otros = "moneda: " + dato1 + ", monto dado: " + dato2 + ", monto devuelto: " + dato3;
     }
 
@@ -79,4 +79,5 @@ public class PagoEfectivo implements FlyWeight {
     public String toString() {
         return "Datos efectivo {" + "id=" + id + ", nombrePasajero=" + nombrePasajero + ", nombreConductor=" + nombreConductor + ", monto=" + monto + ", otros=" + otros + '}';
     }
+
 }

@@ -32,7 +32,7 @@ public class PruebasAdministrador {
     @Before
     public void setUp() {
         Proxy x = new Proxy();
-        x.crearUsuario("NombreAdministrador", "3", "Administrador",200);
+        x.crearUsuario("NombreAdministrador", "3", "Administrador");
         assertTrue(x.validarUsuario("NombreAdministrador", "3"));
     }
 
